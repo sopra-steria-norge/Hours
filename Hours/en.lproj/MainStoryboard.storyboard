@@ -7,7 +7,7 @@
         <!--class Prefix:identifier First View Controller - First-->
         <scene sceneID="11">
             <objects>
-                <viewController title="First" id="2" customClass="FirstViewController" sceneMemberID="viewController">
+                <viewController title="First" id="2" customClass="DayViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="16">
                         <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

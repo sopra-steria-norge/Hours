@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  DayViewController.h
 //  Hours
 //
 //  Created by Tommy Wendelborg on 11/4/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+@interface DayViewController : UIViewController
 
 @end

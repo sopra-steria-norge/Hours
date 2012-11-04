@@ -1,18 +1,18 @@
 //
-//  FirstViewController.m
+//  DayViewController.m
 //  Hours
 //
 //  Created by Tommy Wendelborg on 11/4/12.
 //  Copyright (c) 2012 steria. All rights reserved.
 //
 
-#import "FirstViewController.h"
+#import "DayViewController.h"
 
-@interface FirstViewController ()
+@interface DayViewController ()
 
 @end
 
-@implementation FirstViewController
+@implementation DayViewController
 
 - (void)viewDidLoad
 {

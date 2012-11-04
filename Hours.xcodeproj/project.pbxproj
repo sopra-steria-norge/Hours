@@ -17,7 +17,7 @@
 		4CAB12441646FF6B00265B8D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CAB12431646FF6B00265B8D /* Default@2x.png */; };
 		4CAB12461646FF6B00265B8D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CAB12451646FF6B00265B8D /* Default-568h@2x.png */; };
 		4CAB12491646FF6B00265B8D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CAB12471646FF6B00265B8D /* MainStoryboard.storyboard */; };
-		4CAB124C1646FF6B00265B8D /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB124B1646FF6B00265B8D /* FirstViewController.m */; };
+		4CAB124C1646FF6B00265B8D /* DayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB124B1646FF6B00265B8D /* DayViewController.m */; };
 		4CAB124E1646FF6B00265B8D /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CAB124D1646FF6B00265B8D /* first.png */; };
 		4CAB12501646FF6B00265B8D /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CAB124F1646FF6B00265B8D /* first@2x.png */; };
 		4CAB12531646FF6B00265B8D /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12521646FF6B00265B8D /* SecondViewController.m */; };
@@ -104,8 +104,8 @@
 		4CAB12431646FF6B00265B8D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4CAB12451646FF6B00265B8D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4CAB12481646FF6B00265B8D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		4CAB124A1646FF6B00265B8D /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		4CAB124B1646FF6B00265B8D /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		4CAB124A1646FF6B00265B8D /* DayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DayViewController.h; sourceTree = "<group>"; };
+		4CAB124B1646FF6B00265B8D /* DayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DayViewController.m; sourceTree = "<group>"; };
 		4CAB124D1646FF6B00265B8D /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		4CAB124F1646FF6B00265B8D /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		4CAB12511646FF6B00265B8D /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
@@ -203,8 +203,8 @@
 				4CAB123E1646FF6B00265B8D /* AppDelegate.h */,
 				4CAB123F1646FF6B00265B8D /* AppDelegate.m */,
 				4CAB12471646FF6B00265B8D /* MainStoryboard.storyboard */,
-				4CAB124A1646FF6B00265B8D /* FirstViewController.h */,
-				4CAB124B1646FF6B00265B8D /* FirstViewController.m */,
+				4CAB124A1646FF6B00265B8D /* DayViewController.h */,
+				4CAB124B1646FF6B00265B8D /* DayViewController.m */,
 				4CAB124D1646FF6B00265B8D /* first.png */,
 				4CAB124F1646FF6B00265B8D /* first@2x.png */,
 				4CAB12511646FF6B00265B8D /* SecondViewController.h */,
@@ -422,7 +422,7 @@
 			files = (
 				4CAB123C1646FF6B00265B8D /* main.m in Sources */,
 				4CAB12401646FF6B00265B8D /* AppDelegate.m in Sources */,
-				4CAB124C1646FF6B00265B8D /* FirstViewController.m in Sources */,
+				4CAB124C1646FF6B00265B8D /* DayViewController.m in Sources */,
 				4CAB12531646FF6B00265B8D /* SecondViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
