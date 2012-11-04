@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Week.h"
 
+
 @interface AppState : NSObject
 
 @property(nonatomic, readonly, strong) NSDate *currentDate;

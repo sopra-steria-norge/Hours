@@ -1,18 +1,18 @@
 //
-//  SecondViewController.m
+//  WeekViewController.m
 //  Hours
 //
 //  Created by Tommy Wendelborg on 11/4/12.
 //  Copyright (c) 2012 steria. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "WeekViewController.h"
 
-@interface SecondViewController ()
+@interface WeekViewController ()
 
 @end
 
-@implementation SecondViewController
+@implementation WeekViewController
 
 - (void)viewDidLoad
 {

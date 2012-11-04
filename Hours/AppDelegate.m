@@ -14,7 +14,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    
+    [RKClient clientWithBaseURLString:@"http://fakeswhrs.azurewebsites.net/"];
     
     return YES;
 }
@@ -44,31 +44,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    if ([request isGET]) {
-        // Handling GET /foo.xml
-        
-        if ([response isOK]) {
-            // Success! Let's take a look at the data
-            NSLog(@"Retrieved XML: %@", [response bodyAsString]);
-        }
-        
-    } else if ([request isPOST]) {
-        
-        // Handling POST /other.json
-        if ([response isJSON]) {
-            NSLog(@"Got a JSON response back from our POST!");
-        }
-        
-    } else if ([request isDELETE]) {
-        
-        // Handling DELETE /missing_resource.txt
-        if ([response isNotFound]) {
-            NSLog(@"The resource path '%@' was not found.", [request resourcePath]);
-        }
-    }
 }
 
 @end

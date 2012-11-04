@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  WeekViewController.h
 //  Hours
 //
 //  Created by Tommy Wendelborg on 11/4/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
+@interface WeekViewController : UIViewController
 
 @end

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppState.h"
 
 @interface DayViewController : UIViewController
-
+@property(nonatomic, strong) AppState *state;
 @end

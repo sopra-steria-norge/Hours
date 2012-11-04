@@ -13,11 +13,13 @@
 @end
 
 @implementation DayViewController
-
+@synthesize state = _state;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.state = [[AppState alloc] initWithDate:[[NSDate alloc] init]];
 }
 
 - (void)didReceiveMemoryWarning
