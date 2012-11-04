@@ -35,6 +35,11 @@
 		4CAB129C1647022400265B8D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB12951647022400265B8D /* QuartzCore.framework */; };
 		4CAB129D1647022400265B8D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB12961647022400265B8D /* Security.framework */; };
 		4CAB129E1647022400265B8D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB12971647022400265B8D /* SystemConfiguration.framework */; };
+		4CAB12AF1647047B00265B8D /* DataFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12AE1647047B00265B8D /* DataFactory.m */; };
+		4CAB12D31647051400265B8D /* AppState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12CC1647051400265B8D /* AppState.m */; };
+		4CAB12D41647051400265B8D /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12CE1647051400265B8D /* Project.m */; };
+		4CAB12D51647051400265B8D /* Registration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12D01647051400265B8D /* Registration.m */; };
+		4CAB12D61647051400265B8D /* Week.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12D21647051400265B8D /* Week.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +131,16 @@
 		4CAB12951647022400265B8D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4CAB12961647022400265B8D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4CAB12971647022400265B8D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4CAB12AD1647047B00265B8D /* DataFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataFactory.h; sourceTree = "<group>"; };
+		4CAB12AE1647047B00265B8D /* DataFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataFactory.m; sourceTree = "<group>"; };
+		4CAB12CB1647051400265B8D /* AppState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppState.h; sourceTree = "<group>"; };
+		4CAB12CC1647051400265B8D /* AppState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppState.m; sourceTree = "<group>"; };
+		4CAB12CD1647051400265B8D /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
+		4CAB12CE1647051400265B8D /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
+		4CAB12CF1647051400265B8D /* Registration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Registration.h; sourceTree = "<group>"; };
+		4CAB12D01647051400265B8D /* Registration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Registration.m; sourceTree = "<group>"; };
+		4CAB12D11647051400265B8D /* Week.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Week.h; sourceTree = "<group>"; };
+		4CAB12D21647051400265B8D /* Week.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Week.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,13 +177,6 @@
 		4CAB12201646FF6B00265B8D = {
 			isa = PBXGroup;
 			children = (
-				4CAB12911647022400265B8D /* CFNetwork.framework */,
-				4CAB12921647022400265B8D /* CoreData.framework */,
-				4CAB12931647022400265B8D /* libxml2.dylib */,
-				4CAB12941647022400265B8D /* MobileCoreServices.framework */,
-				4CAB12951647022400265B8D /* QuartzCore.framework */,
-				4CAB12961647022400265B8D /* Security.framework */,
-				4CAB12971647022400265B8D /* SystemConfiguration.framework */,
 				4CAB127A1647019900265B8D /* RestKit.xcodeproj */,
 				4CAB12351646FF6B00265B8D /* Hours */,
 				4CAB12641646FF6B00265B8D /* HoursTests */,
@@ -189,6 +197,13 @@
 		4CAB122E1646FF6B00265B8D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4CAB12911647022400265B8D /* CFNetwork.framework */,
+				4CAB12921647022400265B8D /* CoreData.framework */,
+				4CAB12931647022400265B8D /* libxml2.dylib */,
+				4CAB12941647022400265B8D /* MobileCoreServices.framework */,
+				4CAB12951647022400265B8D /* QuartzCore.framework */,
+				4CAB12961647022400265B8D /* Security.framework */,
+				4CAB12971647022400265B8D /* SystemConfiguration.framework */,
 				4CAB122F1646FF6B00265B8D /* UIKit.framework */,
 				4CAB12311646FF6B00265B8D /* Foundation.framework */,
 				4CAB12331646FF6B00265B8D /* CoreGraphics.framework */,
@@ -200,6 +215,8 @@
 		4CAB12351646FF6B00265B8D /* Hours */ = {
 			isa = PBXGroup;
 			children = (
+				4CAB12CA1647051400265B8D /* Models */,
+				4CAB12AC1647047B00265B8D /* Data */,
 				4CAB123E1646FF6B00265B8D /* AppDelegate.h */,
 				4CAB123F1646FF6B00265B8D /* AppDelegate.m */,
 				4CAB12471646FF6B00265B8D /* MainStoryboard.storyboard */,
@@ -259,6 +276,31 @@
 				4CAB128E1647019A00265B8D /* RestKitResources.bundle */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		4CAB12AC1647047B00265B8D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4CAB12AD1647047B00265B8D /* DataFactory.h */,
+				4CAB12AE1647047B00265B8D /* DataFactory.m */,
+			);
+			name = Data;
+			path = "../../iSwhrs-native/iSwhrs-native/Data";
+			sourceTree = "<group>";
+		};
+		4CAB12CA1647051400265B8D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4CAB12CB1647051400265B8D /* AppState.h */,
+				4CAB12CC1647051400265B8D /* AppState.m */,
+				4CAB12CD1647051400265B8D /* Project.h */,
+				4CAB12CE1647051400265B8D /* Project.m */,
+				4CAB12CF1647051400265B8D /* Registration.h */,
+				4CAB12D01647051400265B8D /* Registration.m */,
+				4CAB12D11647051400265B8D /* Week.h */,
+				4CAB12D21647051400265B8D /* Week.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -424,6 +466,11 @@
 				4CAB12401646FF6B00265B8D /* AppDelegate.m in Sources */,
 				4CAB124C1646FF6B00265B8D /* DayViewController.m in Sources */,
 				4CAB12531646FF6B00265B8D /* SecondViewController.m in Sources */,
+				4CAB12AF1647047B00265B8D /* DataFactory.m in Sources */,
+				4CAB12D31647051400265B8D /* AppState.m in Sources */,
+				4CAB12D41647051400265B8D /* Project.m in Sources */,
+				4CAB12D51647051400265B8D /* Registration.m in Sources */,
+				4CAB12D61647051400265B8D /* Week.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
