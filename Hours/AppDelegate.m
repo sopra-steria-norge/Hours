@@ -7,15 +7,12 @@
 //
 
 #import "AppDelegate.h"
-#import <RestKit/RestKit.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [RKClient clientWithBaseURLString:@"http://fakeswhrs.azurewebsites.net/"];
-    
     return YES;
 }
 							
