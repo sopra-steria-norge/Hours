@@ -8,12 +8,12 @@
 
 #import "AppState.h"
 #import "DataFactory.h"
-#import <RestKit/RestKit.h>
 
-@interface AppState() <RKRequestDelegate>
+@interface AppState() <WeekReceiver>
 
-@property(nonatomic, readwrite, strong) NSDate *currentDate;
-@property(nonatomic, readwrite, strong) Week *week;
+@property(nonatomic, strong) NSDate *currentDate;
+@property(nonatomic, strong) Week *week;
+@property(nonatomic, readonly, strong) DataFactory *dataFactory;
 
 @end
 
@@ -21,6 +21,7 @@
 
 @synthesize currentDate = _currentDate;
 @synthesize week = _week;
+@synthesize dataFactory = _dataFactory;
 
 
 -(id) initWithDate:(NSDate *) date {
@@ -28,41 +29,23 @@
     if(self)
     {
         self.currentDate = date;
-        Week *week = [[Week alloc] init]; // TODO Get data
-        self.week = week;
-        [self sendRequests];
+        [self.dataFactory startGetDataForDate:date andDelegateReceiver:self];
     }
     return self;
 }
 
-- (void)sendRequests {
-    // Perform a simple HTTP GET and call me back with the results
-    [ [RKClient sharedClient] get:@"/hours/week" delegate:self];
+-(DataFactory *)dataFactory
+{
+    if(!_dataFactory)
+    {
+        _dataFactory = [[DataFactory alloc] init];
+    }
+    return _dataFactory;
 }
 
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    if ([request isGET]) {
-        // Handling GET /foo.xml
-        
-        if ([response isOK]) {
-            // Success! Let's take a look at the data
-            NSLog(@"Retrieved XML: %@", [response bodyAsString]);
-        }
-        
-    } else if ([request isPOST]) {
-        
-        // Handling POST /other.json
-        if ([response isJSON]) {
-            NSLog(@"Got a JSON response back from our POST!");
-        }
-        
-    } else if ([request isDELETE]) {
-        
-        // Handling DELETE /missing_resource.txt
-        if ([response isNotFound]) {
-            NSLog(@"The resource path '%@' was not found.", [request resourcePath]);
-        }
-    }
+-(void) didReceiveWeek:(Week *)week
+{
+    self.week = week;
 }
 
 @end

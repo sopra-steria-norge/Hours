@@ -20,7 +20,7 @@
 		4CAB124C1646FF6B00265B8D /* DayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB124B1646FF6B00265B8D /* DayViewController.m */; };
 		4CAB124E1646FF6B00265B8D /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CAB124D1646FF6B00265B8D /* first.png */; };
 		4CAB12501646FF6B00265B8D /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CAB124F1646FF6B00265B8D /* first@2x.png */; };
-		4CAB12531646FF6B00265B8D /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12521646FF6B00265B8D /* SecondViewController.m */; };
+		4CAB12531646FF6B00265B8D /* WeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12521646FF6B00265B8D /* WeekViewController.m */; };
 		4CAB12551646FF6B00265B8D /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CAB12541646FF6B00265B8D /* second.png */; };
 		4CAB12571646FF6B00265B8D /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CAB12561646FF6B00265B8D /* second@2x.png */; };
 		4CAB125F1646FF6B00265B8D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB125E1646FF6B00265B8D /* SenTestingKit.framework */; };
@@ -35,11 +35,12 @@
 		4CAB129C1647022400265B8D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB12951647022400265B8D /* QuartzCore.framework */; };
 		4CAB129D1647022400265B8D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB12961647022400265B8D /* Security.framework */; };
 		4CAB129E1647022400265B8D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB12971647022400265B8D /* SystemConfiguration.framework */; };
-		4CAB12AF1647047B00265B8D /* DataFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12AE1647047B00265B8D /* DataFactory.m */; };
 		4CAB12D31647051400265B8D /* AppState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12CC1647051400265B8D /* AppState.m */; };
 		4CAB12D41647051400265B8D /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12CE1647051400265B8D /* Project.m */; };
 		4CAB12D51647051400265B8D /* Registration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12D01647051400265B8D /* Registration.m */; };
 		4CAB12D61647051400265B8D /* Week.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12D21647051400265B8D /* Week.m */; };
+		4CAB12DC1647120500265B8D /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB12861647019A00265B8D /* libRestKit.a */; };
+		4CAB12EF16481A1500265B8D /* DataFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12ED16481A1500265B8D /* DataFactory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,7 +86,7 @@
 			remoteGlobalIDString = 259C301615128079003066A2;
 			remoteInfo = RestKitResources;
 		};
-		4CAB128F164701E400265B8D /* PBXContainerItemProxy */ = {
+		4CAB12D816470FE100265B8D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4CAB127A1647019900265B8D /* RestKit.xcodeproj */;
 			proxyType = 1;
@@ -113,8 +114,8 @@
 		4CAB124B1646FF6B00265B8D /* DayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DayViewController.m; sourceTree = "<group>"; };
 		4CAB124D1646FF6B00265B8D /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		4CAB124F1646FF6B00265B8D /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		4CAB12511646FF6B00265B8D /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		4CAB12521646FF6B00265B8D /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		4CAB12511646FF6B00265B8D /* WeekViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeekViewController.h; sourceTree = "<group>"; };
+		4CAB12521646FF6B00265B8D /* WeekViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeekViewController.m; sourceTree = "<group>"; };
 		4CAB12541646FF6B00265B8D /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		4CAB12561646FF6B00265B8D /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		4CAB125D1646FF6B00265B8D /* HoursTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HoursTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,8 +132,6 @@
 		4CAB12951647022400265B8D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4CAB12961647022400265B8D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4CAB12971647022400265B8D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		4CAB12AD1647047B00265B8D /* DataFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataFactory.h; sourceTree = "<group>"; };
-		4CAB12AE1647047B00265B8D /* DataFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataFactory.m; sourceTree = "<group>"; };
 		4CAB12CB1647051400265B8D /* AppState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppState.h; sourceTree = "<group>"; };
 		4CAB12CC1647051400265B8D /* AppState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppState.m; sourceTree = "<group>"; };
 		4CAB12CD1647051400265B8D /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
@@ -141,6 +140,9 @@
 		4CAB12D01647051400265B8D /* Registration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Registration.m; sourceTree = "<group>"; };
 		4CAB12D11647051400265B8D /* Week.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Week.h; sourceTree = "<group>"; };
 		4CAB12D21647051400265B8D /* Week.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Week.m; sourceTree = "<group>"; };
+		4CAB12EC16481A1500265B8D /* DataFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataFactory.h; sourceTree = "<group>"; };
+		4CAB12ED16481A1500265B8D /* DataFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataFactory.m; sourceTree = "<group>"; };
+		4CAB12F016481A4200265B8D /* WeekReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekReceiver.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CAB12DC1647120500265B8D /* libRestKit.a in Frameworks */,
 				4CAB12981647022400265B8D /* CFNetwork.framework in Frameworks */,
 				4CAB12991647022400265B8D /* CoreData.framework in Frameworks */,
 				4CAB129A1647022400265B8D /* libxml2.dylib in Frameworks */,
@@ -215,8 +218,8 @@
 		4CAB12351646FF6B00265B8D /* Hours */ = {
 			isa = PBXGroup;
 			children = (
+				4CAB12EB16481A1500265B8D /* Data */,
 				4CAB12CA1647051400265B8D /* Models */,
-				4CAB12AC1647047B00265B8D /* Data */,
 				4CAB123E1646FF6B00265B8D /* AppDelegate.h */,
 				4CAB123F1646FF6B00265B8D /* AppDelegate.m */,
 				4CAB12471646FF6B00265B8D /* MainStoryboard.storyboard */,
@@ -224,8 +227,8 @@
 				4CAB124B1646FF6B00265B8D /* DayViewController.m */,
 				4CAB124D1646FF6B00265B8D /* first.png */,
 				4CAB124F1646FF6B00265B8D /* first@2x.png */,
-				4CAB12511646FF6B00265B8D /* SecondViewController.h */,
-				4CAB12521646FF6B00265B8D /* SecondViewController.m */,
+				4CAB12511646FF6B00265B8D /* WeekViewController.h */,
+				4CAB12521646FF6B00265B8D /* WeekViewController.m */,
 				4CAB12541646FF6B00265B8D /* second.png */,
 				4CAB12561646FF6B00265B8D /* second@2x.png */,
 				4CAB12361646FF6B00265B8D /* Supporting Files */,
@@ -278,16 +281,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4CAB12AC1647047B00265B8D /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				4CAB12AD1647047B00265B8D /* DataFactory.h */,
-				4CAB12AE1647047B00265B8D /* DataFactory.m */,
-			);
-			name = Data;
-			path = "../../iSwhrs-native/iSwhrs-native/Data";
-			sourceTree = "<group>";
-		};
 		4CAB12CA1647051400265B8D /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +294,16 @@
 				4CAB12D21647051400265B8D /* Week.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4CAB12EB16481A1500265B8D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4CAB12F016481A4200265B8D /* WeekReceiver.h */,
+				4CAB12EC16481A1500265B8D /* DataFactory.h */,
+				4CAB12ED16481A1500265B8D /* DataFactory.m */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,7 +320,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				4CAB1290164701E400265B8D /* PBXTargetDependency */,
+				4CAB12D916470FE100265B8D /* PBXTargetDependency */,
 			);
 			name = Hours;
 			productName = Hours;
@@ -465,12 +468,12 @@
 				4CAB123C1646FF6B00265B8D /* main.m in Sources */,
 				4CAB12401646FF6B00265B8D /* AppDelegate.m in Sources */,
 				4CAB124C1646FF6B00265B8D /* DayViewController.m in Sources */,
-				4CAB12531646FF6B00265B8D /* SecondViewController.m in Sources */,
-				4CAB12AF1647047B00265B8D /* DataFactory.m in Sources */,
+				4CAB12531646FF6B00265B8D /* WeekViewController.m in Sources */,
 				4CAB12D31647051400265B8D /* AppState.m in Sources */,
 				4CAB12D41647051400265B8D /* Project.m in Sources */,
 				4CAB12D51647051400265B8D /* Registration.m in Sources */,
 				4CAB12D61647051400265B8D /* Week.m in Sources */,
+				4CAB12EF16481A1500265B8D /* DataFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,10 +493,10 @@
 			target = 4CAB122A1646FF6B00265B8D /* Hours */;
 			targetProxy = 4CAB12621646FF6B00265B8D /* PBXContainerItemProxy */;
 		};
-		4CAB1290164701E400265B8D /* PBXTargetDependency */ = {
+		4CAB12D916470FE100265B8D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = RestKit;
-			targetProxy = 4CAB128F164701E400265B8D /* PBXContainerItemProxy */;
+			targetProxy = 4CAB12D816470FE100265B8D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
