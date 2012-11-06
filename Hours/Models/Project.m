@@ -10,28 +10,20 @@
 
 @interface Project()
 
-@property (nonatomic, copy) NSString *projectNumber;
-@property (nonatomic, copy) NSString *activityCode;
-@property (nonatomic, copy) NSString *description;
+@property (nonatomic, readwrite, copy) NSString *projectCode;
+@property (nonatomic, readwrite, copy) NSString *projectNumber;
+@property (nonatomic, readwrite, copy) NSString *projectName;
+@property (nonatomic, readwrite, copy) NSString *activityCode;
+@property (nonatomic, readwrite, copy) NSString *description;
 
 @end
 
 @implementation Project
 
+@synthesize projectCode = _projectCode;
 @synthesize projectNumber = _projectNumber;
+@synthesize projectName = _projectName;
 @synthesize activityCode = _activityCode;
 @synthesize description = _description;
-
--(id)initWithprojectNumber:(NSString *) projectNumber andActivityCode:(NSString *) activityCode andDescription:(NSString *) description
-{
-    self = super.init;
-    if(self)
-    {
-        self.projectNumber = projectNumber;
-        self.activityCode = activityCode;
-        self.description = description;
-    }
-    return self;
-}
 
 @end

@@ -52,6 +52,7 @@
     return formatter;
 }
 
+/* // TODO: These utility methods must be made to find project by projectCode, thanks to model rewrites
 - (NSArray *)projectsForWeek
 {
     NSMutableArray *tempArray = [[NSMutableArray alloc] init];
@@ -77,6 +78,7 @@
     }
     return nil;
 }
+*/
 
 - (NSArray *) registrationsForDay:(NSDate *) day {
     NSMutableArray *tempArray = [[NSMutableArray alloc] init];

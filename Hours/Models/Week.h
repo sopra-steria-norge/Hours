@@ -14,8 +14,9 @@
 @property(nonatomic, readonly, strong) NSDate *endDate;
 @property(nonatomic, readonly, strong) NSArray *registrations;
 - (id) initWithStartDate: (NSDate *) startDate endDate: (NSDate *) endDate andRegistrations:(NSArray *) registrations;
-- (NSArray *)projectsForWeek;
-- (Registration *)registrationForDay:(NSDate*)day andProject:(Project *)project;
+// TODO: These utility methods must be made to find project by projectCode, thanks to model rewrites
+//- (NSArray *)projectsForWeek;
+//- (Registration *)registrationForDay:(NSDate*)day andProject:(Project *)project;
 - (NSArray *) registrationsForDay:(NSDate *)day;
 - (double) sumRegistrations;
 - (NSString *)getDetailStringFromWeek;
