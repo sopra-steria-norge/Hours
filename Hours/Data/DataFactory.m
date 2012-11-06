@@ -25,15 +25,21 @@
 - (void)loadProjects {
     RKObjectManager *manager = [RKObjectManager managerWithBaseURLString:@"http://fakeswhrs.azurewebsites.net/"];
     RKObjectMapping* projectMapping = [RKObjectMapping mappingForClass:[Project class]];
-
+    projectMapping.forceCollectionMapping = YES;
     [projectMapping mapKeyOfNestedDictionaryToAttribute:@"projectNumber"];
+
     [manager.mappingProvider setMapping:projectMapping forKeyPath:@"projects"];
-        
-    [manager loadObjectsAtResourcePath:@"/articles" delegate:self];
+    
+    [manager loadObjectsAtResourcePath:@"/week/hours" delegate:self];
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-    RKLogInfo(@"Load collection of Articles: %@", objects);
+    RKLogInfo(@"Load collection of Projects: %@", objects);
+    
+    for(Project *p in objects)
+    {
+        NSLog(@"\tProject number: %@", p.projectNumber);
+    }
 }
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
