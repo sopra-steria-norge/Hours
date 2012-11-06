@@ -23,10 +23,11 @@
 }
 
 - (void)loadProjects {
-    RKObjectManager *manager = [RKObjectManager managerWithBaseURLString:@"http://fakeswhrs.azurewebsites.net/"];
+    RKObjectManager *manager = [RKObjectManager managerWithBaseURLString:@"http://fakeswhrs.azurewebsites.net"];
     RKObjectMapping* projectMapping = [RKObjectMapping mappingForClass:[Project class]];
     projectMapping.forceCollectionMapping = YES;
     [projectMapping mapKeyOfNestedDictionaryToAttribute:@"projectNumber"];
+    [projectMapping mapKeyPath:@"(projectNumber).description" toAttribute:@"description"];
 
     [manager.mappingProvider setMapping:projectMapping forKeyPath:@"projects"];
     
@@ -81,7 +82,7 @@
     }
 }
 
--(Week *) createTestPeriod // This might not survive for long
+-(Week *) createTestPeriod // This might not survive for long...
 {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
