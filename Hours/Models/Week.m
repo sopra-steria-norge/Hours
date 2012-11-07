@@ -1,6 +1,6 @@
 //
 //  Week.m
-//  iSwhrs
+//  Hours
 //
 //  Created by Tommy Wendelborg on 9/20/12.
 //  Copyright (c) 2012 Steria. All rights reserved.
@@ -10,7 +10,7 @@
 #import "Registration.h"
 
 @interface Week ()
-@property(nonatomic, strong) NSMutableArray *registrations;
+@property(nonatomic, strong) NSDictionary *registrations;
 @property(nonatomic, strong) NSDate *startDate;
 @property(nonatomic, strong) NSDate *endDate;
 @end
@@ -22,7 +22,6 @@
 @synthesize registrations = _registrations;
 @synthesize startDate = _startDate;
 @synthesize endDate = _endDate;
-
 
 -(id) init
 {
@@ -52,7 +51,7 @@
     return formatter;
 }
 
-/* // TODO: These utility methods must be made to find project by projectCode, thanks to model rewrites
+/* // TODO: must be made to find project by projectCode, thanks to model rewrites
 - (NSArray *)projectsForWeek
 {
     NSMutableArray *tempArray = [[NSMutableArray alloc] init];
@@ -66,32 +65,7 @@
     }
     return tempArray.copy;
 }
-
-- (Registration *)registrationForDay:(NSDate*)day andProject:(Project *)project
-{
-    for(Registration *r in self.registrations)
-    {
-        if([r.date isEqualToDate:day] && r.project == project)
-        {
-            return r;
-        }
-    }
-    return nil;
-}
 */
-
-- (NSArray *) registrationsForDay:(NSDate *) day {
-    NSMutableArray *tempArray = [[NSMutableArray alloc] init];
-    for(Registration *r in self.registrations)
-    {
-        if([r.date isEqualToDate: day])
-        {
-            [tempArray addObject:r];
-        }
-    }
-    
-    return tempArray.copy;
-}
 
 - (double) sumRegistrations
 {
@@ -116,6 +90,5 @@
                           stringByAppendingString:[dateFormatter stringFromDate:self.endDate]];
     return dateInfo;
 }
-
 
 @end

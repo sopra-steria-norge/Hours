@@ -1,6 +1,6 @@
 //
 //  Registration.m
-//  iSwhrs
+//  Hours
 //
 //  Created by Tommy Wendelborg on 9/20/12.
 //  Copyright (c) 2012 Steria. All rights reserved.

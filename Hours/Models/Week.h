@@ -1,6 +1,6 @@
 //
 //  Week.h
-//  iSwhrs
+//  Hours
 //
 //  Created by Tommy Wendelborg on 9/20/12.
 //  Copyright (c) 2012 Steria. All rights reserved.
@@ -10,14 +10,9 @@
 #import "Registration.h"
 
 @interface Week : NSObject
-@property(nonatomic, readonly, strong) NSDate *startDate;
-@property(nonatomic, readonly, strong) NSDate *endDate;
-@property(nonatomic, readonly, strong) NSArray *registrations;
+@property(nonatomic, readonly, strong) NSDictionary *registrations;
 - (id) initWithStartDate: (NSDate *) startDate endDate: (NSDate *) endDate andRegistrations:(NSArray *) registrations;
-// TODO: These utility methods must be made to find project by projectCode, thanks to model rewrites
-//- (NSArray *)projectsForWeek;
-//- (Registration *)registrationForDay:(NSDate*)day andProject:(Project *)project;
-- (NSArray *) registrationsForDay:(NSDate *)day;
+//- (NSArray *)projectsForWeek; // TODO: must be made to find project by projectCode, thanks to model rewrites
 - (double) sumRegistrations;
 - (NSString *)getDetailStringFromWeek;
 - (NSString *)getPeriodString;
