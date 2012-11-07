@@ -41,6 +41,7 @@
 		4CAB12D61647051400265B8D /* Week.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12D21647051400265B8D /* Week.m */; };
 		4CAB12DC1647120500265B8D /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB12861647019A00265B8D /* libRestKit.a */; };
 		4CAB12EF16481A1500265B8D /* DataFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12ED16481A1500265B8D /* DataFactory.m */; };
+		4CAB12F6164ACE4100265B8D /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12F5164ACE4100265B8D /* Day.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +144,8 @@
 		4CAB12EC16481A1500265B8D /* DataFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataFactory.h; sourceTree = "<group>"; };
 		4CAB12ED16481A1500265B8D /* DataFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataFactory.m; sourceTree = "<group>"; };
 		4CAB12F016481A4200265B8D /* WeekReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekReceiver.h; sourceTree = "<group>"; };
+		4CAB12F4164ACE4100265B8D /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
+		4CAB12F5164ACE4100265B8D /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +295,8 @@
 				4CAB12D01647051400265B8D /* Registration.m */,
 				4CAB12D11647051400265B8D /* Week.h */,
 				4CAB12D21647051400265B8D /* Week.m */,
+				4CAB12F4164ACE4100265B8D /* Day.h */,
+				4CAB12F5164ACE4100265B8D /* Day.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -474,6 +479,7 @@
 				4CAB12D51647051400265B8D /* Registration.m in Sources */,
 				4CAB12D61647051400265B8D /* Week.m in Sources */,
 				4CAB12EF16481A1500265B8D /* DataFactory.m in Sources */,
+				4CAB12F6164ACE4100265B8D /* Day.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,7 +557,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -577,7 +583,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-ObjC",

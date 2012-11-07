@@ -8,12 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "Registration.h"
+#import "Day.h"
 
 @interface Week : NSObject
-@property(nonatomic, readonly, strong) NSDictionary *registrations;
-- (id) initWithStartDate: (NSDate *) startDate endDate: (NSDate *) endDate andRegistrations:(NSArray *) registrations;
-//- (NSArray *)projectsForWeek; // TODO: must be made to find project by projectCode, thanks to model rewrites
-- (double) sumRegistrations;
-- (NSString *)getDetailStringFromWeek;
-- (NSString *)getPeriodString;
+@property(nonatomic, readonly, strong) NSDictionary *days;
+@property(nonatomic, readonly, copy) NSString *description;
+@property(nonatomic, readonly, copy) NSString * normTime;
 @end
