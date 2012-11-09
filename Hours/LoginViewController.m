@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 - (IBAction)logIn:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *errorText;
 @end
 
 @implementation LoginViewController
@@ -54,11 +55,13 @@
 - (void)viewDidUnload {
     [self setUserName:nil];
     [self setPassword:nil];
+    [self setErrorText:nil];
     [super viewDidUnload];
 }
 - (IBAction)logIn:(id)sender
 {
     // TODO: Perform web login
+    self.password.text = @"";
     self.isLoggedIn = YES;
 }
 
