@@ -12,11 +12,13 @@
 @interface Registration : NSObject
 
 @property(nonatomic, readonly, copy) NSString *registrationNumber;
-@property(nonatomic, readonly, copy) NSDate *date;
+@property(nonatomic, readonly, copy) NSString *activityCode;
+@property(nonatomic, readonly, copy) NSString *workType;
 @property(nonatomic, readonly, copy) NSString *description;
 @property(nonatomic, readonly) double hours;
-@property(nonatomic, readonly, copy) NSString *projectCode;
-@property(nonatomic, readonly) BOOL isSubmitted;
-@property(nonatomic, readonly) BOOL isApproved;
+@property(nonatomic, readonly, copy) NSString *projectNumber;
+@property(nonatomic, readonly) BOOL submitted;
+@property(nonatomic, readonly) BOOL approved;
+@property(nonatomic, readonly) BOOL rejected;
 
 @end

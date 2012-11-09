@@ -26,7 +26,6 @@
     RKObjectManager *manager = [RKObjectManager managerWithBaseURLString:@"http://fakeswhrs.azurewebsites.net"];
     [self setupProjectMappingForManager:manager];
     [self setupWeekMappingForManager:manager];
-
     
     [manager loadObjectsAtResourcePath:@"/week/hours" delegate:self];
 }
@@ -49,7 +48,14 @@
     RKObjectMapping *registrationMapping = [RKObjectMapping mappingForClass:[Registration class]];
     registrationMapping.forceCollectionMapping = YES;
     [registrationMapping mapKeyOfNestedDictionaryToAttribute:@"registrationNumber"];
+    [registrationMapping mapKeyPath:@"(registrationNumber).activityCode" toAttribute:@"activityCode"];
+    [registrationMapping mapKeyPath:@"(registrationNumber).approved" toAttribute:@"approved"];
+    [registrationMapping mapKeyPath:@"(registrationNumber).hours" toAttribute:@"hours"];
     [registrationMapping mapKeyPath:@"(registrationNumber).description" toAttribute:@"description"];
+    [registrationMapping mapKeyPath:@"(registrationNumber).rejected" toAttribute:@"rejected"];
+    [registrationMapping mapKeyPath:@"(registrationNumber).submitted" toAttribute:@"submitted"];
+    [registrationMapping mapKeyPath:@"(registrationNumber).workType" toAttribute:@"workType"];
+    [registrationMapping mapKeyPath:@"(registrationNumber).projectNumber" toAttribute:@"projectNumber"];
     
     RKObjectMapping *dayMapping = [RKObjectMapping mappingForClass:[Day class]];
     dayMapping.forceCollectionMapping = YES;
@@ -58,8 +64,6 @@
     
     [manager.mappingProvider setMapping:dayMapping forKeyPath:@"days"];
 }
-
-
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
 {
@@ -74,7 +78,6 @@
             {
                 NSLog(@"Registration: %@",subObject);               
             }
-                
         }
     }
 }
@@ -89,33 +92,6 @@
 
     // Perform a simple HTTP GET and call me back with the results
     [ [RKClient sharedClient] get:@"/hours/week" delegate:self];
-}
-
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response
-{
-    if ([request isGET]) {
-        // Handling GET /foo.xml
-        
-        if ([response isOK])
-        {
-            // Success! Let's take a look at the data
-            NSLog(@"Retrieved XML: %@", [response bodyAsString]);
-    }
-        
-    } else if ([request isPOST]) {
-        
-        // Handling POST /other.json
-        if ([response isJSON]) {
-            NSLog(@"Got a JSON response back from our POST!");
-        }
-        
-    } else if ([request isDELETE]) {
-        
-        // Handling DELETE /missing_resource.txt
-        if ([response isNotFound]) {
-            NSLog(@"The resource path '%@' was not found.", [request resourcePath]);
-        }
-    }
 }
 
 @end
