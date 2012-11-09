@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 
 @interface LoginViewController ()
+@property(nonatomic) bool isLoggedIn;
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 - (IBAction)logIn:(id)sender;
@@ -17,6 +18,7 @@
 @implementation LoginViewController
 @synthesize userName = _userName;
 @synthesize password = _password;
+@synthesize isLoggedIn = _isLoggedIn;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +35,16 @@
 	// Do any additional setup after loading the view.
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    bool isLoggedIn = [self checkStoredLogin];
+    
+    if(isLoggedIn)
+    {
+        [self performSegueWithIdentifier:@"LoggedInSegue" sender:self];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -44,7 +56,14 @@
     [self setPassword:nil];
     [super viewDidUnload];
 }
-- (IBAction)logIn:(id)sender {
-    
+- (IBAction)logIn:(id)sender
+{
+    // TODO: Perform web login
+    self.isLoggedIn = YES;
+}
+
+-(bool) checkStoredLogin
+{
+    return NO;
 }
 @end
