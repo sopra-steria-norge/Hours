@@ -42,6 +42,8 @@
 		4CAB12DC1647120500265B8D /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB12861647019A00265B8D /* libRestKit.a */; };
 		4CAB12EF16481A1500265B8D /* DataFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12ED16481A1500265B8D /* DataFactory.m */; };
 		4CAB12F6164ACE4100265B8D /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12F5164ACE4100265B8D /* Day.m */; };
+		4CAB12FD164D8A4900265B8D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12FC164D8A4900265B8D /* LoginViewController.m */; };
+		4CAB1300164D8AC400265B8D /* TabViewWithLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12FF164D8AC400265B8D /* TabViewWithLoginController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +148,10 @@
 		4CAB12F016481A4200265B8D /* WeekReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekReceiver.h; sourceTree = "<group>"; };
 		4CAB12F4164ACE4100265B8D /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
 		4CAB12F5164ACE4100265B8D /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
+		4CAB12FB164D8A4900265B8D /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		4CAB12FC164D8A4900265B8D /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		4CAB12FE164D8AC300265B8D /* TabViewWithLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabViewWithLoginController.h; sourceTree = "<group>"; };
+		4CAB12FF164D8AC400265B8D /* TabViewWithLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabViewWithLoginController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,12 +232,16 @@
 				4CAB123E1646FF6B00265B8D /* AppDelegate.h */,
 				4CAB123F1646FF6B00265B8D /* AppDelegate.m */,
 				4CAB12471646FF6B00265B8D /* MainStoryboard.storyboard */,
+				4CAB12FE164D8AC300265B8D /* TabViewWithLoginController.h */,
+				4CAB12FF164D8AC400265B8D /* TabViewWithLoginController.m */,
+				4CAB12FB164D8A4900265B8D /* LoginViewController.h */,
+				4CAB12FC164D8A4900265B8D /* LoginViewController.m */,
 				4CAB124A1646FF6B00265B8D /* DayViewController.h */,
 				4CAB124B1646FF6B00265B8D /* DayViewController.m */,
-				4CAB124D1646FF6B00265B8D /* first.png */,
-				4CAB124F1646FF6B00265B8D /* first@2x.png */,
 				4CAB12511646FF6B00265B8D /* WeekViewController.h */,
 				4CAB12521646FF6B00265B8D /* WeekViewController.m */,
+				4CAB124D1646FF6B00265B8D /* first.png */,
+				4CAB124F1646FF6B00265B8D /* first@2x.png */,
 				4CAB12541646FF6B00265B8D /* second.png */,
 				4CAB12561646FF6B00265B8D /* second@2x.png */,
 				4CAB12361646FF6B00265B8D /* Supporting Files */,
@@ -480,6 +490,8 @@
 				4CAB12D61647051400265B8D /* Week.m in Sources */,
 				4CAB12EF16481A1500265B8D /* DataFactory.m in Sources */,
 				4CAB12F6164ACE4100265B8D /* Day.m in Sources */,
+				4CAB12FD164D8A4900265B8D /* LoginViewController.m in Sources */,
+				4CAB1300164D8AC400265B8D /* TabViewWithLoginController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
