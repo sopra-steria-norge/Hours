@@ -43,6 +43,7 @@
 		4CAB12EF16481A1500265B8D /* DataFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12ED16481A1500265B8D /* DataFactory.m */; };
 		4CAB12F6164ACE4100265B8D /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12F5164ACE4100265B8D /* Day.m */; };
 		4CAB12FD164D8A4900265B8D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12FC164D8A4900265B8D /* LoginViewController.m */; };
+		4CAB1304164DAAA900265B8D /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB1303164DAAA800265B8D /* SetupViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +150,8 @@
 		4CAB12F5164ACE4100265B8D /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
 		4CAB12FB164D8A4900265B8D /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		4CAB12FC164D8A4900265B8D /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		4CAB1302164DAAA800265B8D /* SetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupViewController.h; sourceTree = "<group>"; };
+		4CAB1303164DAAA800265B8D /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +238,8 @@
 				4CAB124B1646FF6B00265B8D /* DayViewController.m */,
 				4CAB12511646FF6B00265B8D /* WeekViewController.h */,
 				4CAB12521646FF6B00265B8D /* WeekViewController.m */,
+				4CAB1302164DAAA800265B8D /* SetupViewController.h */,
+				4CAB1303164DAAA800265B8D /* SetupViewController.m */,
 				4CAB124D1646FF6B00265B8D /* first.png */,
 				4CAB124F1646FF6B00265B8D /* first@2x.png */,
 				4CAB12541646FF6B00265B8D /* second.png */,
@@ -486,6 +491,7 @@
 				4CAB12EF16481A1500265B8D /* DataFactory.m in Sources */,
 				4CAB12F6164ACE4100265B8D /* Day.m in Sources */,
 				4CAB12FD164D8A4900265B8D /* LoginViewController.m in Sources */,
+				4CAB1304164DAAA900265B8D /* SetupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
