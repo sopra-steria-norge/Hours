@@ -10,17 +10,19 @@
 
 @interface Registration()
 
-@property(nonatomic, readwrite, copy) NSDate *date;
-@property(nonatomic, readwrite) double hours;
-@property(nonatomic, readwrite, copy) NSString *projectCode;
-@property(nonatomic, readwrite, copy) NSString *description;
-@property(nonatomic, readwrite) BOOL isSubmitted;
-@property(nonatomic, readwrite) BOOL isApproved;
+@property(nonatomic, copy) NSString *registrationNumber;
+@property(nonatomic, copy) NSDate *date;
+@property(nonatomic) double hours;
+@property(nonatomic, copy) NSString *projectCode;
+@property(nonatomic, copy) NSString *description;
+@property(nonatomic) BOOL isSubmitted;
+@property(nonatomic) BOOL isApproved;
 
 @end
 
 @implementation Registration
 
+@synthesize registrationNumber = _registrationNumber;
 @synthesize date = _date;
 @synthesize hours = _hours;
 @synthesize projectCode = _projectCode;

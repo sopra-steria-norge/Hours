@@ -31,8 +31,9 @@
     [manager loadObjectsAtResourcePath:@"/week/hours" delegate:self];
 }
 
-- (void)setupProjectMappingForManager:(RKObjectManager *)manager {
-    RKObjectMapping* projectMapping = [RKObjectMapping mappingForClass:[Project class]];
+- (void)setupProjectMappingForManager:(RKObjectManager *)manager
+{
+    RKObjectMapping *projectMapping = [RKObjectMapping mappingForClass:[Project class]];
     projectMapping.forceCollectionMapping = YES;
     [projectMapping mapKeyOfNestedDictionaryToAttribute:@"projectCode"];
     [projectMapping mapKeyPath:@"(projectCode).description" toAttribute:@"description"];
@@ -43,19 +44,39 @@
     [manager.mappingProvider setMapping:projectMapping forKeyPath:@"projects"];
 }
 
-- (void)setupWeekMappingForManager:(RKObjectManager *)manager {
-    RKObjectMapping* weekMapping = [RKObjectMapping mappingForClass:[Day class]];
-    [weekMapping mapKeyOfNestedDictionaryToAttribute:@"date"];
-    weekMapping.forceCollectionMapping = YES;
-        
-    [manager.mappingProvider setMapping:weekMapping forKeyPath:@"days"];
+- (void)setupWeekMappingForManager:(RKObjectManager *)manager
+{
+    RKObjectMapping *registrationMapping = [RKObjectMapping mappingForClass:[Registration class]];
+    registrationMapping.forceCollectionMapping = YES;
+    [registrationMapping mapKeyOfNestedDictionaryToAttribute:@"registrationNumber"];
+    [registrationMapping mapKeyPath:@"(registrationNumber).description" toAttribute:@"description"];
+    
+    RKObjectMapping *dayMapping = [RKObjectMapping mappingForClass:[Day class]];
+    dayMapping.forceCollectionMapping = YES;
+    [dayMapping mapKeyOfNestedDictionaryToAttribute:@"date"];
+    [dayMapping mapKeyPath:@"(date)" toRelationship:@"registrations" withMapping:registrationMapping];
+    
+    [manager.mappingProvider setMapping:dayMapping forKeyPath:@"days"];
 }
 
 
 
-- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
+- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
+{
     RKLogInfo(@"Load collection of Projects: %@", objects);
     
+    for(id object in objects)
+    {
+        if([object isKindOfClass:[Day class]])
+        {
+            Day *day = (Day *)object;
+            for(id subObject in day.registrations)
+            {
+                NSLog(@"Registration: %@",subObject);               
+            }
+                
+        }
+    }
 }
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error

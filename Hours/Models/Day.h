@@ -10,5 +10,5 @@
 
 @interface Day : NSObject
 @property (nonatomic, readonly, copy) NSDate *date;
-@property (nonatomic, readonly, strong) NSArray *days;
+@property (nonatomic, readonly, strong) NSMutableArray *registrations;
 @end
