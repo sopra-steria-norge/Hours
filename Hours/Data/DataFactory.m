@@ -9,12 +9,14 @@
 #import "DataFactory.h"
 #import <RestKit/RestKit.h>
 
-@interface DataFactory() <RKRequestDelegate, RKObjectLoaderDelegate>
+@interface DataFactory() <RKObjectLoaderDelegate>
+@property (nonatomic, strong) RKObjectMapping *mapping;
 @end
 
 @implementation DataFactory
 
 @synthesize receiver = _receiver;
+@synthesize mapping = _mapping;
 
 -(void) startGetDataForDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver
 {
@@ -24,13 +26,20 @@
 
 - (void)loadProjects {
     RKObjectManager *manager = [RKObjectManager managerWithBaseURLString:@"http://fakeswhrs.azurewebsites.net"];
-    [self setupProjectMappingForManager:manager];
-    [self setupWeekMappingForManager:manager];
     
-    [manager loadObjectsAtResourcePath:@"/week/hours" delegate:self];
+    if(!self.mapping)
+    {
+        self.mapping = [self setupMapping];
+    }
+    
+    [manager loadObjectsAtResourcePath:@"/week/hours" usingBlock:^(RKObjectLoader* loader)
+     {
+         loader.ObjectMapping = self.mapping;
+         loader.delegate = self;
+     } ];
 }
 
-- (void)setupProjectMappingForManager:(RKObjectManager *)manager
+- (RKObjectMapping *)setupMapping
 {
     RKObjectMapping *projectMapping = [RKObjectMapping mappingForClass:[Project class]];
     projectMapping.forceCollectionMapping = YES;
@@ -39,12 +48,7 @@
     [projectMapping mapKeyPath:@"(projectCode).activityCode" toAttribute:@"activityCode"];
     [projectMapping mapKeyPath:@"(projectCode).projectName" toAttribute:@"projectName"];
     [projectMapping mapKeyPath:@"(projectCode).projectNumber" toAttribute:@"projectNumber"];
-
-    [manager.mappingProvider setMapping:projectMapping forKeyPath:@"projects"];
-}
-
-- (void)setupWeekMappingForManager:(RKObjectManager *)manager
-{
+    
     RKObjectMapping *registrationMapping = [RKObjectMapping mappingForClass:[Registration class]];
     registrationMapping.forceCollectionMapping = YES;
     [registrationMapping mapKeyOfNestedDictionaryToAttribute:@"registrationNumber"];
@@ -62,49 +66,39 @@
     [dayMapping mapKeyOfNestedDictionaryToAttribute:@"date"];
     [dayMapping mapKeyPath:@"(date)" toRelationship:@"registrations" withMapping:registrationMapping];
     
-    [manager.mappingProvider setMapping:dayMapping forKeyPath:@"days"];
+    RKObjectMapping *weekMapping = [RKObjectMapping mappingForClass:[Week class]];
+    [weekMapping mapKeyPath:@"periodDescription" toAttribute:@"description"];
+    [weekMapping mapKeyPath:@"periodNormTime" toAttribute:@"normTime"];
+    [weekMapping mapKeyPath:@"projects" toRelationship:@"projects" withMapping:projectMapping];
+    [weekMapping mapKeyPath:@"days" toRelationship:@"days" withMapping:dayMapping];
+    return weekMapping;
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
 {
     RKLogInfo(@"Load collection of Projects: %@", objects);
     
-    NSMutableArray *days = [[NSMutableArray alloc] init];
-    NSMutableArray *projects = [[NSMutableArray alloc] init];
-    
-    for(id object in objects)
-    {
-        if([object isKindOfClass:[Day class]])
-        {
-            [days addObject:object];
-        }
-        else if([object isKindOfClass:[Project class]])
-        {
-            [projects addObject:object];
-        }
-    }
-    
     AppState *state = [[AppState alloc] init];
-    state.week = [[Week alloc] init];
-    state.week.days = days;
-    state.projects = projects;
+    if(objects.count > 0 && [[objects objectAtIndex:0] isKindOfClass:[Week class]])
+    {
+        state.week = [objects objectAtIndex:0];
+    }
     
     if(self.receiver)
     {
         [self.receiver didReceiveAppState:state];
     }
+    
+    objectLoader.delegate = nil; // Without this RestKit will attempt some rather nasty callbacks that are not available
 }
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
 {
     NSLog(@"ObjectLoader failed with error: %@", error);
-}
-
-- (void)sendRequests
-{
-
-    // Perform a simple HTTP GET and call me back with the results
-    [ [RKClient sharedClient] get:@"/hours/week" delegate:self];
+    if(self.receiver)
+    {
+        [self.receiver didFailLoadingAppStateWithError:error];
+    }
 }
 
 @end

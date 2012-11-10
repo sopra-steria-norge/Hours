@@ -18,7 +18,6 @@
 @synthesize currentDate = _currentDate;
 @synthesize timestampForDownload = _timestampForDownload;
 @synthesize week = _week;
-@synthesize projects = _projects;
 @synthesize dataFactory = _dataFactory;
 
 

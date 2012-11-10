@@ -8,16 +8,6 @@
 
 #import "Project.h"
 
-@interface Project()
-
-@property (nonatomic, readwrite, copy) NSString *projectCode;
-@property (nonatomic, readwrite, copy) NSString *projectNumber;
-@property (nonatomic, readwrite, copy) NSString *projectName;
-@property (nonatomic, readwrite, copy) NSString *activityCode;
-@property (nonatomic, readwrite, copy) NSString *description;
-
-@end
-
 @implementation Project
 
 @synthesize projectCode = _projectCode;

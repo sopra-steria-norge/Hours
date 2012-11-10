@@ -11,16 +11,16 @@
 
 @class AppState;
 @protocol AppStateReceiver <NSObject>
--(void)didReceiveAppState:(AppState *) appState;
+- (void)didReceiveAppState:(AppState *) appState;
+- (void)didFailLoadingAppStateWithError:(NSError *)error;
 @end
 
 @interface AppState : NSObject
 
 @property(nonatomic, strong) NSDate *currentDate;
 @property(nonatomic, strong) NSDate *timestampForDownload;
-@property(nonatomic, strong) NSArray *projects;
 @property(nonatomic, strong) Week *week;
--(id) initWithDate:(NSDate *) date;
--(void) startDownloadForDate:(NSDate *)date  andDelegateReceiver:(id<AppStateReceiver>) receiver;
-+(AppState *) deserializeOrLoadForReceiver:(id<AppStateReceiver>) receiver;
+- (id) initWithDate:(NSDate *) date;
+- (void) startDownloadForDate:(NSDate *)date  andDelegateReceiver:(id<AppStateReceiver>) receiver;
++ (AppState *) deserializeOrLoadForReceiver:(id<AppStateReceiver>) receiver;
 @end

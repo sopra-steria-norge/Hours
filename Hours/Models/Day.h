@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface Day : NSObject
-@property (nonatomic, readonly, copy) NSDate *date;
-@property (nonatomic, readonly, strong) NSMutableArray *registrations;
+@property (nonatomic, copy) NSDate *date;
+@property (nonatomic, strong) NSMutableArray *registrations;
 @end

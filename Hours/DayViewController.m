@@ -28,12 +28,16 @@
     self.state = [AppState deserializeOrLoadForReceiver:self];
 }
 
--(void)didReceiveAppState:(AppState*) state
+- (void)didReceiveAppState:(AppState*) state
 {
     self.state = state;
     NSLog(@"Did receive data from the loader");
 }
 
+- (void) didFailLoadingAppStateWithError:(NSError *)error
+{
+    
+}
 
 - (void)didReceiveMemoryWarning
 {

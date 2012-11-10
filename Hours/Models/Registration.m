@@ -8,21 +8,6 @@
 
 #import "Registration.h"
 
-@interface Registration()
-
-@property(nonatomic, copy) NSString *registrationNumber;
-@property(nonatomic, copy) NSString *activityCode;
-@property(nonatomic, copy) NSString *workType;
-@property(nonatomic) double hours;
-@property(nonatomic, copy) NSString *projectNumber;
-@property(nonatomic, copy) NSString *description;
-@property(nonatomic) BOOL submitted;
-@property(nonatomic) BOOL approved;
-@property(nonatomic) BOOL rejected;
-
-
-@end
-
 @implementation Registration
 
 @synthesize registrationNumber = _registrationNumber;

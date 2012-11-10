@@ -10,10 +10,10 @@
 
 @interface Project : NSObject
 
-@property (nonatomic, readonly, copy) NSString *projectCode;
-@property (nonatomic, readonly, copy) NSString *projectNumber;
-@property (nonatomic, readonly, copy) NSString *projectName;
-@property (nonatomic, readonly, copy) NSString *activityCode;
-@property (nonatomic, readonly, copy) NSString *description;
+@property (nonatomic, copy) NSString *projectCode;
+@property (nonatomic, copy) NSString *projectNumber;
+@property (nonatomic, copy) NSString *projectName;
+@property (nonatomic, copy) NSString *activityCode;
+@property (nonatomic, copy) NSString *description;
 
 @end

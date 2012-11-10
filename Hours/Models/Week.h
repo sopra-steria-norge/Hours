@@ -12,6 +12,7 @@
 
 @interface Week : NSObject
 @property(nonatomic, strong) NSMutableArray *days;
+@property(nonatomic, strong) NSMutableArray *projects;
 @property(nonatomic, copy) NSString *description;
-@property(nonatomic, copy) NSString * normTime;
+@property(nonatomic, copy) NSString *normTime;
 @end

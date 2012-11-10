@@ -15,6 +15,7 @@
 @synthesize days = _days;
 @synthesize description = _description;
 @synthesize normTime = _normTime;
+@synthesize projects = _projects;
 
 -(id) init
 {
