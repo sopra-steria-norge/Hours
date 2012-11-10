@@ -80,6 +80,12 @@
             }
         }
     }
+    
+    Week *dummyWeek = [[Week alloc] init];
+    if(self.receiver)
+    {
+        [self.receiver didReceiveWeek:dummyWeek];
+    }
 }
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error

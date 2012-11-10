@@ -7,8 +7,9 @@
 //
 
 #import "DayViewController.h"
+#import "WeekReceiver.h"
 
-@interface DayViewController ()
+@interface DayViewController () <WeekReceiver>
 
 @end
 
@@ -21,6 +22,17 @@
     
 //    self.state = [[AppState alloc] initWithDate:[[NSDate alloc] init]];
 }
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    self.state = [AppState deserializeOrLoadForReceiver:self];
+}
+
+-(void)didReceiveWeek:(Week*) week
+{
+    
+}
+
 
 - (void)didReceiveMemoryWarning
 {

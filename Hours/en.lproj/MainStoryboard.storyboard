@@ -206,10 +206,10 @@
             </objects>
             <point key="canvasLocation" x="618" y="976"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Hours Tab Bar View Controller-->
         <scene sceneID="15">
             <objects>
-                <tabBarController id="4" sceneMemberID="viewController">
+                <tabBarController id="4" customClass="HoursTabBarViewController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="q8B-PQ-G0M"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5">
@@ -255,6 +255,9 @@
     <classes>
         <class className="DayViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DayViewController.h"/>
+        </class>
+        <class className="HoursTabBarViewController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HoursTabBarViewController.h"/>
         </class>
         <class className="LoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
