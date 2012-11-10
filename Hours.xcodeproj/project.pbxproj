@@ -146,7 +146,6 @@
 		4CAB12D21647051400265B8D /* Week.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Week.m; sourceTree = "<group>"; };
 		4CAB12EC16481A1500265B8D /* DataFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataFactory.h; sourceTree = "<group>"; };
 		4CAB12ED16481A1500265B8D /* DataFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataFactory.m; sourceTree = "<group>"; };
-		4CAB12F016481A4200265B8D /* WeekReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekReceiver.h; sourceTree = "<group>"; };
 		4CAB12F4164ACE4100265B8D /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
 		4CAB12F5164ACE4100265B8D /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
 		4CAB12FB164D8A4900265B8D /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -319,7 +318,6 @@
 		4CAB12EB16481A1500265B8D /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				4CAB12F016481A4200265B8D /* WeekReceiver.h */,
 				4CAB12EC16481A1500265B8D /* DataFactory.h */,
 				4CAB12ED16481A1500265B8D /* DataFactory.m */,
 			);

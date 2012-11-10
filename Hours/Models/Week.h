@@ -11,7 +11,7 @@
 #import "Day.h"
 
 @interface Week : NSObject
-@property(nonatomic, readonly, strong) NSDictionary *days;
-@property(nonatomic, readonly, copy) NSString *description;
-@property(nonatomic, readonly, copy) NSString * normTime;
+@property(nonatomic, strong) NSMutableArray *days;
+@property(nonatomic, copy) NSString *description;
+@property(nonatomic, copy) NSString * normTime;
 @end

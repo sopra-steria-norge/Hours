@@ -10,12 +10,7 @@
 #import "DataFactory.h"
 
 @interface AppState()
-
-@property(nonatomic, strong) NSDate *currentDate;
-@property(nonatomic, strong) NSDate *timestampForDownload;
-@property(nonatomic, strong) Week *week;
 @property(nonatomic, readonly, strong) DataFactory *dataFactory;
-
 @end
 
 @implementation AppState
@@ -23,6 +18,7 @@
 @synthesize currentDate = _currentDate;
 @synthesize timestampForDownload = _timestampForDownload;
 @synthesize week = _week;
+@synthesize projects = _projects;
 @synthesize dataFactory = _dataFactory;
 
 
@@ -31,6 +27,7 @@
     if(self)
     {
         self.currentDate = date;
+        self.timestampForDownload = date;
     }
     return self;
 }
@@ -44,18 +41,19 @@
     return _dataFactory;
 }
 
--(void) startDownloadForDate:(NSDate *)date  andDelegateReceiver:(id<WeekReceiver>) receiver
+-(void) startDownloadForDate:(NSDate *)date  andDelegateReceiver:(id<AppStateReceiver>) receiver
 {
     [self.dataFactory startGetDataForDate:date andDelegateReceiver:receiver];
 }
 
-+(AppState *) deserializeOrLoadForReceiver:(id<WeekReceiver>) receiver;
++(AppState *) deserializeOrLoadForReceiver:(id<AppStateReceiver>) receiver;
 {
     // TODO: Try to deserialize first, check timestampForDownload (if older than 5 minutes or so download again)
 
     // TODO: If could not deserialize, download the data:
     AppState *state = [[AppState alloc] initWithDate:[[NSDate alloc] init]];
     [state startDownloadForDate: state.currentDate andDelegateReceiver:receiver];
+
     return state;
 }
 

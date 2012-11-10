@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WeekReceiver.h"
+#import"AppState.h"
 #import "Week.h"
 
 @interface DataFactory : NSObject
-@property(nonatomic, weak) id<WeekReceiver> receiver;
--(void) startGetDataForDate:(NSDate *)date andDelegateReceiver:(id<WeekReceiver>) receiver;
+@property(nonatomic, weak) id<AppStateReceiver> receiver;
+-(void) startGetDataForDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver;
 @end

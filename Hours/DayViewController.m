@@ -7,9 +7,9 @@
 //
 
 #import "DayViewController.h"
-#import "WeekReceiver.h"
+#import "AppState.h"
 
-@interface DayViewController () <WeekReceiver>
+@interface DayViewController () <AppStateReceiver>
 
 @end
 
@@ -28,9 +28,10 @@
     self.state = [AppState deserializeOrLoadForReceiver:self];
 }
 
--(void)didReceiveWeek:(Week*) week
+-(void)didReceiveAppState:(AppState*) state
 {
-    
+    self.state = state;
+    NSLog(@"Did receive data from the loader");
 }
 
 

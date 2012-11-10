@@ -8,14 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "Week.h"
-#import "WeekReceiver.h"
+
+@class AppState;
+@protocol AppStateReceiver <NSObject>
+-(void)didReceiveAppState:(AppState *) appState;
+@end
 
 @interface AppState : NSObject
 
-@property(nonatomic, readonly, strong) NSDate *currentDate;
-@property(nonatomic, readonly, strong) NSDate *timestampForDownload;
-@property(nonatomic, readonly, strong) Week *week;
+@property(nonatomic, strong) NSDate *currentDate;
+@property(nonatomic, strong) NSDate *timestampForDownload;
+@property(nonatomic, strong) NSArray *projects;
+@property(nonatomic, strong) Week *week;
 -(id) initWithDate:(NSDate *) date;
--(void) startDownloadForDate:(NSDate *)date  andDelegateReceiver:(id<WeekReceiver>) receiver;
-+(AppState *) deserializeOrLoadForReceiver:(id<WeekReceiver>) receiver;
+-(void) startDownloadForDate:(NSDate *)date  andDelegateReceiver:(id<AppStateReceiver>) receiver;
++(AppState *) deserializeOrLoadForReceiver:(id<AppStateReceiver>) receiver;
 @end

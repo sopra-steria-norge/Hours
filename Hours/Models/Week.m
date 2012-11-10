@@ -8,12 +8,6 @@
 
 #import "Week.h"
 
-@interface Week ()
-@property(nonatomic, strong) NSDictionary *days;
-@property(nonatomic, copy) NSString *description;
-@property(nonatomic, copy) NSString *normTime;
-@end
-
 @implementation Week {
     NSDateFormatter *dateFormatter;
 }

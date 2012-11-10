@@ -16,7 +16,7 @@
 
 @synthesize receiver = _receiver;
 
--(void) startGetDataForDate:(NSDate *)date andDelegateReceiver:(id<WeekReceiver>) receiver
+-(void) startGetDataForDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver
 {
     self.receiver = receiver;
     [self loadProjects];
@@ -69,22 +69,29 @@
 {
     RKLogInfo(@"Load collection of Projects: %@", objects);
     
+    NSMutableArray *days = [[NSMutableArray alloc] init];
+    NSMutableArray *projects = [[NSMutableArray alloc] init];
+    
     for(id object in objects)
     {
         if([object isKindOfClass:[Day class]])
         {
-            Day *day = (Day *)object;
-            for(id subObject in day.registrations)
-            {
-                NSLog(@"Registration: %@",subObject);               
-            }
+            [days addObject:object];
+        }
+        else if([object isKindOfClass:[Project class]])
+        {
+            [projects addObject:object];
         }
     }
     
-    Week *dummyWeek = [[Week alloc] init];
+    AppState *state = [[AppState alloc] init];
+    state.week = [[Week alloc] init];
+    state.week.days = days;
+    state.projects = projects;
+    
     if(self.receiver)
     {
-        [self.receiver didReceiveWeek:dummyWeek];
+        [self.receiver didReceiveAppState:state];
     }
 }
 
