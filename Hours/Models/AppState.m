@@ -15,13 +15,15 @@
 
 @implementation AppState
 
+const char *url = "http://fakeswhrs.azurewebsites.net/";
+
 @synthesize currentDate = _currentDate;
 @synthesize timestampForDownload = _timestampForDownload;
 @synthesize week = _week;
 @synthesize dataFactory = _dataFactory;
 
 
--(id) initWithDate:(NSDate *) date {
+- (id) initWithDate:(NSDate *) date {
     self = [self init];
     if(self)
     {
@@ -31,7 +33,7 @@
     return self;
 }
 
--(DataFactory *)dataFactory
+- (DataFactory *)dataFactory
 {
     if(!_dataFactory)
     {
@@ -40,10 +42,10 @@
     return _dataFactory;
 }
 
--(void) startDownloadForDate:(NSDate *)date  andDelegateReceiver:(id<AppStateReceiver>) receiver
+- (void) startDownloadFromUrl:(NSURL *)url forDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver
 {
     self.currentDate = date;
-    [self.dataFactory startGetDataForDate:date andDelegateReceiver:receiver];
+    [self.dataFactory startGetDataFromUrl:url forDate:date andDelegateReceiver:receiver];
 }
 
 +(AppState *) deserializeOrLoadForReceiver:(id<AppStateReceiver>) receiver;
@@ -52,7 +54,8 @@
 
     // TODO: If could not deserialize, download the data:
     AppState *state = [[AppState alloc] initWithDate:[[NSDate alloc] init]];
-    [state startDownloadForDate: state.currentDate andDelegateReceiver:receiver];
+    NSURL *url = [NSURL URLWithString:@"http://fakeswhrs.azurewebsites.net/"];
+   [state startDownloadFromUrl:url forDate: state.currentDate andDelegateReceiver:receiver];
 
     return state;
 }

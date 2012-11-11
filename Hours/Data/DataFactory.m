@@ -26,22 +26,50 @@
         self.mapping = [self setupMapping];
     }
     
-    RKObjectManager * manager = [RKObjectManager managerWithBaseURLString:@"http://fakeswhrs.azurewebsites.net"];
-    [RKObjectManager setSharedManager:manager];
-
     return self;
 }
 
--(void) startGetDataForDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver
+-(void) startGetDataFromUrl: (NSURL *) url forDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver
 {
     self.receiver = receiver;
 
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/week/hours" usingBlock:^(RKObjectLoader* loader)
+    RKObjectManager * manager = [RKObjectManager managerWithBaseURL:url];
+    [manager loadObjectsAtResourcePath:@"/week/hours" usingBlock:^(RKObjectLoader* loader)
      {
          loader.ObjectMapping = self.mapping;
          loader.delegate = self;
          loader.params = [[NSDictionary alloc] initWithObjectsAndKeys:@"date@", date, nil];
      } ];
+}
+
+- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
+{
+    RKLogInfo(@"Load collection of Projects: %@", objects);
+        
+    AppState *state = [[AppState alloc] init];
+    NSDictionary *params = (NSDictionary *)objectLoader.params;
+    state.currentDate = [params objectForKey:@"date"];
+    
+    if(objects.count > 0 && [[objects objectAtIndex:0] isKindOfClass:[Week class]])
+    {
+        state.week = [objects objectAtIndex:0];
+    }
+    
+    if(self.receiver)
+    {
+        [self.receiver didReceiveAppState:state];
+    }
+    
+    objectLoader.delegate = nil; // Without this RestKit will attempt some rather nasty callbacks that are not available
+}
+
+-(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{
+    NSLog(@"ObjectLoader failed with error: %@", error);
+    if(self.receiver)
+    {
+        [self.receiver didFailLoadingAppStateWithError:error];
+    }
 }
 
 - (RKObjectMapping *)setupMapping
@@ -77,36 +105,6 @@
     [weekMapping mapKeyPath:@"projects" toRelationship:@"projects" withMapping:projectMapping];
     [weekMapping mapKeyPath:@"days" toRelationship:@"days" withMapping:dayMapping];
     return weekMapping;
-}
-
-- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
-{
-    RKLogInfo(@"Load collection of Projects: %@", objects);
-        
-    AppState *state = [[AppState alloc] init];
-    NSDictionary *params = (NSDictionary *)objectLoader.params;
-    state.currentDate = [params objectForKey:@"date"];
-    
-    if(objects.count > 0 && [[objects objectAtIndex:0] isKindOfClass:[Week class]])
-    {
-        state.week = [objects objectAtIndex:0];
-    }
-    
-    if(self.receiver)
-    {
-        [self.receiver didReceiveAppState:state];
-    }
-    
-    objectLoader.delegate = nil; // Without this RestKit will attempt some rather nasty callbacks that are not available
-}
-
--(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
-{
-    NSLog(@"ObjectLoader failed with error: %@", error);
-    if(self.receiver)
-    {
-        [self.receiver didFailLoadingAppStateWithError:error];
-    }
 }
 
 @end

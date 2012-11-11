@@ -21,6 +21,6 @@
 @property(nonatomic, strong) NSDate *timestampForDownload;
 @property(nonatomic, strong) Week *week;
 - (id) initWithDate:(NSDate *) date;
-- (void) startDownloadForDate:(NSDate *)date  andDelegateReceiver:(id<AppStateReceiver>) receiver;
+- (void) startDownloadFromUrl:(NSURL *)url forDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver;
 + (AppState *) deserializeOrLoadForReceiver:(id<AppStateReceiver>) receiver;
 @end
