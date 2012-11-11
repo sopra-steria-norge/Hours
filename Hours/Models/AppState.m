@@ -42,6 +42,7 @@
 
 -(void) startDownloadForDate:(NSDate *)date  andDelegateReceiver:(id<AppStateReceiver>) receiver
 {
+    self.currentDate = date;
     [self.dataFactory startGetDataForDate:date andDelegateReceiver:receiver];
 }
 

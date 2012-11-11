@@ -18,24 +18,29 @@
 @synthesize receiver = _receiver;
 @synthesize mapping = _mapping;
 
--(void) startGetDataForDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver
+- (id) init
 {
-    self.receiver = receiver;
-    [self loadProjects];
-}
-
-- (void)loadProjects {
-    RKObjectManager *manager = [RKObjectManager managerWithBaseURLString:@"http://fakeswhrs.azurewebsites.net"];
-    
-    if(!self.mapping)
+    self = [super init];
+    if(self)
     {
         self.mapping = [self setupMapping];
     }
     
-    [manager loadObjectsAtResourcePath:@"/week/hours" usingBlock:^(RKObjectLoader* loader)
+    RKObjectManager * manager = [RKObjectManager managerWithBaseURLString:@"http://fakeswhrs.azurewebsites.net"];
+    [RKObjectManager setSharedManager:manager];
+
+    return self;
+}
+
+-(void) startGetDataForDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver
+{
+    self.receiver = receiver;
+
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/week/hours" usingBlock:^(RKObjectLoader* loader)
      {
          loader.ObjectMapping = self.mapping;
          loader.delegate = self;
+         loader.params = [[NSDictionary alloc] initWithObjectsAndKeys:@"date@", date, nil];
      } ];
 }
 
@@ -77,8 +82,11 @@
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
 {
     RKLogInfo(@"Load collection of Projects: %@", objects);
-    
+        
     AppState *state = [[AppState alloc] init];
+    NSDictionary *params = (NSDictionary *)objectLoader.params;
+    state.currentDate = [params objectForKey:@"date"];
+    
     if(objects.count > 0 && [[objects objectAtIndex:0] isKindOfClass:[Week class]])
     {
         state.week = [objects objectAtIndex:0];
