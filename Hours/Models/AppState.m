@@ -18,6 +18,7 @@
 const char *url = "http://fakeswhrs.azurewebsites.net/";
 
 @synthesize currentDate = _currentDate;
+@synthesize currentDay = _currentDay;
 @synthesize timestampForDownload = _timestampForDownload;
 @synthesize week = _week;
 @synthesize dataFactory = _dataFactory;
@@ -47,6 +48,36 @@ const char *url = "http://fakeswhrs.azurewebsites.net/";
     self.currentDate = date;
     [self.dataFactory startGetDataFromUrl:url forDate:date andDelegateReceiver:receiver];
 }
+
+- (Day *) currentDay
+{
+    return [self getDayForDate:self.currentDate];
+}
+
+- (Day *) getDayForDate:(NSDate *) date
+{
+    for(Day *d in self.week.days)
+    {
+        if([date isEqualToDate:d.date])
+        {
+            return d;
+        }
+    }
+    return nil;
+}
+
+- (Project *) getProjectByNumber:(NSString *) projectNumber
+{
+    for(Project *p in self.week.projects)
+    {
+        if([p.projectNumber isEqualToString:projectNumber])
+        {
+            return p;
+        }
+    }
+    return nil;
+}
+
 
 +(AppState *) deserializeOrLoadForReceiver:(id<AppStateReceiver>) receiver;
 {

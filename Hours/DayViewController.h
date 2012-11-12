@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "AppState.h"
 
-@interface DayViewController : UIViewController
+@interface DayViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic, strong) AppState *state;
 @end

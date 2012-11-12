@@ -18,9 +18,14 @@
 @interface AppState : NSObject
 
 @property(nonatomic, strong) NSDate *currentDate;
+@property(nonatomic, readonly, weak) Day *currentDay;
 @property(nonatomic, strong) NSDate *timestampForDownload;
 @property(nonatomic, strong) Week *week;
+
 - (id) initWithDate:(NSDate *) date;
 - (void) startDownloadFromUrl:(NSURL *)url forDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver;
+- (Day *) getDayForDate:(NSDate *) date;
+- (Project *) getProjectByNumber:(NSString *) projectNumber;
+
 + (AppState *) deserializeOrLoadForReceiver:(id<AppStateReceiver>) receiver;
 @end

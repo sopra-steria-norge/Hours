@@ -10,6 +10,7 @@
 #import "AppState.h"
 
 @interface DayViewController () <AppStateReceiver>
+@property (weak, nonatomic) IBOutlet UITableView *tblRegistrations;
 
 @end
 
@@ -19,8 +20,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
-//    self.state = [[AppState alloc] initWithDate:[[NSDate alloc] init]];
+}
+
+-(void)setState:(AppState *)state
+{
+    _state = state;
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -30,8 +34,13 @@
 
 - (void)didReceiveAppState:(AppState*) state
 {
+    // For testing's sake, set the date to a date in the returned data
+    state.currentDate = [[state.week.days objectAtIndex:0] date];
+    
     self.state = state;
+    
     NSLog(@"Did receive data from the loader");
+    [self.tblRegistrations reloadData];
 }
 
 - (void) didFailLoadingAppStateWithError:(NSError *)error
@@ -45,4 +54,55 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if(self.state)
+    {
+        Day *currentDay = self.state.currentDay;
+        return currentDay.registrations.count;
+    }
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *cellIdentifier = @"DayCellStyle";    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    if(!cell)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    if(self.state)
+    {
+        Day *currentDay = self.state.currentDay;
+        Registration *r = [currentDay.registrations objectAtIndex:indexPath.row];
+        
+        Project *p = [self.state getProjectByNumber:r.projectNumber];
+        cell.textLabel.text = p.projectName;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%.1f", r.hours];
+
+    }
+    else
+    {
+        
+    }
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // TODO: 
+}
+
+
+- (void)viewDidUnload {
+    [self setTblRegistrations:nil];
+    [super viewDidUnload];
+}
 @end
