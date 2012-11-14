@@ -33,6 +33,10 @@
 {
     self.receiver = receiver;
 
+    // Clear singleton instances
+    [RKClient setSharedClient:nil];
+    [RKObjectManager setSharedManager:nil];
+
     RKObjectManager * manager = [RKObjectManager managerWithBaseURL:url];
     [manager loadObjectsAtResourcePath:@"/week/hours" usingBlock:^(RKObjectLoader* loader)
      {
