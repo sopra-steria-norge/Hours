@@ -44,7 +44,6 @@
 		4CAB12F6164ACE4100265B8D /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12F5164ACE4100265B8D /* Day.m */; };
 		4CAB12FD164D8A4900265B8D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12FC164D8A4900265B8D /* LoginViewController.m */; };
 		4CAB1304164DAAA900265B8D /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB1303164DAAA800265B8D /* SetupViewController.m */; };
-		4CAB130A164DBB5500265B8D /* HoursTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB1309164DBB5400265B8D /* HoursTabBarViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,8 +151,6 @@
 		4CAB12FC164D8A4900265B8D /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		4CAB1302164DAAA800265B8D /* SetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupViewController.h; sourceTree = "<group>"; };
 		4CAB1303164DAAA800265B8D /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupViewController.m; sourceTree = "<group>"; };
-		4CAB1308164DBB5400265B8D /* HoursTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoursTabBarViewController.h; sourceTree = "<group>"; };
-		4CAB1309164DBB5400265B8D /* HoursTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoursTabBarViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,8 +231,6 @@
 				4CAB123E1646FF6B00265B8D /* AppDelegate.h */,
 				4CAB123F1646FF6B00265B8D /* AppDelegate.m */,
 				4CAB12471646FF6B00265B8D /* MainStoryboard.storyboard */,
-				4CAB1308164DBB5400265B8D /* HoursTabBarViewController.h */,
-				4CAB1309164DBB5400265B8D /* HoursTabBarViewController.m */,
 				4CAB12FB164D8A4900265B8D /* LoginViewController.h */,
 				4CAB12FC164D8A4900265B8D /* LoginViewController.m */,
 				4CAB124A1646FF6B00265B8D /* DayViewController.h */,
@@ -495,7 +490,6 @@
 				4CAB12F6164ACE4100265B8D /* Day.m in Sources */,
 				4CAB12FD164D8A4900265B8D /* LoginViewController.m in Sources */,
 				4CAB1304164DAAA900265B8D /* SetupViewController.m in Sources */,
-				4CAB130A164DBB5500265B8D /* HoursTabBarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -82,7 +82,6 @@ const char *url = "http://fakeswhrs.azurewebsites.net/";
 +(AppState *) deserializeOrLoadForReceiver:(id<AppStateReceiver>) receiver;
 {
     // TODO: Try to deserialize first, check timestampForDownload (if older than 5 minutes or so download again)
-
     // TODO: If could not deserialize, download the data:
     AppState *state = [[AppState alloc] initWithDate:[[NSDate alloc] init]];
     NSURL *url = [NSURL URLWithString:@"http://fakeswhrs.azurewebsites.net/"];

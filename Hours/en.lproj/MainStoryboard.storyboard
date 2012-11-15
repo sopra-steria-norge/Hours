@@ -224,10 +224,10 @@
             </objects>
             <point key="canvasLocation" x="618" y="976"/>
         </scene>
-        <!--Hours Tab Bar View Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="15">
             <objects>
-                <tabBarController id="4" customClass="HoursTabBarViewController" sceneMemberID="viewController">
+                <tabBarController id="4" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="q8B-PQ-G0M"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -277,9 +277,6 @@
             <relationships>
                 <relationship kind="outlet" name="tblRegistrations" candidateClass="UITableView"/>
             </relationships>
-        </class>
-        <class className="HoursTabBarViewController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HoursTabBarViewController.h"/>
         </class>
         <class className="LoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
