@@ -44,6 +44,7 @@
 		4CAB12F6164ACE4100265B8D /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12F5164ACE4100265B8D /* Day.m */; };
 		4CAB12FD164D8A4900265B8D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12FC164D8A4900265B8D /* LoginViewController.m */; };
 		4CAB1304164DAAA900265B8D /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB1303164DAAA800265B8D /* SetupViewController.m */; };
+		4CAB136916583D3E00265B8D /* libMBProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB136616583D1600265B8D /* libMBProgressHUD.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 25160D1514564E810060A5C5;
 			remoteInfo = RestKit;
+		};
+		4CAB136516583D1600265B8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CAB135E16583D1600265B8D /* MBProgressHUD.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D286A7491518C70F00E13FB8;
+			remoteInfo = MBProgressHUD;
+		};
+		4CAB136716583D2D00265B8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CAB135E16583D1600265B8D /* MBProgressHUD.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D286A7481518C70F00E13FB8;
+			remoteInfo = MBProgressHUD;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -151,6 +166,7 @@
 		4CAB12FC164D8A4900265B8D /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		4CAB1302164DAAA800265B8D /* SetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupViewController.h; sourceTree = "<group>"; };
 		4CAB1303164DAAA800265B8D /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupViewController.m; sourceTree = "<group>"; };
+		4CAB135E16583D1600265B8D /* MBProgressHUD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MBProgressHUD.xcodeproj; path = MBProgressHUD/MBProgressHUD.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CAB136916583D3E00265B8D /* libMBProgressHUD.a in Frameworks */,
 				4CAB12DC1647120500265B8D /* libRestKit.a in Frameworks */,
 				4CAB12981647022400265B8D /* CFNetwork.framework in Frameworks */,
 				4CAB12991647022400265B8D /* CoreData.framework in Frameworks */,
@@ -188,6 +205,7 @@
 		4CAB12201646FF6B00265B8D = {
 			isa = PBXGroup;
 			children = (
+				4CAB135E16583D1600265B8D /* MBProgressHUD.xcodeproj */,
 				4CAB127A1647019900265B8D /* RestKit.xcodeproj */,
 				4CAB12351646FF6B00265B8D /* Hours */,
 				4CAB12641646FF6B00265B8D /* HoursTests */,
@@ -319,6 +337,14 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		4CAB135F16583D1600265B8D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4CAB136616583D1600265B8D /* libMBProgressHUD.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -333,6 +359,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4CAB136816583D2D00265B8D /* PBXTargetDependency */,
 				4CAB12D916470FE100265B8D /* PBXTargetDependency */,
 			);
 			name = Hours;
@@ -380,6 +407,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 4CAB135F16583D1600265B8D /* Products */;
+					ProjectRef = 4CAB135E16583D1600265B8D /* MBProgressHUD.xcodeproj */;
+				},
+				{
 					ProductGroup = 4CAB127B1647019900265B8D /* Products */;
 					ProjectRef = 4CAB127A1647019900265B8D /* RestKit.xcodeproj */;
 				},
@@ -426,6 +457,13 @@
 			fileType = wrapper.cfbundle;
 			path = RestKitResources.bundle;
 			remoteRef = 4CAB128D1647019A00265B8D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4CAB136616583D1600265B8D /* libMBProgressHUD.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMBProgressHUD.a;
+			remoteRef = 4CAB136516583D1600265B8D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -513,6 +551,11 @@
 			isa = PBXTargetDependency;
 			name = RestKit;
 			targetProxy = 4CAB12D816470FE100265B8D /* PBXContainerItemProxy */;
+		};
+		4CAB136816583D2D00265B8D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MBProgressHUD;
+			targetProxy = 4CAB136716583D2D00265B8D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

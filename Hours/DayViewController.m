@@ -9,8 +9,11 @@
 #import "DayViewController.h"
 #import "DataFactory.h"
 #import "AppState.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
-@interface DayViewController () <AppStateReceiver>
+@interface DayViewController () <AppStateReceiver, MBProgressHUDDelegate> {
+    MBProgressHUD *HUD;
+}
 @property (weak, nonatomic) IBOutlet UITableView *tblRegistrations;
 @property (strong, nonatomic) DataFactory *dataFactory;
 @end
@@ -33,7 +36,15 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    self.state = [AppState deserializeOrLoadForReceiver:self];
+    AppState *state = [AppState deserializeOrLoadForReceiver:self];
+    if(state)
+    {
+        self.state = state;
+    }
+    else
+    {
+        [self ShowSpinner];
+    }
 }
 
 - (void)didReceiveAppState:(AppState*) state
@@ -45,11 +56,13 @@
     
     NSLog(@"Did receive data from the loader");
     [self.tblRegistrations reloadData];
+    [HUD show:NO];
+    [HUD removeFromSuperview];
 }
 
 - (void) didFailLoadingAppStateWithError:(NSError *)error
 {
-    
+    [self HideSpinner];
 }
 
 - (void)didReceiveMemoryWarning
@@ -93,7 +106,7 @@
     }
     else
     {
-        
+        cell.textLabel.text = @"no data";
     }
     
     return cell;
@@ -104,6 +117,18 @@
     // TODO: 
 }
 
+- (void)ShowSpinner {
+    HUD = [[MBProgressHUD alloc] initWithView:self.tabBarController.view];
+    [self.tabBarController.view addSubview:HUD];
+    HUD.delegate = self;
+    HUD.labelText = @"Loading";
+    [HUD show:YES];
+}
+
+- (void)HideSpinner {
+    [HUD show:NO];
+    [HUD removeFromSuperview];
+}
 
 - (void)viewDidUnload {
     [self setTblRegistrations:nil];
