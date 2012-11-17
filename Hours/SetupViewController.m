@@ -7,6 +7,7 @@
 //
 
 #import "SetupViewController.h"
+#import "AppState.h"
 
 @interface SetupViewController ()
 - (IBAction)logOut:(id)sender;
@@ -41,6 +42,7 @@
 }
 - (IBAction)logOut:(id)sender
 {
+    [AppState clear];
     UITabBarController *parent = (UITabBarController *)[self parentViewController];
     [parent dismissViewControllerAnimated:YES completion:nil];
 }

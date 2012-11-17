@@ -27,4 +27,5 @@
 - (Project *) getProjectByNumber:(NSString *) projectNumber;
 
 + (AppState *) deserializeOrLoadForReceiver:(id<AppStateReceiver>) receiver;
++ (void) clear;
 @end

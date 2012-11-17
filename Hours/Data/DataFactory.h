@@ -15,5 +15,6 @@
 -(void) startGetDataFromUrl: (NSURL *) url forDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver;
 -(void) refreshDataForReceiver:(id<AppStateReceiver>) receiver;
 
-+ (AppState*)sharedState;
++ (AppState *)sharedState;
++ (void)clearState;
 @end

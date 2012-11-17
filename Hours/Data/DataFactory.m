@@ -125,4 +125,9 @@ static AppState *_sharedState = nil;
     return _sharedState;
 }
 
++ (void)clearState
+{
+    _sharedState = nil;
+}
+
 @end

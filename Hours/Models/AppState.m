@@ -84,4 +84,9 @@ static DataFactory *_dataFactory;
     return state;
 }
 
++ (void) clear
+{
+    [DataFactory clearState];
+}
+
 @end
