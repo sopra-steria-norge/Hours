@@ -18,6 +18,13 @@
 @synthesize receiver = _receiver;
 @synthesize mapping = _mapping;
 
+static AppState *_sharedState = nil;
+
+-(void) refreshDataForReceiver:(id<AppStateReceiver>) receiver
+{
+    // TODO: Implement
+}
+
 - (id) init
 {
     self = [super init];
@@ -58,6 +65,8 @@
     {
         state.week = [objects objectAtIndex:0];
     }
+    
+    _sharedState = state;
     
     if(self.receiver)
     {
@@ -109,6 +118,11 @@
     [weekMapping mapKeyPath:@"projects" toRelationship:@"projects" withMapping:projectMapping];
     [weekMapping mapKeyPath:@"days" toRelationship:@"days" withMapping:dayMapping];
     return weekMapping;
+}
+
++ (AppState*)sharedState
+{
+    return _sharedState;
 }
 
 @end

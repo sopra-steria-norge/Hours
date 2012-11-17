@@ -7,19 +7,23 @@
 //
 
 #import "DayViewController.h"
+#import "DataFactory.h"
 #import "AppState.h"
 
 @interface DayViewController () <AppStateReceiver>
 @property (weak, nonatomic) IBOutlet UITableView *tblRegistrations;
-
+@property (strong, nonatomic) DataFactory *dataFactory;
 @end
 
 @implementation DayViewController
 @synthesize state = _state;
+@synthesize dataFactory = _dataFactory;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.dataFactory = [[DataFactory alloc] init];
 }
 
 -(void)setState:(AppState *)state

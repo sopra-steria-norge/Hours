@@ -23,7 +23,6 @@
 @property(nonatomic, strong) Week *week;
 
 - (id) initWithDate:(NSDate *) date;
-- (void) startDownloadFromUrl:(NSURL *)url forDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver;
 - (Day *) getDayForDate:(NSDate *) date;
 - (Project *) getProjectByNumber:(NSString *) projectNumber;
 
