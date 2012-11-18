@@ -95,12 +95,79 @@
             </objects>
             <point key="canvasLocation" x="-434" y="339"/>
         </scene>
-        <!--Day View Controller - First-->
+        <!--Registration Add View Controller-->
+        <scene sceneID="cU5-e4-4QV">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S5F-4u-rMv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="MUn-MX-doj" customClass="RegistrationAddViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vvt-jU-RLE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qqV-WJ-aQM">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="154" id="5JO-fh-7t5"/>
+                                </constraints>
+                            </tableView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uiw-v4-fzW">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="kXU-r0-AlI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
+                            </textField>
+                            <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="iSM-Ui-jcL"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yq9-zx-RGd">
+                                <items>
+                                    <barButtonItem title="Cancel" id="4xl-PB-jNn">
+                                        <connections>
+                                            <action selector="btnCancel:" destination="MUn-MX-doj" id="q7D-b3-6q7"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="orC-96-X1s"/>
+                                    <barButtonItem title="Tuesday" style="plain" id="R79-rE-TJN"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Gcu-bl-M5V"/>
+                                    <barButtonItem title="Add/Update" id="8m3-lW-mAh"/>
+                                </items>
+                            </toolbar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="h." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUE-XA-qrb">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uiw-v4-fzW" firstAttribute="top" secondItem="qqV-WJ-aQM" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="261-bc-1Ex"/>
+                            <constraint firstItem="yq9-zx-RGd" firstAttribute="top" secondItem="vvt-jU-RLE" secondAttribute="top" type="default" id="2l8-1X-fIR"/>
+                            <constraint firstItem="uiw-v4-fzW" firstAttribute="leading" secondItem="iSM-Ui-jcL" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="4wq-Jn-2J9"/>
+                            <constraint firstItem="qqV-WJ-aQM" firstAttribute="top" secondItem="yq9-zx-RGd" secondAttribute="bottom" type="default" id="7EM-Yp-JLO"/>
+                            <constraint firstAttribute="trailing" secondItem="qUE-XA-qrb" secondAttribute="trailing" constant="52" id="7Qc-HP-bbm"/>
+                            <constraint firstItem="iSM-Ui-jcL" firstAttribute="bottom" secondItem="uiw-v4-fzW" secondAttribute="bottom" type="default" id="LdZ-9O-ChO"/>
+                            <constraint firstItem="yq9-zx-RGd" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" type="default" id="NOL-su-vpS"/>
+                            <constraint firstItem="iSM-Ui-jcL" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" constant="52" id="UpZ-qn-HoO"/>
+                            <constraint firstItem="qUE-XA-qrb" firstAttribute="bottom" secondItem="uiw-v4-fzW" secondAttribute="bottom" type="default" id="X0d-rH-dIT"/>
+                            <constraint firstItem="qqV-WJ-aQM" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" type="default" id="Zfn-hB-y3Y"/>
+                            <constraint firstItem="qqV-WJ-aQM" firstAttribute="trailing" secondItem="vvt-jU-RLE" secondAttribute="trailing" type="default" id="if4-vw-R4i"/>
+                            <constraint firstItem="yq9-zx-RGd" firstAttribute="trailing" secondItem="vvt-jU-RLE" secondAttribute="trailing" type="default" id="ooH-vh-HNr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="uPD-dU-bsJ"/>
+                    <connections>
+                        <outlet property="stpHours" destination="iSM-Ui-jcL" id="eCo-U9-TES"/>
+                        <outlet property="txtHours" destination="uiw-v4-fzW" id="9ie-Vd-7MV"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1298" y="-347"/>
+        </scene>
+        <!--Day View Controller - Day-->
         <scene sceneID="11">
             <objects>
-                <viewController title="First" id="2" customClass="DayViewController" sceneMemberID="viewController">
+                <viewController title="Day" id="2" customClass="DayViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="16">
-                        <rect key="frame" x="0.0" y="44" width="320" height="475"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="lwk-RB-zhz">
@@ -133,17 +200,53 @@
                                     <outlet property="delegate" destination="2" id="RBL-Lw-Imw"/>
                                 </connections>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dkO-we-Hjh">
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="DGi-VS-NzE"/>
+                                    <barButtonItem title="..." style="plain" id="2y7-Nf-Nox"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="HEV-HZ-Mrm"/>
+                                </items>
+                            </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KRO-xs-Xuk">
+                                <items>
+                                    <barButtonItem systemItem="rewind" id="Fqu-S9-Krb">
+                                        <connections>
+                                            <action selector="btnBack:" destination="2" id="zyj-RF-HGY"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="JQc-mk-9oN"/>
+                                    <barButtonItem systemItem="add" id="v87-N3-jSY">
+                                        <connections>
+                                            <segue destination="MUn-MX-doj" kind="modal" id="Mch-JI-siI"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Uye-OA-FZ7"/>
+                                    <barButtonItem systemItem="fastForward" id="Wye-Hq-0Cl">
+                                        <connections>
+                                            <action selector="btnNext:" destination="2" id="IDH-nd-YoI"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lwk-RB-zhz" firstAttribute="bottom" secondItem="16" secondAttribute="bottom" type="default" id="UlA-8Y-uPZ"/>
+                            <constraint firstItem="KRO-xs-Xuk" firstAttribute="top" secondItem="dkO-we-Hjh" secondAttribute="bottom" type="default" id="0yd-tb-iyU"/>
+                            <constraint firstItem="lwk-RB-zhz" firstAttribute="bottom" secondItem="16" secondAttribute="bottom" type="default" id="6Ih-mw-aub"/>
+                            <constraint firstItem="lwk-RB-zhz" firstAttribute="top" secondItem="KRO-xs-Xuk" secondAttribute="bottom" type="default" id="7Af-Sk-TmF"/>
+                            <constraint firstItem="dkO-we-Hjh" firstAttribute="leading" secondItem="16" secondAttribute="leading" type="default" id="G1X-i6-5xX"/>
+                            <constraint firstItem="KRO-xs-Xuk" firstAttribute="leading" secondItem="16" secondAttribute="leading" type="default" id="LNC-Uf-vbM"/>
+                            <constraint firstItem="KRO-xs-Xuk" firstAttribute="trailing" secondItem="16" secondAttribute="trailing" type="default" id="YYw-Fe-KAr"/>
+                            <constraint firstItem="dkO-we-Hjh" firstAttribute="top" secondItem="16" secondAttribute="top" type="default" id="bF1-lB-CQC"/>
                             <constraint firstItem="lwk-RB-zhz" firstAttribute="leading" secondItem="16" secondAttribute="leading" type="default" id="j2v-Qx-Z8n"/>
-                            <constraint firstItem="lwk-RB-zhz" firstAttribute="top" secondItem="16" secondAttribute="top" type="default" id="sZQ-pN-CPg"/>
                             <constraint firstItem="lwk-RB-zhz" firstAttribute="trailing" secondItem="16" secondAttribute="trailing" type="default" id="u8D-il-idt"/>
+                            <constraint firstItem="dkO-we-Hjh" firstAttribute="trailing" secondItem="16" secondAttribute="trailing" type="default" id="xaz-PK-jLf"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Day" image="first" id="7"/>
                     <connections>
+                        <outlet property="btnDayName" destination="2y7-Nf-Nox" id="UgU-yE-cVU"/>
+                        <outlet property="btnTitle" destination="2y7-Nf-Nox" id="icd-51-kTb"/>
                         <outlet property="tblRegistrations" destination="lwk-RB-zhz" id="5mu-u4-xOQ"/>
                     </connections>
                 </viewController>
@@ -151,12 +254,12 @@
             </objects>
             <point key="canvasLocation" x="618" y="-369"/>
         </scene>
-        <!--Week View Controller - Second-->
+        <!--Week View Controller - Week-->
         <scene sceneID="13">
             <objects>
-                <viewController title="Second" id="3" customClass="WeekViewController" sceneMemberID="viewController">
+                <viewController title="Week" id="3" customClass="WeekViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="17">
-                        <rect key="frame" x="0.0" y="44" width="320" height="475"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Week" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="22">
@@ -194,7 +297,7 @@
             <objects>
                 <viewController id="rbO-pC-Px9" customClass="SetupViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="guI-RP-NXz">
-                        <rect key="frame" x="0.0" y="44" width="320" height="475"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E9m-wk-UnW">
@@ -229,7 +332,7 @@
             <objects>
                 <tabBarController id="4" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="q8B-PQ-G0M"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
@@ -275,6 +378,10 @@
         <class className="DayViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DayViewController.h"/>
             <relationships>
+                <relationship kind="action" name="btnBack:"/>
+                <relationship kind="action" name="btnNext:"/>
+                <relationship kind="outlet" name="btnDayName" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnTitle" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="tblRegistrations" candidateClass="UITableView"/>
             </relationships>
         </class>
@@ -289,6 +396,13 @@
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RegistrationAddViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationAddViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="stpHours" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="txtHours" candidateClass="UITextField"/>
+            </relationships>
         </class>
         <class className="SetupViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SetupViewController.h"/>

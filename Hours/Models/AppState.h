@@ -25,6 +25,10 @@
 - (id) initWithDate:(NSDate *) date;
 - (Day *) getDayForDate:(NSDate *) date;
 - (Project *) getProjectByNumber:(NSString *) projectNumber;
+- (AppState *) nextDay;
+- (AppState *) previousDay;
+- (AppState *) nextWeek;
+- (AppState *) previousWeek;
 
 + (AppState *) deserializeOrLoadForReceiver:(id<AppStateReceiver>) receiver;
 + (void) clear;

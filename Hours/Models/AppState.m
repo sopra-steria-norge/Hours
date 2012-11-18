@@ -59,6 +59,29 @@ static DataFactory *_dataFactory;
     return nil;
 }
 
+- (AppState *) nextDay
+{
+    // TODO: Navigate
+    return self;
+}
+- (AppState *) previousDay
+{
+    // TODO: Navigate
+    return self;
+}
+
+- (AppState *) nextWeek
+{
+    // TODO: Navigate
+    return self;
+}
+
+- (AppState *) previousWeek
+{
+    // TODO: Navigate
+    return self;
+}
+
 - (Project *) getProjectByNumber:(NSString *) projectNumber
 {
     for(Project *p in self.week.projects)

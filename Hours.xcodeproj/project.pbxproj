@@ -45,6 +45,7 @@
 		4CAB12FD164D8A4900265B8D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12FC164D8A4900265B8D /* LoginViewController.m */; };
 		4CAB1304164DAAA900265B8D /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB1303164DAAA800265B8D /* SetupViewController.m */; };
 		4CAB136916583D3E00265B8D /* libMBProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB136616583D1600265B8D /* libMBProgressHUD.a */; };
+		4CAB136C1658512B00265B8D /* RegistrationAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB136B1658512A00265B8D /* RegistrationAddViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +168,8 @@
 		4CAB1302164DAAA800265B8D /* SetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupViewController.h; sourceTree = "<group>"; };
 		4CAB1303164DAAA800265B8D /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupViewController.m; sourceTree = "<group>"; };
 		4CAB135E16583D1600265B8D /* MBProgressHUD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MBProgressHUD.xcodeproj; path = MBProgressHUD/MBProgressHUD.xcodeproj; sourceTree = "<group>"; };
+		4CAB136A1658512A00265B8D /* RegistrationAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegistrationAddViewController.h; path = ../RegistrationAddViewController.h; sourceTree = "<group>"; };
+		4CAB136B1658512A00265B8D /* RegistrationAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegistrationAddViewController.m; path = ../RegistrationAddViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +256,8 @@
 				4CAB12FC164D8A4900265B8D /* LoginViewController.m */,
 				4CAB124A1646FF6B00265B8D /* DayViewController.h */,
 				4CAB124B1646FF6B00265B8D /* DayViewController.m */,
+				4CAB136A1658512A00265B8D /* RegistrationAddViewController.h */,
+				4CAB136B1658512A00265B8D /* RegistrationAddViewController.m */,
 				4CAB12511646FF6B00265B8D /* WeekViewController.h */,
 				4CAB12521646FF6B00265B8D /* WeekViewController.m */,
 				4CAB1302164DAAA800265B8D /* SetupViewController.h */,
@@ -528,6 +533,7 @@
 				4CAB12F6164ACE4100265B8D /* Day.m in Sources */,
 				4CAB12FD164D8A4900265B8D /* LoginViewController.m in Sources */,
 				4CAB1304164DAAA900265B8D /* SetupViewController.m in Sources */,
+				4CAB136C1658512B00265B8D /* RegistrationAddViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

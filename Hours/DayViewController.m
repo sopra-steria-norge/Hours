@@ -15,6 +15,10 @@
     MBProgressHUD *HUD;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tblRegistrations;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnTitle;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnDayName;
+- (IBAction)btnNext:(id)sender;
+- (IBAction)btnBack:(id)sender;
 @property (strong, nonatomic) DataFactory *dataFactory;
 @end
 
@@ -32,6 +36,19 @@
 -(void)setState:(AppState *)state
 {
     _state = state;
+    
+    NSString *title;
+    if(state)
+    {
+        title = state.currentDate.description;
+    }
+    else
+    {
+        title = @"...";
+    }
+    self.btnTitle.title = title;
+    
+    [self.tblRegistrations reloadData];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -55,7 +72,6 @@
     self.state = state;
     
     NSLog(@"Did receive data from the loader");
-    [self.tblRegistrations reloadData];
     [HUD show:NO];
     [HUD removeFromSuperview];
 }
@@ -102,7 +118,6 @@
         Project *p = [self.state getProjectByNumber:r.projectNumber];
         cell.textLabel.text = p.projectName;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%.1f", r.hours];
-
     }
     else
     {
@@ -130,8 +145,21 @@
     [HUD removeFromSuperview];
 }
 
+- (IBAction)btnNext:(id)sender
+{
+    self.state = [self.state nextDay];
+}
+
+- (IBAction)btnBack:(id)sender
+{
+    self.state = [self.state previousDay];
+}
+
 - (void)viewDidUnload {
     [self setTblRegistrations:nil];
+    [self setBtnDayName:nil];
+    [self setBtnTitle:nil];
     [super viewDidUnload];
 }
+
 @end
