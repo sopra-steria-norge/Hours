@@ -11,20 +11,33 @@
 #import "AppState.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 
+NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
+
 @interface DayViewController () <AppStateReceiver, MBProgressHUDDelegate> {
     MBProgressHUD *HUD;
 }
+
+// Formatters
+@property (nonatomic, readonly, strong) NSDateFormatter *dateFormatter;
+@property (nonatomic, readonly, strong) NSDateFormatter *dayFormatter;
+
+// UI Controllers
 @property (weak, nonatomic) IBOutlet UITableView *tblRegistrations;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnTitle;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnDayName;
 - (IBAction)btnNext:(id)sender;
 - (IBAction)btnBack:(id)sender;
+
+// Data fetching
 @property (strong, nonatomic) DataFactory *dataFactory;
 @end
 
 @implementation DayViewController
+
 @synthesize state = _state;
 @synthesize dataFactory = _dataFactory;
+@synthesize dateFormatter = _dateFormatter;
+@synthesize dayFormatter = _dayFormatter;
 
 - (void)viewDidLoad
 {
@@ -40,7 +53,7 @@
     NSString *title;
     if(state)
     {
-        title = state.currentDate.description;
+        title = [self getDescriptionFromState:state];
     }
     else
     {
@@ -50,6 +63,40 @@
     
     [self.tblRegistrations reloadData];
 }
+
+- (NSString *)getDescriptionFromState:(AppState *)state
+{
+    NSString *temp = [self.dateFormatter stringFromDate:state.currentDate];
+    NSString *temp2 = [self.dayFormatter stringFromDate:state.currentDate];    
+    NSString *title = [[NSString alloc] initWithFormat:@"%@ %@", temp2, temp, nil];
+    return title;
+}
+
+-(NSDateFormatter *) dateFormatter
+{
+    if(!_dateFormatter)
+    {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateStyle:NSDateFormatterShortStyle];
+        [formatter setTimeStyle:NSDateFormatterNoStyle];
+        _dateFormatter = formatter;
+    }
+    
+    return _dateFormatter;
+}
+
+-(NSDateFormatter *) dayFormatter
+{
+    if(!_dayFormatter)
+    {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:WEEKDAY_DATE_FORMAT];
+        _dayFormatter = formatter;
+    }
+    
+    return _dayFormatter;
+}
+
 
 - (void) viewWillAppear:(BOOL)animated
 {
@@ -97,33 +144,49 @@
     if(self.state)
     {
         Day *currentDay = self.state.currentDay;
-        return currentDay.registrations.count;
+        return currentDay.registrations.count + 1;
     }
     return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellIdentifier = @"DayCellStyle";    
+    UITableViewCell *cell;
+    if(self.state)
+    {
+        Day *currentDay = self.state.currentDay;
+        if(indexPath.row >= currentDay.registrations.count)
+        {
+            cell = [self getCell:tableView forIndexPath:indexPath withCellIdentifier:@"AddRegistrationCell"];
+            cell.textLabel.text = @"";
+            cell.detailTextLabel.text = @"add more...";
+        }
+        else
+        {
+            cell = [self getCell:tableView forIndexPath:indexPath withCellIdentifier:@"DayCellStyle"];
+            Registration *r = [currentDay.registrations objectAtIndex:indexPath.row];
+        
+            Project *p = [self.state getProjectByNumber:r.projectNumber];
+            cell.textLabel.text = p.projectName;
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%.1f", r.hours];
+        }
+    }
+    else
+    {
+        cell = [self getCell:tableView forIndexPath:indexPath withCellIdentifier:@"DayCellStyle"];
+        cell.textLabel.text = @"no data";
+        cell.detailTextLabel.text = @"";
+    }
+    
+    return cell;
+}
+
+- (UITableViewCell *)getCell:(UITableView *)tableView forIndexPath:(NSIndexPath *)indexPath withCellIdentifier:(NSString *)cellIdentifier {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     if(!cell)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    if(self.state)
-    {
-        Day *currentDay = self.state.currentDay;
-        Registration *r = [currentDay.registrations objectAtIndex:indexPath.row];
-        
-        Project *p = [self.state getProjectByNumber:r.projectNumber];
-        cell.textLabel.text = p.projectName;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%.1f", r.hours];
-    }
-    else
-    {
-        cell.textLabel.text = @"no data";
-    }
-    
     return cell;
 }
 
