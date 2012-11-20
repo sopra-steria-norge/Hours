@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppState.h"
 
 @interface RegistrationAddViewController : UIViewController
-
+@property (nonatomic, strong) AppState *state;
+@property (nonatomic, strong) NSString *selectedProject;
+@property (nonatomic) double selectedHours;
 @end

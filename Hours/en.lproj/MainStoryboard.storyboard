@@ -117,6 +117,7 @@
                             </toolbar>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WqD-78-fwE">
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="234" id="9XX-Pf-WAl"/>
                                     <constraint firstAttribute="height" constant="216" id="OGe-0s-Z4b"/>
                                 </constraints>
                                 <connections>
@@ -140,22 +141,48 @@
                                     <action selector="buttonOkClicked:" destination="MUn-MX-doj" eventType="touchUpInside" id="8qv-yM-jW2"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgA-za-RtO">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="96" id="9lg-b4-zuZ"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="MUn-MX-doj" id="en3-ZU-tGT"/>
+                                    <outlet property="delegate" destination="MUn-MX-doj" id="PEO-YG-hyL"/>
+                                </connections>
+                            </pickerView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oax-80-371">
+                                <items>
+                                    <barButtonItem title="7.5" id="xJV-iA-ACp"/>
+                                    <barButtonItem title="0.5" id="0QC-eE-MLR"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Cak-jW-p66"/>
+                                    <barButtonItem title="Same as previous..." id="0t6-oP-uoU"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Beu-30-DnJ"/>
+                                    <barButtonItem systemItem="trash" id="2qq-ms-icU"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="WqD-78-fwE" firstAttribute="trailing" secondItem="vvt-jU-RLE" secondAttribute="trailing" type="default" id="0Ev-Gr-L28"/>
-                            <constraint firstItem="yq9-zx-RGd" firstAttribute="top" secondItem="vvt-jU-RLE" secondAttribute="top" type="default" id="2l8-1X-fIR"/>
-                            <constraint firstItem="WqD-78-fwE" firstAttribute="top" secondItem="yq9-zx-RGd" secondAttribute="bottom" type="default" id="CcR-7w-Vz3"/>
+                            <constraint firstItem="pgA-za-RtO" firstAttribute="top" secondItem="yq9-zx-RGd" secondAttribute="bottom" type="default" id="0Uw-6F-8d7"/>
+                            <constraint firstItem="yq9-zx-RGd" firstAttribute="trailing" secondItem="vvt-jU-RLE" secondAttribute="trailing" type="default" id="8vl-kp-ays"/>
+                            <constraint firstItem="Oax-80-371" firstAttribute="trailing" secondItem="vvt-jU-RLE" secondAttribute="trailing" type="default" id="BOw-hX-EoB"/>
+                            <constraint firstItem="Oax-80-371" firstAttribute="bottom" secondItem="vvt-jU-RLE" secondAttribute="bottom" type="default" id="E82-ve-reh"/>
                             <constraint firstItem="yq9-zx-RGd" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" type="default" id="NOL-su-vpS"/>
-                            <constraint firstItem="yq9-zx-RGd" firstAttribute="trailing" secondItem="vvt-jU-RLE" secondAttribute="trailing" type="default" id="QmT-ey-VEs"/>
-                            <constraint firstItem="56z-Wr-UWA" firstAttribute="top" secondItem="vvt-jU-RLE" secondAttribute="top" constant="262" id="fR9-Vx-Xno"/>
+                            <constraint firstItem="56z-Wr-UWA" firstAttribute="top" secondItem="pgA-za-RtO" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Wv8-Lk-QST"/>
+                            <constraint firstItem="yq9-zx-RGd" firstAttribute="top" secondItem="vvt-jU-RLE" secondAttribute="top" type="default" id="gkP-S8-aC0"/>
+                            <constraint firstItem="pgA-za-RtO" firstAttribute="top" secondItem="WqD-78-fwE" secondAttribute="top" type="default" id="hYm-As-RVI"/>
+                            <constraint firstItem="56z-Wr-UWA" firstAttribute="top" secondItem="WqD-78-fwE" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="imr-5T-IDS"/>
                             <constraint firstItem="WqD-78-fwE" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" type="default" id="jNO-gu-4fT"/>
-                            <constraint firstItem="56z-Wr-UWA" firstAttribute="centerX" secondItem="WqD-78-fwE" secondAttribute="centerX" type="default" id="xuv-fS-bTK"/>
+                            <constraint firstItem="Oax-80-371" firstAttribute="centerX" secondItem="56z-Wr-UWA" secondAttribute="centerX" type="default" id="odk-K4-viB"/>
+                            <constraint firstItem="pgA-za-RtO" firstAttribute="trailing" secondItem="vvt-jU-RLE" secondAttribute="trailing" type="default" id="u0A-iV-u5Q"/>
+                            <constraint firstItem="Oax-80-371" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" type="default" id="uss-jD-BaM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="uPD-dU-bsJ"/>
+                    <toolbarItems/>
                     <connections>
                         <outlet property="buttonOk" destination="56z-Wr-UWA" id="Qne-0T-dTc"/>
+                        <outlet property="hourPickerView" destination="pgA-za-RtO" id="LQG-Hm-Zdx"/>
+                        <outlet property="projectPickerView" destination="WqD-78-fwE" id="yTV-6w-qwD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S5F-4u-rMv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -194,7 +221,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <segue destination="MUn-MX-doj" kind="modal" id="I9f-3p-qF7"/>
+                                            <segue destination="MUn-MX-doj" kind="modal" identifier="ModifyRegistrationSegue" id="I9f-3p-qF7"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="AddRegistrationCell" textLabel="T3w-Cj-XQ4" detailTextLabel="LOe-YI-VoB" style="IBUITableViewCellStyleValue1" id="mi2-j3-eNs">
@@ -219,7 +246,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <segue destination="MUn-MX-doj" kind="modal" id="8do-VG-W6O"/>
+                                            <segue destination="MUn-MX-doj" kind="modal" identifier="AddRegistrationSegue" id="8do-VG-W6O"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -230,19 +257,14 @@
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dkO-we-Hjh">
                                 <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="DGi-VS-NzE"/>
-                                    <barButtonItem title="..." style="plain" id="2y7-Nf-Nox"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="HEV-HZ-Mrm"/>
-                                </items>
-                            </toolbar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KRO-xs-Xuk">
-                                <items>
                                     <barButtonItem systemItem="rewind" id="Fqu-S9-Krb">
                                         <connections>
                                             <action selector="btnBack:" destination="2" id="zyj-RF-HGY"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="JQc-mk-9oN"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="DGi-VS-NzE"/>
+                                    <barButtonItem title="..." style="plain" id="2y7-Nf-Nox"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="HEV-HZ-Mrm"/>
                                     <barButtonItem systemItem="fastForward" id="Wye-Hq-0Cl">
                                         <connections>
                                             <action selector="btnNext:" destination="2" id="IDH-nd-YoI"/>
@@ -253,12 +275,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KRO-xs-Xuk" firstAttribute="top" secondItem="dkO-we-Hjh" secondAttribute="bottom" type="default" id="0yd-tb-iyU"/>
-                            <constraint firstItem="lwk-RB-zhz" firstAttribute="bottom" secondItem="16" secondAttribute="bottom" type="default" id="6Ih-mw-aub"/>
-                            <constraint firstItem="lwk-RB-zhz" firstAttribute="top" secondItem="KRO-xs-Xuk" secondAttribute="bottom" type="default" id="7Af-Sk-TmF"/>
+                            <constraint firstItem="lwk-RB-zhz" firstAttribute="top" secondItem="dkO-we-Hjh" secondAttribute="bottom" type="default" id="49V-RK-ULR"/>
                             <constraint firstItem="dkO-we-Hjh" firstAttribute="leading" secondItem="16" secondAttribute="leading" type="default" id="G1X-i6-5xX"/>
-                            <constraint firstItem="KRO-xs-Xuk" firstAttribute="leading" secondItem="16" secondAttribute="leading" type="default" id="LNC-Uf-vbM"/>
-                            <constraint firstItem="KRO-xs-Xuk" firstAttribute="trailing" secondItem="16" secondAttribute="trailing" type="default" id="YYw-Fe-KAr"/>
+                            <constraint firstItem="lwk-RB-zhz" firstAttribute="bottom" secondItem="16" secondAttribute="bottom" type="default" id="IDF-P6-42z"/>
                             <constraint firstItem="dkO-we-Hjh" firstAttribute="top" secondItem="16" secondAttribute="top" type="default" id="bF1-lB-CQC"/>
                             <constraint firstItem="lwk-RB-zhz" firstAttribute="leading" secondItem="16" secondAttribute="leading" type="default" id="j2v-Qx-Z8n"/>
                             <constraint firstItem="lwk-RB-zhz" firstAttribute="trailing" secondItem="16" secondAttribute="trailing" type="default" id="u8D-il-idt"/>
@@ -424,7 +443,8 @@
             <relationships>
                 <relationship kind="action" name="buttonOkClicked:"/>
                 <relationship kind="outlet" name="buttonOk" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="pickerHours" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="hourPickerView" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="projectPickerView" candidateClass="UIPickerView"/>
             </relationships>
         </class>
         <class className="SetupViewController" superclassName="UIViewController">

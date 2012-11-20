@@ -9,6 +9,7 @@
 #import "DayViewController.h"
 #import "DataFactory.h"
 #import "AppState.h"
+#import "RegistrationAddViewController.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 
 NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
@@ -190,9 +191,19 @@ NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // TODO: 
+    if([[segue identifier] isEqualToString:@"ModifyRegistrationSegue"])
+    {
+        NSIndexPath *selectedRowIndex = [self.tblRegistrations indexPathForSelectedRow];
+        RegistrationAddViewController *rvc = [segue destinationViewController];
+        rvc.state = self.state;
+
+        Registration *r = [[self.state.currentDay registrations] objectAtIndex:selectedRowIndex.row];
+        rvc.selectedHours = r.hours;
+        rvc.selectedProject = r.projectNumber;
+    }
+
 }
 
 - (void)ShowSpinner {

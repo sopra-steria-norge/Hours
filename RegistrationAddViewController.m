@@ -7,22 +7,22 @@
 //
 
 #import "RegistrationAddViewController.h"
-#import "Project.h"
 
-@interface RegistrationAddViewController ()<UIPickerViewDelegate, UIPickerViewDataSource> 
-@property (nonatomic, strong) NSString *project;
-@property (nonatomic) double hours;
+@interface RegistrationAddViewController ()<UIPickerViewDelegate, UIPickerViewDataSource>
+
 @property (nonatomic, strong) NSArray *projectValues;
 @property (nonatomic, strong) NSArray *hourValues;
-@property (weak, nonatomic) IBOutlet UIPickerView *pickerHours;
 @property (weak, nonatomic) IBOutlet UIButton *buttonOk;
+@property (weak, nonatomic) IBOutlet UIPickerView *projectPickerView;
+@property (weak, nonatomic) IBOutlet UIPickerView *hourPickerView;
 - (IBAction)buttonOkClicked:(id)sender;
 @end
 
 @implementation RegistrationAddViewController
 
-@synthesize project = _project;
-@synthesize hours = _hours;
+@synthesize state = _state;
+@synthesize selectedProject = _selectedProject;
+@synthesize selectedHours = _selectedHours;
 
 @synthesize hourValues = _hourValues;
 @synthesize projectValues = _projectValues;
@@ -42,7 +42,11 @@
 	// Do any additional setup after loading the view.
     self.buttonOk.enabled = NO; // TODO: Enable when a project is selected
     self.hourValues = [RegistrationAddViewController getHourValues];
-    self.projectValues = [[NSArray alloc] initWithObjects:@"none", nil];
+
+    if(!self.projectValues)
+    {
+        self.projectValues = [[NSArray alloc] initWithObjects:@"none", nil];   
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,20 +60,21 @@
     [self dismissModalViewControllerAnimated: YES];
 }
 - (void)viewDidUnload {
-    [self setPickerHours:nil];
     [self setHourValues:nil];
     [self setButtonOk:nil];
+    [self setProjectPickerView:nil];
+    [self setHourPickerView:nil];
     [super viewDidUnload];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     
-    return 2;
+    return 1;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     
-    if (component == 0)
+    if (pickerView == self.projectPickerView)
     {
         return [self.projectValues count];
     }
@@ -80,7 +85,7 @@
              titleForRow:(NSInteger)row
             forComponent:(NSInteger)component
 {
-    if (component == 0)
+    if (pickerView == self.projectPickerView)
     {
         id myRow = [self.projectValues objectAtIndex:row];
         if([myRow isKindOfClass:[Project class]])
@@ -95,6 +100,12 @@
     return [number stringValue];
 }
 
+-(void)setState:(AppState *)state
+{
+    _state = state;
+    _projectValues = state.week.projects.copy; // TODO: Only use projects that are not already set for the day
+}
+
 +(NSArray *)getHourValues
 {
     NSMutableArray *temp = [[NSMutableArray alloc] init];
@@ -105,6 +116,7 @@
     return temp.copy;
 }
 
-- (IBAction)buttonOkClicked:(id)sender {
+- (IBAction)buttonOkClicked:(id)sender
+{
 }
 @end
