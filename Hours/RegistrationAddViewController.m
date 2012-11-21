@@ -10,19 +10,24 @@
 
 @interface RegistrationAddViewController ()<UIPickerViewDelegate, UIPickerViewDataSource>
 
+@property (nonatomic, strong) AppState *state;
+@property (nonatomic, strong) Registration *registration;
+
 @property (nonatomic, strong) NSArray *projectValues;
-@property (nonatomic, strong) NSArray *hourValues;
+@property (nonatomic, readonly, strong) NSArray *hourValues;
 @property (weak, nonatomic) IBOutlet UIButton *buttonOk;
+@property (weak, nonatomic) IBOutlet UILabel *labelErrorText;
 @property (weak, nonatomic) IBOutlet UIPickerView *projectPickerView;
 @property (weak, nonatomic) IBOutlet UIPickerView *hourPickerView;
 - (IBAction)buttonOkClicked:(id)sender;
+- (IBAction)buttonSevenPointFive:(id)sender;
+- (IBAction)buttonZeroPointFive:(id)sender;
 @end
 
 @implementation RegistrationAddViewController
 
 @synthesize state = _state;
-@synthesize selectedProject = _selectedProject;
-@synthesize selectedHours = _selectedHours;
+@synthesize registration = _registration;
 
 @synthesize hourValues = _hourValues;
 @synthesize projectValues = _projectValues;
@@ -41,12 +46,20 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.buttonOk.enabled = NO; // TODO: Enable when a project is selected
-    self.hourValues = [RegistrationAddViewController getHourValues];
 
     if(!self.projectValues)
     {
         self.projectValues = [[NSArray alloc] initWithObjects:@"none", nil];   
     }
+}
+
+- (NSArray *)hourValues
+{
+    if(!_hourValues)
+    {
+        _hourValues = [RegistrationAddViewController getHourValues];
+    }
+    return _hourValues;
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,12 +72,23 @@
 {
     [self dismissModalViewControllerAnimated: YES];
 }
-- (void)viewDidUnload {
-    [self setHourValues:nil];
+- (void)viewDidUnload
+{
+    _hourValues = nil;
     [self setButtonOk:nil];
     [self setProjectPickerView:nil];
     [self setHourPickerView:nil];
+    [self setLabelErrorText:nil];
     [super viewDidUnload];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    if(!self.registration)
+    {
+        self.registration = [[Registration alloc] init];
+    }
+    [self setHourPickerToRegistrationHours];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -81,9 +105,7 @@
     return [self.hourValues count];
 }
 
-- (NSString *)pickerView:(UIPickerView *)pickerView
-             titleForRow:(NSInteger)row
-            forComponent:(NSInteger)component
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     if (pickerView == self.projectPickerView)
     {
@@ -100,10 +122,30 @@
     return [number stringValue];
 }
 
--(void)setState:(AppState *)state
+-(void) setState:(AppState *)state andRegistration:(Registration *) registration
 {
-    _state = state;
-    _projectValues = state.week.projects.copy; // TODO: Only use projects that are not already set for the day
+    self.state = state;
+    self.registration = registration;
+ 
+    NSMutableArray *projects;
+
+    if(registration)
+    {
+        projects = [[NSMutableArray alloc] init];
+        for(Project *p in self.state.week.projects)
+        {
+            if([p.projectNumber isEqualToString:registration.projectNumber])
+            {
+                [projects addObject:p];
+                break;
+            }
+        }
+    }
+    else
+    {
+        projects = state.week.projects;
+    }
+    _projectValues = projects.copy; // TODO: Remove existing?
 }
 
 +(NSArray *)getHourValues
@@ -118,5 +160,26 @@
 
 - (IBAction)buttonOkClicked:(id)sender
 {
+    
+}
+- (IBAction)buttonSevenPointFive:(id)sender
+{
+    self.registration.hours = 7.5;
+    [self setHourPickerToRegistrationHours];
+}
+
+- (IBAction)buttonZeroPointFive:(id)sender
+{
+    self.registration.hours = 0.5;
+    [self setHourPickerToRegistrationHours];
+}
+
+- (void) setHourPickerToRegistrationHours
+{
+    if(self.registration)
+    {
+        int row = (int)(self.registration.hours / 0.5);
+        [self.hourPickerView selectRow:row inComponent:0 animated:YES];
+    }
 }
 @end

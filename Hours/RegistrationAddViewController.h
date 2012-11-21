@@ -10,7 +10,7 @@
 #import "AppState.h"
 
 @interface RegistrationAddViewController : UIViewController
-@property (nonatomic, strong) AppState *state;
-@property (nonatomic, strong) NSString *selectedProject;
-@property (nonatomic) double selectedHours;
+@property (nonatomic, readonly, strong) AppState *state;
+@property (nonatomic, readonly, strong) Registration *registration;
+-(void) setState:(AppState *)state andRegistration:(Registration *) registration;
 @end

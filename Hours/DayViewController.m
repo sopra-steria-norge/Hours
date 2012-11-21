@@ -211,11 +211,14 @@ NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
     {
         NSIndexPath *selectedRowIndex = [self.tblRegistrations indexPathForSelectedRow];
         RegistrationAddViewController *rvc = [segue destinationViewController];
-        rvc.state = self.state;
-
         Registration *r = [[self.state.currentDay registrations] objectAtIndex:selectedRowIndex.row];
-        rvc.selectedHours = r.hours;
-        rvc.selectedProject = r.projectNumber;
+
+        [rvc setState:self.state andRegistration:r];
+    }
+    else if([[segue identifier] isEqualToString:@"AddRegistrationSegue"])
+    {
+        RegistrationAddViewController *rvc = [segue destinationViewController];
+        [rvc setState:self.state andRegistration:nil];
     }
 }
 
