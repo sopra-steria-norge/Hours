@@ -44,6 +44,9 @@ NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    [self setupSwipe];
+    
     self.dataFactory = [[DataFactory alloc] init];
 }
 
@@ -144,8 +147,13 @@ NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
 {
     if(self.state)
     {
-        Day *currentDay = self.state.currentDay;
-        return currentDay.registrations.count + 1;
+        int count = self.state.currentDay.registrations.count;
+        if(count == 0)
+        {
+            return 2;
+        }
+        
+        return count + 1;
     }
     return 0;
 }
@@ -156,7 +164,13 @@ NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
     if(self.state)
     {
         Day *currentDay = self.state.currentDay;
-        if(indexPath.row >= currentDay.registrations.count)
+        if(currentDay.registrations.count == 0 && indexPath.row == 0)
+        {
+            cell = [self getCell:tableView forIndexPath:indexPath withCellIdentifier:@"CopyRegistrationsCell"];
+            cell.textLabel.text = @"";
+            cell.detailTextLabel.text = @"copy last day...";
+        }
+        else if(indexPath.row >= currentDay.registrations.count)
         {
             cell = [self getCell:tableView forIndexPath:indexPath withCellIdentifier:@"AddRegistrationCell"];
             cell.textLabel.text = @"";
@@ -203,10 +217,26 @@ NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
         rvc.selectedHours = r.hours;
         rvc.selectedProject = r.projectNumber;
     }
-
 }
 
-- (void)ShowSpinner {
+- (void)setupSwipe
+{
+    UISwipeGestureRecognizer *oneFingerSwipeLeft = [[UISwipeGestureRecognizer alloc]
+                                                    initWithTarget:self
+                                                    action:@selector(btnNext:)];
+    [oneFingerSwipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [self.tblRegistrations addGestureRecognizer:oneFingerSwipeLeft];
+    
+    UISwipeGestureRecognizer *oneFingerSwipeRight = [[UISwipeGestureRecognizer alloc]
+                                                     initWithTarget:self
+                                                     action:@selector(btnBack:)];
+    [oneFingerSwipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+    [self.tblRegistrations addGestureRecognizer:oneFingerSwipeRight];
+}
+
+
+- (void)ShowSpinner // TODO: Centralize
+{
     HUD = [[MBProgressHUD alloc] initWithView:self.tabBarController.view];
     [self.tabBarController.view addSubview:HUD];
     HUD.delegate = self;
@@ -214,7 +244,8 @@ NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
     [HUD show:YES];
 }
 
-- (void)HideSpinner {
+- (void)HideSpinner // TODO: Centralize
+{
     [HUD show:NO];
     [HUD removeFromSuperview];
 }

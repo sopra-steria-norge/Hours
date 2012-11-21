@@ -15,6 +15,7 @@
 @implementation AppState
 
 const char *url = "http://fakeswhrs.azurewebsites.net/";
+const int ONE_DAY_IN_SECONDS = 60*60*24;
 
 @synthesize currentDate = _currentDate;
 @synthesize currentDay = _currentDay;
@@ -61,12 +62,12 @@ static DataFactory *_dataFactory;
 
 - (AppState *) nextDay
 {
-    // TODO: Navigate
+    self.currentDate = [self.currentDate dateByAddingTimeInterval:ONE_DAY_IN_SECONDS];
     return self;
 }
 - (AppState *) previousDay
 {
-    // TODO: Navigate
+    self.currentDate = [self.currentDate dateByAddingTimeInterval:ONE_DAY_IN_SECONDS * -1];
     return self;
 }
 
