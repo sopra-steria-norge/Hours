@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) AppState *state;
 @property (nonatomic, strong) Registration *registration;
-
+@property (nonatomic) double originalValue;
 @property (nonatomic, strong) NSArray *projectValues;
 @property (nonatomic, readonly, strong) NSArray *hourValues;
 @property (weak, nonatomic) IBOutlet UIButton *buttonOk;
@@ -26,9 +26,9 @@
 
 @implementation RegistrationAddViewController
 
+@synthesize originalValue;
 @synthesize state = _state;
 @synthesize registration = _registration;
-
 @synthesize hourValues = _hourValues;
 @synthesize projectValues = _projectValues;
 
@@ -44,9 +44,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    self.buttonOk.enabled = NO; // TODO: Enable when a project is selected
 
+	// Do any additional setup after loading the view.
     if(!self.projectValues)
     {
         self.projectValues = [[NSArray alloc] initWithObjects:@"none", nil];   
@@ -68,10 +67,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)btnCancel:(id)sender
-{
-    [self dismissModalViewControllerAnimated: YES];
-}
 - (void)viewDidUnload
 {
     _hourValues = nil;
@@ -126,7 +121,7 @@
 {
     self.state = state;
     self.registration = registration;
- 
+    self.originalValue = registration.hours;
     NSMutableArray *projects;
 
     if(registration)
@@ -158,9 +153,17 @@
     return temp.copy;
 }
 
+- (IBAction)btnCancel:(id)sender
+{
+    self.registration.hours = originalValue;
+    [self dismissModalViewControllerAnimated: YES];
+}
+
+
 - (IBAction)buttonOkClicked:(id)sender
 {
-    
+    // TODO: Trigger update and reload on the way out
+    [self dismissModalViewControllerAnimated: YES];
 }
 - (IBAction)buttonSevenPointFive:(id)sender
 {
