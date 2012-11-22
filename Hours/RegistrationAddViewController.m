@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) AppState *state;
 @property (nonatomic, strong) Registration *registration;
-@property (nonatomic) double originalValue;
+@property (nonatomic) double currentValue;
 @property (nonatomic, strong) NSArray *projectValues;
 @property (nonatomic, readonly, strong) NSArray *hourValues;
 @property (weak, nonatomic) IBOutlet UIButton *buttonOk;
@@ -26,7 +26,7 @@
 
 @implementation RegistrationAddViewController
 
-@synthesize originalValue;
+@synthesize currentValue = _currentValue;
 @synthesize state = _state;
 @synthesize registration = _registration;
 @synthesize hourValues = _hourValues;
@@ -121,13 +121,13 @@
 {
     self.state = state;
     self.registration = registration;
-    self.originalValue = registration.hours;
+    self.currentValue = registration.hours;
     NSMutableArray *projects;
 
     if(registration)
     {
         projects = [[NSMutableArray alloc] init];
-        for(Project *p in self.state.week.projects)
+        for(Project *p in self.state.currentWeek.projects)
         {
             if([p.projectNumber isEqualToString:registration.projectNumber])
             {
@@ -138,7 +138,7 @@
     }
     else
     {
-        projects = state.week.projects;
+        projects = state.currentWeek.projects;
     }
     _projectValues = projects.copy; // TODO: Remove existing?
 }
@@ -155,25 +155,23 @@
 
 - (IBAction)btnCancel:(id)sender
 {
-    self.registration.hours = originalValue;
     [self dismissModalViewControllerAnimated: YES];
 }
 
-
 - (IBAction)buttonOkClicked:(id)sender
 {
-    // TODO: Trigger update and reload on the way out
+    self.registration.hours = self.currentValue;
     [self dismissModalViewControllerAnimated: YES];
 }
 - (IBAction)buttonSevenPointFive:(id)sender
 {
-    self.registration.hours = 7.5;
+    self.currentValue = 7.5;
     [self setHourPickerToRegistrationHours];
 }
 
 - (IBAction)buttonZeroPointFive:(id)sender
 {
-    self.registration.hours = 0.5;
+    self.currentValue = 0.5;
     [self setHourPickerToRegistrationHours];
 }
 
@@ -181,7 +179,7 @@
 {
     if(self.registration)
     {
-        int row = (int)(self.registration.hours / 0.5);
+        int row = (int)(self.currentValue / 0.5);
         [self.hourPickerView selectRow:row inComponent:0 animated:YES];
     }
 }

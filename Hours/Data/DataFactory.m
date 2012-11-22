@@ -63,7 +63,10 @@ static AppState *_sharedState = nil;
     
     if(objects.count > 0 && [[objects objectAtIndex:0] isKindOfClass:[Week class]])
     {
-        state.week = [objects objectAtIndex:0];
+        // TODO: Add week to weeks dictionary to cache data between weeks
+
+        state.currentWeek = [objects objectAtIndex:0];
+        state.currentWeek.downloadTimestamp = [[NSDate alloc] init];
     }
     
     _sharedState = state;

@@ -17,10 +17,11 @@
 const char *url = "http://fakeswhrs.azurewebsites.net/";
 const int ONE_DAY_IN_SECONDS = 60*60*24;
 
-@synthesize currentDate = _currentDate;
 @synthesize currentDay = _currentDay;
-@synthesize timestampForDownload = _timestampForDownload;
-@synthesize week = _week;
+@synthesize currentDate = _currentDate;
+@synthesize currentWeek = _currentWeek;
+@synthesize previousDate = _previousDate;
+@synthesize nextDate = _nextDate;
 
 static DataFactory *_dataFactory;
 
@@ -29,7 +30,6 @@ static DataFactory *_dataFactory;
     if(self)
     {
         self.currentDate = date;
-        self.timestampForDownload = date;
     }
     return self;
 }
@@ -50,7 +50,7 @@ static DataFactory *_dataFactory;
 
 - (Day *) getDayForDate:(NSDate *) date
 {
-    for(Day *d in self.week.days)
+    for(Day *d in self.currentWeek.days)
     {
         if([date isEqualToDate:d.date])
         {
@@ -60,24 +60,34 @@ static DataFactory *_dataFactory;
     return nil;
 }
 
-- (AppState *) nextDay
+- (NSDate *)previousDate
 {
-    self.currentDate = [self.currentDate dateByAddingTimeInterval:ONE_DAY_IN_SECONDS];
+    return [self.currentDate dateByAddingTimeInterval:ONE_DAY_IN_SECONDS];
+}
+
+- (NSDate *)nextDate
+{
+    return [self.currentDate dateByAddingTimeInterval:ONE_DAY_IN_SECONDS * -1];
+}
+
+- (AppState *) navigateNextDay
+{
+    self.currentDate = [self previousDate];
     return self;
 }
-- (AppState *) previousDay
+- (AppState *) navigatePreviousDay
 {
-    self.currentDate = [self.currentDate dateByAddingTimeInterval:ONE_DAY_IN_SECONDS * -1];
+    self.currentDate = [self nextDate];
     return self;
 }
 
-- (AppState *) nextWeek
+- (AppState *) navigateNextWeek
 {
     // TODO: Navigate
     return self;
 }
 
-- (AppState *) previousWeek
+- (AppState *) navigatePreviousWeek
 {
     // TODO: Navigate
     return self;
@@ -85,7 +95,7 @@ static DataFactory *_dataFactory;
 
 - (Project *) getProjectByNumber:(NSString *) projectNumber
 {
-    for(Project *p in self.week.projects)
+    for(Project *p in self.currentWeek.projects)
     {
         if([p.projectNumber isEqualToString:projectNumber])
         {

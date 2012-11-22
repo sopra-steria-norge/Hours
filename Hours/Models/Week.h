@@ -15,4 +15,5 @@
 @property(nonatomic, strong) NSMutableArray *projects;
 @property(nonatomic, copy) NSString *description;
 @property(nonatomic, copy) NSString *normTime;
+@property(nonatomic, copy) NSDate *downloadTimestamp;
 @end

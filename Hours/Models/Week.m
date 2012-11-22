@@ -16,6 +16,7 @@
 @synthesize description = _description;
 @synthesize normTime = _normTime;
 @synthesize projects = _projects;
+@synthesize downloadTimestamp = _downloadTimestamp;
 
 -(id) init
 {

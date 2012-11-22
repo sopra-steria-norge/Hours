@@ -17,18 +17,19 @@
 
 @interface AppState : NSObject
 
-@property(nonatomic, strong) NSDate *currentDate;
+@property(nonatomic, strong) Week *currentWeek;
 @property(nonatomic, readonly, weak) Day *currentDay;
-@property(nonatomic, strong) NSDate *timestampForDownload;
-@property(nonatomic, strong) Week *week;
+@property(nonatomic, strong) NSDate *currentDate;
+@property(nonatomic, readonly, weak) NSDate *nextDate;
+@property(nonatomic, readonly, weak) NSDate *previousDate;
 
 - (id) initWithDate:(NSDate *) date;
 - (Day *) getDayForDate:(NSDate *) date;
 - (Project *) getProjectByNumber:(NSString *) projectNumber;
-- (AppState *) nextDay;
-- (AppState *) previousDay;
-- (AppState *) nextWeek;
-- (AppState *) previousWeek;
+- (AppState *) navigateNextDay;
+- (AppState *) navigatePreviousDay;
+- (AppState *) navigateNextWeek;
+- (AppState *) navigatePreviousWeek;
 
 + (AppState *) deserializeOrLoadForReceiver:(id<AppStateReceiver>) receiver;
 + (void) clear;

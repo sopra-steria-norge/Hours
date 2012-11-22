@@ -118,7 +118,7 @@ NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
 - (void)didReceiveAppState:(AppState*) state
 {
     // For testing's sake, set the date to a date in the returned data
-    state.currentDate = [[state.week.days objectAtIndex:0] date];
+    state.currentDate = [[state.currentWeek.days objectAtIndex:0] date];
     
     self.state = state;
     
@@ -255,12 +255,12 @@ NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
 
 - (IBAction)btnNext:(id)sender
 {
-    self.state = [self.state nextDay];
+    self.state = [self.state navigateNextDay];
 }
 
 - (IBAction)btnBack:(id)sender
 {
-    self.state = [self.state previousDay];
+    self.state = [self.state navigatePreviousDay];
 }
 
 - (void)viewDidUnload {
