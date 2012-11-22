@@ -164,7 +164,11 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Cak-jW-p66"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Beu-30-DnJ"/>
-                                    <barButtonItem systemItem="trash" id="2qq-ms-icU"/>
+                                    <barButtonItem systemItem="trash" id="2qq-ms-icU">
+                                        <connections>
+                                            <action selector="buttonDelete:" destination="MUn-MX-doj" id="QwG-Lr-rP7"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                                 <color key="tintColor" red="1" green="0.49803921580314636" blue="0.14117647707462311" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
@@ -482,6 +486,7 @@
         <class className="RegistrationAddViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationAddViewController.h"/>
             <relationships>
+                <relationship kind="action" name="buttonDelete:"/>
                 <relationship kind="action" name="buttonOkClicked:"/>
                 <relationship kind="action" name="buttonSevenPointFive:"/>
                 <relationship kind="action" name="buttonZeroPointFive:"/>

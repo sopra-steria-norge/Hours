@@ -25,11 +25,15 @@
 
 - (id) initWithDate:(NSDate *) date;
 - (Day *) getDayForDate:(NSDate *) date;
-- (Project *) getProjectByNumber:(NSString *) projectNumber;
+- (Project *) getProjectByNumber:(NSString *) projectNumber andActivityCode:(NSString *)activityCode;
 - (AppState *) navigateNextDay;
 - (AppState *) navigatePreviousDay;
 - (AppState *) navigateNextWeek;
 - (AppState *) navigatePreviousWeek;
+
+@property(nonatomic, readonly, strong) NSArray *registrationsToSave;
+- (void) addExistingRegistrationToSaveQueue:(Registration *)existingRegistration;
+- (void) addNewRegistrationToSaveQueueWithProjectNumber:(NSString *)projectNumber activityCode:(NSString *)activityCode hours:(double) hours andDescription:(NSString *)description;
 
 + (AppState *) deserializeOrLoadForReceiver:(id<AppStateReceiver>) receiver;
 + (void) clear;

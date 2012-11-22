@@ -19,5 +19,6 @@
 @synthesize submitted = _submitted;
 @synthesize approved = _approved;
 @synthesize rejected = _rejected;
+@synthesize markedForDeletion = _markedForDeletion;
 
 @end

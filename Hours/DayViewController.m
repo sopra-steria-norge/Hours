@@ -108,6 +108,11 @@ NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
     if(state)
     {
         self.state = state;
+        
+        if(self.state.registrationsToSave.count > 0)
+        {
+            // TODO: Send to server, refetch period afterwards!
+        }
     }
     else
     {
@@ -117,8 +122,7 @@ NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
 
 - (void)didReceiveAppState:(AppState*) state
 {
-    // For testing's sake, set the date to a date in the returned data
-    state.currentDate = [[state.currentWeek.days objectAtIndex:0] date];
+    state.currentDate = [[state.currentWeek.days objectAtIndex:0] date]; // TODO: NB! THIS IS FOR TESTING'S SAKE, MUST BE REMOVED WHEN REAL DATA COMES IN
     
     self.state = state;
     
@@ -181,7 +185,7 @@ NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
             cell = [self getCell:tableView forIndexPath:indexPath withCellIdentifier:@"DayCellStyle"];
             Registration *r = [currentDay.registrations objectAtIndex:indexPath.row];
         
-            Project *p = [self.state getProjectByNumber:r.projectNumber];
+            Project *p = [self.state getProjectByNumber:r.projectNumber andActivityCode:r.projectNumber];
             cell.textLabel.text = p.projectName;
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%.1f", r.hours];
         }

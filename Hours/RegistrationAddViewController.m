@@ -12,7 +12,6 @@
 
 @property (nonatomic, strong) AppState *state;
 @property (nonatomic, strong) Registration *registration;
-@property (nonatomic) double currentValue;
 @property (nonatomic, strong) NSArray *projectValues;
 @property (nonatomic, readonly, strong) NSArray *hourValues;
 @property (weak, nonatomic) IBOutlet UIButton *buttonOk;
@@ -22,11 +21,11 @@
 - (IBAction)buttonOkClicked:(id)sender;
 - (IBAction)buttonSevenPointFive:(id)sender;
 - (IBAction)buttonZeroPointFive:(id)sender;
+- (IBAction)buttonDelete:(id)sender;
 @end
 
 @implementation RegistrationAddViewController
 
-@synthesize currentValue = _currentValue;
 @synthesize state = _state;
 @synthesize registration = _registration;
 @synthesize hourValues = _hourValues;
@@ -79,11 +78,10 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    if(!self.registration)
+    if(self.registration)
     {
-        self.registration = [[Registration alloc] init];
+        [self setHourPickerToRegistrationHoursForValue:self.registration.hours];      
     }
-    [self setHourPickerToRegistrationHours];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -121,13 +119,23 @@
 {
     self.state = state;
     self.registration = registration;
-    self.currentValue = registration.hours;
     NSMutableArray *projects;
 
     if(registration)
     {
-        projects = [[NSMutableArray alloc] init];
-        for(Project *p in self.state.currentWeek.projects)
+        projects = [self findProjectForRegistration:registration];
+    }
+    else
+    {
+        projects = state.currentWeek.projects;
+    }
+    _projectValues = projects.copy; // TODO: Remove projects that are already registered that day?
+}
+
+- (NSMutableArray *)findProjectForRegistration:(Registration *)registration
+{
+    NSMutableArray *projects = [[NSMutableArray alloc] init];
+    for(Project *p in self.state.currentWeek.projects)
         {
             if([p.projectNumber isEqualToString:registration.projectNumber])
             {
@@ -135,12 +143,7 @@
                 break;
             }
         }
-    }
-    else
-    {
-        projects = state.currentWeek.projects;
-    }
-    _projectValues = projects.copy; // TODO: Remove existing?
+    return projects;
 }
 
 +(NSArray *)getHourValues
@@ -160,27 +163,45 @@
 
 - (IBAction)buttonOkClicked:(id)sender
 {
-    self.registration.hours = self.currentValue;
+    int selectedRow =[self.hourPickerView selectedRowInComponent:0];
+    double hours = [[self.hourValues objectAtIndex:selectedRow] doubleValue];
+    
+    if(self.registration)
+    {
+        self.registration.hours = hours;
+        [self.state addExistingRegistrationToSaveQueue:self.registration];
+    }
+    else
+    {
+        Project *selectedProject = [self.projectValues objectAtIndex:[self.projectPickerView selectedRowInComponent:0]];
+        [self.state addNewRegistrationToSaveQueueWithProjectNumber:selectedProject.projectNumber activityCode:selectedProject.activityCode hours:hours andDescription:@""];
+    }
+
     [self dismissModalViewControllerAnimated: YES];
 }
 - (IBAction)buttonSevenPointFive:(id)sender
 {
-    self.currentValue = 7.5;
-    [self setHourPickerToRegistrationHours];
+    [self setHourPickerToRegistrationHoursForValue: 7.5];
 }
 
 - (IBAction)buttonZeroPointFive:(id)sender
 {
-    self.currentValue = 0.5;
-    [self setHourPickerToRegistrationHours];
+    [self setHourPickerToRegistrationHoursForValue: 0.5];
 }
 
-- (void) setHourPickerToRegistrationHours
+- (IBAction)buttonDelete:(id)sender
 {
     if(self.registration)
     {
-        int row = (int)(self.currentValue / 0.5);
-        [self.hourPickerView selectRow:row inComponent:0 animated:YES];
+        self.registration.markedForDeletion = YES;
+        [self.state addExistingRegistrationToSaveQueue:self.registration];
     }
+    [self dismissModalViewControllerAnimated: YES];
+}
+
+- (void) setHourPickerToRegistrationHoursForValue:(double) value
+{
+    int row = (int)(value / 0.5);
+    [self.hourPickerView selectRow:row inComponent:0 animated:YES];
 }
 @end

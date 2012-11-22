@@ -15,10 +15,12 @@
 @property(nonatomic, copy) NSString *activityCode;
 @property(nonatomic, copy) NSString *workType;
 @property(nonatomic, copy) NSString *description;
-@property(nonatomic) double hours;
 @property(nonatomic, copy) NSString *projectNumber;
+@property(nonatomic) double hours;
 @property(nonatomic) BOOL submitted;
 @property(nonatomic) BOOL approved;
 @property(nonatomic) BOOL rejected;
+
+@property(nonatomic) BOOL markedForDeletion;
 
 @end

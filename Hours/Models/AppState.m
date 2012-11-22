@@ -10,11 +10,12 @@
 #import "DataFactory.h"
 
 @interface AppState()
+@property(nonatomic, strong) NSMutableArray *registrationsToSave;
 @end
 
 @implementation AppState
 
-const char *url = "http://fakeswhrs.azurewebsites.net/";
+NSString * const URL = @"http://fakeswhrs.azurewebsites.net/";
 const int ONE_DAY_IN_SECONDS = 60*60*24;
 
 @synthesize currentDay = _currentDay;
@@ -22,14 +23,26 @@ const int ONE_DAY_IN_SECONDS = 60*60*24;
 @synthesize currentWeek = _currentWeek;
 @synthesize previousDate = _previousDate;
 @synthesize nextDate = _nextDate;
+@synthesize registrationsToSave = _registrationsToSave;
 
 static DataFactory *_dataFactory;
 
-- (id) initWithDate:(NSDate *) date {
+- (id) initWithDate:(NSDate *) date
+{
     self = [self init];
     if(self)
     {
         self.currentDate = date;
+    }
+    return self;
+}
+
+- (id) init
+{
+    self = [super init];
+    if(self)
+    {
+        self.registrationsToSave = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -93,11 +106,11 @@ static DataFactory *_dataFactory;
     return self;
 }
 
-- (Project *) getProjectByNumber:(NSString *) projectNumber
+- (Project *) getProjectByNumber:(NSString *) projectNumber andActivityCode:(NSString *)activityCode
 {
     for(Project *p in self.currentWeek.projects)
     {
-        if([p.projectNumber isEqualToString:projectNumber])
+        if([p.projectNumber isEqualToString:projectNumber] && [p.activityCode isEqualToString:activityCode])
         {
             return p;
         }
@@ -105,13 +118,38 @@ static DataFactory *_dataFactory;
     return nil;
 }
 
+- (NSArray *) registrationsToSave
+{
+    return _registrationsToSave.copy;
+}
+
+- (void) addExistingRegistrationToSaveQueue:(Registration *)existingRegistration
+{
+    [self addRegistrationForUpdate:existingRegistration];
+}
+- (void) addNewRegistrationToSaveQueueWithProjectNumber:(NSString *)projectNumber activityCode:(NSString *)activityCode hours:(double) hours andDescription:(NSString *)description
+{
+    Registration *registration = [[Registration alloc] init];
+    registration.projectNumber = projectNumber;
+    registration.activityCode = activityCode;
+    registration.hours = hours;
+    registration.description = description;
+
+    [self addRegistrationForUpdate:registration];
+}
+
+- (void)addRegistrationForUpdate:(Registration *)registration {
+    NSMutableArray *mutableCopy = _registrationsToSave.mutableCopy;
+    [mutableCopy addObject:registration];
+    _registrationsToSave = mutableCopy.copy;
+}
 
 +(AppState *) deserializeOrLoadForReceiver:(id<AppStateReceiver>) receiver;
 {
     AppState *state = [DataFactory sharedState];
     if(!state)
     {
-        NSURL *url = [NSURL URLWithString:@"http://fakeswhrs.azurewebsites.net/"];
+        NSURL *url = [NSURL URLWithString:URL];
         [[AppState dataFactory] startGetDataFromUrl:url forDate:[[NSDate alloc] init] andDelegateReceiver:receiver];
     }
 
