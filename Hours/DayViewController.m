@@ -149,17 +149,16 @@ NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    int count = 0;
     if(self.state)
     {
-        int count = self.state.currentDay.registrations.count;
-        if(count == 0)
+        count = self.state.currentDay.registrations.count;
+        if(count == 0) // This triggers "copy yesterday"        
         {
-            return 2;
+            count += 1;
         }
-        
-        return count + 1;
     }
-    return 0;
+    return count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -168,24 +167,18 @@ NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
     if(self.state)
     {
         Day *currentDay = self.state.currentDay;
-        if(currentDay.registrations.count == 0 && indexPath.row == 0)
+        if(indexPath.row >= currentDay.registrations.count)
         {
             cell = [self getCell:tableView forIndexPath:indexPath withCellIdentifier:@"CopyRegistrationsCell"];
             cell.textLabel.text = @"";
-            cell.detailTextLabel.text = @"copy last day...";
-        }
-        else if(indexPath.row >= currentDay.registrations.count)
-        {
-            cell = [self getCell:tableView forIndexPath:indexPath withCellIdentifier:@"AddRegistrationCell"];
-            cell.textLabel.text = @"";
-            cell.detailTextLabel.text = @"add more...";
+            cell.detailTextLabel.text = @"copy yesterday...";
         }
         else
         {
             cell = [self getCell:tableView forIndexPath:indexPath withCellIdentifier:@"DayCellStyle"];
             Registration *r = [currentDay.registrations objectAtIndex:indexPath.row];
         
-            Project *p = [self.state getProjectByNumber:r.projectNumber andActivityCode:r.projectNumber];
+            Project *p = [self.state getProjectByNumber:r.projectNumber andActivityCode:r.activityCode];
             cell.textLabel.text = p.projectName;
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%.1f", r.hours];
         }

@@ -245,33 +245,8 @@
                                             <segue destination="MUn-MX-doj" kind="modal" identifier="ModifyRegistrationSegue" id="I9f-3p-qF7"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="AddRegistrationCell" textLabel="T3w-Cj-XQ4" detailTextLabel="LOe-YI-VoB" style="IBUITableViewCellStyleValue1" id="mi2-j3-eNs">
-                                        <rect key="frame" x="0.0" y="66" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T3w-Cj-XQ4">
-                                                    <rect key="frame" x="10" y="11" width="35" height="21"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOe-YI-VoB">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <connections>
-                                            <segue destination="MUn-MX-doj" kind="modal" identifier="AddRegistrationSegue" id="8do-VG-W6O"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="CopyRegistrationsCell" textLabel="cEx-Jk-w1w" detailTextLabel="Qpy-se-NNv" style="IBUITableViewCellStyleValue1" id="Zfg-zs-LN4">
-                                        <rect key="frame" x="0.0" y="110" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -318,14 +293,40 @@
                                 </items>
                                 <color key="tintColor" red="1" green="0.49803921580314636" blue="0.14117647707462311" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bhQ-eC-Cj6">
+                                <items/>
+                                <color key="tintColor" red="1" green="0.49803921580314636" blue="0.14117647707462311" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbP-4c-aRC">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="5hR-za-eyA"/>
+                                    <constraint firstAttribute="width" constant="73" id="fr7-AY-9RT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="47"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="MUn-MX-doj" kind="modal" identifier="AddRegistrationSegue" id="pJW-NM-RH9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94509810209274292" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="lwk-RB-zhz" firstAttribute="top" secondItem="dkO-we-Hjh" secondAttribute="bottom" type="default" id="49V-RK-ULR"/>
                             <constraint firstItem="dkO-we-Hjh" firstAttribute="leading" secondItem="16" secondAttribute="leading" type="default" id="G1X-i6-5xX"/>
-                            <constraint firstItem="lwk-RB-zhz" firstAttribute="bottom" secondItem="16" secondAttribute="bottom" type="default" id="IDF-P6-42z"/>
+                            <constraint firstItem="bhQ-eC-Cj6" firstAttribute="leading" secondItem="16" secondAttribute="leading" type="default" id="WUI-6U-TVF"/>
                             <constraint firstItem="dkO-we-Hjh" firstAttribute="top" secondItem="16" secondAttribute="top" type="default" id="bF1-lB-CQC"/>
+                            <constraint firstItem="bhQ-eC-Cj6" firstAttribute="top" secondItem="lwk-RB-zhz" secondAttribute="bottom" type="default" id="iUV-I0-7qM"/>
                             <constraint firstItem="lwk-RB-zhz" firstAttribute="leading" secondItem="16" secondAttribute="leading" type="default" id="j2v-Qx-Z8n"/>
+                            <constraint firstItem="bhQ-eC-Cj6" firstAttribute="bottom" secondItem="16" secondAttribute="bottom" type="default" id="j3J-Yk-F65"/>
+                            <constraint firstItem="bhQ-eC-Cj6" firstAttribute="trailing" secondItem="16" secondAttribute="trailing" type="default" id="jAu-nW-uT5"/>
+                            <constraint firstAttribute="bottom" secondItem="DbP-4c-aRC" secondAttribute="bottom" constant="1" id="lim-E0-vtk"/>
+                            <constraint firstItem="DbP-4c-aRC" firstAttribute="centerX" secondItem="bhQ-eC-Cj6" secondAttribute="centerX" type="default" id="p7E-cN-Ziv"/>
                             <constraint firstItem="lwk-RB-zhz" firstAttribute="trailing" secondItem="16" secondAttribute="trailing" type="default" id="u8D-il-idt"/>
                             <constraint firstItem="dkO-we-Hjh" firstAttribute="trailing" secondItem="16" secondAttribute="trailing" type="default" id="xaz-PK-jLf"/>
                         </constraints>
@@ -512,6 +513,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="8do-VG-W6O"/>
+        <segue reference="pJW-NM-RH9"/>
     </inferredMetricsTieBreakers>
 </document>
