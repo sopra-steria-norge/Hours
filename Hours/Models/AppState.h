@@ -22,6 +22,8 @@
 @property(nonatomic, strong) NSDate *currentDate;
 @property(nonatomic, readonly, weak) NSDate *nextDate;
 @property(nonatomic, readonly, weak) NSDate *previousDate;
+@property(nonatomic, readonly, weak) NSString *currentDayTitle;
+
 
 - (id) initWithDate:(NSDate *) date;
 - (Day *) getDayForDate:(NSDate *) date;
@@ -30,6 +32,9 @@
 - (AppState *) navigatePreviousDay;
 - (AppState *) navigateNextWeek;
 - (AppState *) navigatePreviousWeek;
+
+- (NSString *)getTitleForDate:(NSDate *) date;
+
 
 @property(nonatomic, readonly, strong) NSArray *registrationsToSave;
 - (void) addExistingRegistrationToSaveQueue:(Registration *)existingRegistration;

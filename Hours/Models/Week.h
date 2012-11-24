@@ -16,4 +16,7 @@
 @property(nonatomic, copy) NSString *description;
 @property(nonatomic, copy) NSString *normTime;
 @property(nonatomic, copy) NSDate *downloadTimestamp;
+
+@property(nonatomic) bool isSubmitted;
+@property(nonatomic) bool isApproved;
 @end

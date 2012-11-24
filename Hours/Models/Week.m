@@ -7,7 +7,6 @@
 //
 
 #import "Week.h"
-
 @implementation Week {
     NSDateFormatter *dateFormatter;
 }
@@ -17,6 +16,8 @@
 @synthesize normTime = _normTime;
 @synthesize projects = _projects;
 @synthesize downloadTimestamp = _downloadTimestamp;
+@synthesize isSubmitted = _isSubmitted;
+@synthesize isApproved = _isApproved;
 
 -(id) init
 {

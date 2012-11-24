@@ -12,15 +12,9 @@
 #import "RegistrationAddViewController.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 
-NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
-
 @interface DayViewController () <AppStateReceiver, MBProgressHUDDelegate> {
     MBProgressHUD *HUD;
 }
-
-// Formatters
-@property (nonatomic, readonly, strong) NSDateFormatter *dateFormatter;
-@property (nonatomic, readonly, strong) NSDateFormatter *dayFormatter;
 
 // UI Controllers
 @property (weak, nonatomic) IBOutlet UITableView *tblRegistrations;
@@ -28,6 +22,7 @@ NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnDayName;
 - (IBAction)btnNext:(id)sender;
 - (IBAction)btnBack:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *buttonAdd;
 
 // Data fetching
 @property (strong, nonatomic) DataFactory *dataFactory;
@@ -37,8 +32,6 @@ NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
 
 @synthesize state = _state;
 @synthesize dataFactory = _dataFactory;
-@synthesize dateFormatter = _dateFormatter;
-@synthesize dayFormatter = _dayFormatter;
 
 - (void)viewDidLoad
 {
@@ -57,50 +50,16 @@ NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
     NSString *title;
     if(state)
     {
-        title = [self getDescriptionFromState:state];
+        title = [state currentDayTitle];
     }
     else
     {
         title = @"...";
     }
     self.btnTitle.title = title;
-    
+    self.buttonAdd.enabled = !self.state.currentWeek.isSubmitted;
     [self.tblRegistrations reloadData];
 }
-
-- (NSString *)getDescriptionFromState:(AppState *)state
-{
-    NSString *temp = [self.dateFormatter stringFromDate:state.currentDate];
-    NSString *temp2 = [self.dayFormatter stringFromDate:state.currentDate];    
-    NSString *title = [[NSString alloc] initWithFormat:@"%@ %@", temp2, temp, nil];
-    return title;
-}
-
--(NSDateFormatter *) dateFormatter
-{
-    if(!_dateFormatter)
-    {
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateStyle:NSDateFormatterShortStyle];
-        [formatter setTimeStyle:NSDateFormatterNoStyle];
-        _dateFormatter = formatter;
-    }
-    
-    return _dateFormatter;
-}
-
--(NSDateFormatter *) dayFormatter
-{
-    if(!_dayFormatter)
-    {
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:WEEKDAY_DATE_FORMAT];
-        _dayFormatter = formatter;
-    }
-    
-    return _dayFormatter;
-}
-
 
 - (void) viewWillAppear:(BOOL)animated
 {
@@ -153,10 +112,14 @@ NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
     if(self.state)
     {
         count = self.state.currentDay.registrations.count;
-        if(count == 0) // This triggers "copy yesterday"        
+        if(!self.state.currentWeek.isSubmitted)
         {
-            count += 1;
+            if(count == 0) // This triggers "copy yesterday"
+            {
+                count += 1;
+            }
         }
+        
     }
     return count;
 }
@@ -166,32 +129,57 @@ NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
     UITableViewCell *cell;
     if(self.state)
     {
-        Day *currentDay = self.state.currentDay;
-        if(indexPath.row >= currentDay.registrations.count)
+        if(!self.state.currentWeek.isSubmitted)
         {
-            cell = [self getCell:tableView forIndexPath:indexPath withCellIdentifier:@"CopyRegistrationsCell"];
-            cell.textLabel.text = @"";
-            cell.detailTextLabel.text = @"copy yesterday...";
+            cell = [self getEditableCell:tableView indexPath:indexPath cell:cell];
         }
         else
         {
-            cell = [self getCell:tableView forIndexPath:indexPath withCellIdentifier:@"DayCellStyle"];
-            Registration *r = [currentDay.registrations objectAtIndex:indexPath.row];
-        
-            Project *p = [self.state getProjectByNumber:r.projectNumber andActivityCode:r.activityCode];
-            cell.textLabel.text = p.projectName;
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%.1f", r.hours];
+            cell = [self getReadOnlyCell:tableView indexPath:indexPath cell:cell];
         }
     }
     else
     {
-        cell = [self getCell:tableView forIndexPath:indexPath withCellIdentifier:@"DayCellStyle"];
+        cell = [self getCell:tableView forIndexPath:indexPath withCellIdentifier:@"EditDayCellStyle"];
         cell.textLabel.text = @"no data";
         cell.detailTextLabel.text = @"";
     }
     
     return cell;
 }
+
+- (UITableViewCell *)getEditableCell:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath cell:(UITableViewCell *)cell {
+    Day *currentDay = self.state.currentDay;
+    if(indexPath.row >= currentDay.registrations.count)
+            {
+                cell = [self getCell:tableView forIndexPath:indexPath withCellIdentifier:@"CopyRegistrationsCell"];
+                cell.textLabel.text = @"";
+                cell.detailTextLabel.text = @"copy yesterday...";
+            }
+            else
+            {
+                cell = [self getCell:tableView forIndexPath:indexPath withCellIdentifier:@"ModifyDayCellStyle"];
+                Registration *r = [currentDay.registrations objectAtIndex:indexPath.row];
+
+                Project *p = [self.state getProjectByNumber:r.projectNumber andActivityCode:r.activityCode];
+                cell.textLabel.text = p.projectName;
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%.1f", r.hours];
+            }
+    return cell;
+}
+
+- (UITableViewCell *)getReadOnlyCell:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath cell:(UITableViewCell *)cell {
+    Day *currentDay = self.state.currentDay;
+    cell = [self getCell:tableView forIndexPath:indexPath withCellIdentifier:@"ViewDayCellStyle"];
+    Registration *r = [currentDay.registrations objectAtIndex:indexPath.row];
+
+    Project *p = [self.state getProjectByNumber:r.projectNumber andActivityCode:r.activityCode];
+    cell.textLabel.text = p.projectName;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%.1f", r.hours];
+
+    return cell;
+}
+
 
 - (UITableViewCell *)getCell:(UITableView *)tableView forIndexPath:(NSIndexPath *)indexPath withCellIdentifier:(NSString *)cellIdentifier {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
@@ -264,6 +252,7 @@ NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
     [self setTblRegistrations:nil];
     [self setBtnDayName:nil];
     [self setBtnTitle:nil];
+    [self setButtonAdd:nil];
     [super viewDidUnload];
 }
 

@@ -104,8 +104,7 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yq9-zx-RGd">
                                 <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="orC-96-X1s"/>
-                                    <barButtonItem title="Tuesday" style="plain" id="R79-rE-TJN"/>
+                                    <barButtonItem title="..." style="plain" id="R79-rE-TJN"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Gcu-bl-M5V"/>
                                     <barButtonItem title="Cancel" id="4xl-PB-jNn">
                                         <connections>
@@ -172,7 +171,10 @@
                                 </items>
                                 <color key="tintColor" red="1" green="0.49803921580314636" blue="0.14117647707462311" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Registration exists for day!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpM-n2-Daj">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpM-n2-Daj">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="lIl-1P-7to"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -180,19 +182,19 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94117647409439087" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="WqD-78-fwE" firstAttribute="top" secondItem="yq9-zx-RGd" secondAttribute="bottom" type="default" id="0ae-8t-fNE"/>
-                            <constraint firstItem="56z-Wr-UWA" firstAttribute="top" secondItem="kpM-n2-Daj" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="2Z2-e8-iAI"/>
                             <constraint firstItem="pgA-za-RtO" firstAttribute="top" secondItem="yq9-zx-RGd" secondAttribute="bottom" type="default" id="4kw-EA-NMY"/>
                             <constraint firstItem="yq9-zx-RGd" firstAttribute="trailing" secondItem="vvt-jU-RLE" secondAttribute="trailing" type="default" id="8vl-kp-ays"/>
+                            <constraint firstItem="WqD-78-fwE" firstAttribute="top" secondItem="pgA-za-RtO" secondAttribute="top" type="default" id="9Ws-l2-yZ0"/>
+                            <constraint firstAttribute="bottom" secondItem="56z-Wr-UWA" secondAttribute="bottom" constant="51" id="A37-Rk-txR"/>
                             <constraint firstItem="Oax-80-371" firstAttribute="trailing" secondItem="vvt-jU-RLE" secondAttribute="trailing" type="default" id="BOw-hX-EoB"/>
                             <constraint firstItem="Oax-80-371" firstAttribute="bottom" secondItem="vvt-jU-RLE" secondAttribute="bottom" type="default" id="E82-ve-reh"/>
                             <constraint firstAttribute="trailing" secondItem="kpM-n2-Daj" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="FVt-yG-08J"/>
+                            <constraint firstItem="56z-Wr-UWA" firstAttribute="centerX" secondItem="Oax-80-371" secondAttribute="centerX" type="default" id="JJ2-M3-il4"/>
                             <constraint firstItem="yq9-zx-RGd" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" type="default" id="NOL-su-vpS"/>
-                            <constraint firstItem="56z-Wr-UWA" firstAttribute="centerX" secondItem="kpM-n2-Daj" secondAttribute="centerX" type="default" id="b78-qX-5yG"/>
-                            <constraint firstItem="kpM-n2-Daj" firstAttribute="top" secondItem="pgA-za-RtO" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="fYr-TU-bcy"/>
+                            <constraint firstItem="kpM-n2-Daj" firstAttribute="top" secondItem="WqD-78-fwE" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="UIm-Ei-YjT"/>
+                            <constraint firstItem="kpM-n2-Daj" firstAttribute="top" secondItem="pgA-za-RtO" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="aDg-gZ-qXA"/>
                             <constraint firstItem="yq9-zx-RGd" firstAttribute="top" secondItem="vvt-jU-RLE" secondAttribute="top" type="default" id="gkP-S8-aC0"/>
                             <constraint firstItem="WqD-78-fwE" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" type="default" id="jNO-gu-4fT"/>
-                            <constraint firstItem="kpM-n2-Daj" firstAttribute="top" secondItem="WqD-78-fwE" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="met-VP-4im"/>
                             <constraint firstItem="kpM-n2-Daj" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="oGE-wE-zbY"/>
                             <constraint firstItem="pgA-za-RtO" firstAttribute="trailing" secondItem="vvt-jU-RLE" secondAttribute="trailing" type="default" id="u0A-iV-u5Q"/>
                             <constraint firstItem="Oax-80-371" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" type="default" id="uss-jD-BaM"/>
@@ -201,6 +203,7 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="buttonOk" destination="56z-Wr-UWA" id="Qne-0T-dTc"/>
+                        <outlet property="buttonTitle" destination="R79-rE-TJN" id="Vs9-jV-94V"/>
                         <outlet property="hourPickerView" destination="pgA-za-RtO" id="LQG-Hm-Zdx"/>
                         <outlet property="labelErrorText" destination="kpM-n2-Daj" id="hEd-l8-xis"/>
                         <outlet property="projectPickerView" destination="WqD-78-fwE" id="yTV-6w-qwD"/>
@@ -209,6 +212,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S5F-4u-rMv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1298" y="-347"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="288-tZ-K3X">
+            <objects>
+                <viewController id="Pj8-qn-Mw0" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="x5y-zK-6zN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bkW-Vr-oDJ">
+                                <items/>
+                                <color key="tintColor" red="1" green="0.49803921579999999" blue="0.1411764771" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N4p-m3-w23">
+                                <items/>
+                                <color key="tintColor" red="1" green="0.49803921579999999" blue="0.1411764771" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Registration info..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVE-nU-8HO">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" id="zWi-mC-EZl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="N4p-m3-w23" firstAttribute="leading" secondItem="x5y-zK-6zN" secondAttribute="leading" type="default" id="54d-7I-QOn"/>
+                            <constraint firstItem="bkW-Vr-oDJ" firstAttribute="trailing" secondItem="x5y-zK-6zN" secondAttribute="trailing" type="default" id="Fyd-rm-Beo"/>
+                            <constraint firstItem="bkW-Vr-oDJ" firstAttribute="leading" secondItem="x5y-zK-6zN" secondAttribute="leading" type="default" id="TTc-x2-ETm"/>
+                            <constraint firstItem="bkW-Vr-oDJ" firstAttribute="top" secondItem="x5y-zK-6zN" secondAttribute="top" type="default" id="fkM-WR-ly3"/>
+                            <constraint firstItem="N4p-m3-w23" firstAttribute="bottom" secondItem="x5y-zK-6zN" secondAttribute="bottom" type="default" id="hyD-Ya-Qge"/>
+                            <constraint firstItem="N4p-m3-w23" firstAttribute="trailing" secondItem="x5y-zK-6zN" secondAttribute="trailing" type="default" id="iMo-a4-jhj"/>
+                            <constraint firstItem="CVE-nU-8HO" firstAttribute="centerX" secondItem="bkW-Vr-oDJ" secondAttribute="centerX" type="default" id="ofO-lS-67w"/>
+                            <constraint firstItem="CVE-nU-8HO" firstAttribute="centerY" secondItem="x5y-zK-6zN" secondAttribute="centerY" type="default" id="xPy-hM-vZU"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V9j-bi-GVz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1298" y="303"/>
         </scene>
         <!--Day View Controller - Day-->
         <scene sceneID="11">
@@ -221,7 +267,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="lwk-RB-zhz">
                                 <color key="backgroundColor" red="0.94509810209274292" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DayCellStyle" textLabel="eYg-NS-blI" detailTextLabel="O9y-1l-hon" style="IBUITableViewCellStyleValue1" id="kZI-OR-kqQ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ModifyDayCellStyle" textLabel="eYg-NS-blI" detailTextLabel="O9y-1l-hon" style="IBUITableViewCellStyleValue1" id="kZI-OR-kqQ">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -245,11 +291,34 @@
                                             <segue destination="MUn-MX-doj" kind="modal" identifier="ModifyRegistrationSegue" id="I9f-3p-qF7"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="CopyRegistrationsCell" textLabel="cEx-Jk-w1w" detailTextLabel="Qpy-se-NNv" style="IBUITableViewCellStyleValue1" id="Zfg-zs-LN4">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="CopyRegistrationsCell" textLabel="Nmb-oS-3kC" detailTextLabel="Pru-wf-9K6" style="IBUITableViewCellStyleValue1" id="auA-5q-TmE">
                                         <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nmb-oS-3kC">
+                                                    <rect key="frame" x="10" y="11" width="35" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Pru-wf-9K6">
+                                                    <rect key="frame" x="266" y="11" width="44" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ViewDayCellStyle" textLabel="cEx-Jk-w1w" detailTextLabel="Qpy-se-NNv" style="IBUITableViewCellStyleValue1" id="Zfg-zs-LN4">
+                                        <rect key="frame" x="0.0" y="110" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cEx-Jk-w1w">
@@ -259,7 +328,7 @@
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qpy-se-NNv">
-                                                    <rect key="frame" x="266" y="11" width="44" height="21"/>
+                                                    <rect key="frame" x="246" y="11" width="44" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -267,6 +336,9 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="Pj8-qn-Mw0" kind="modal" id="hp5-Gd-80c"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -335,6 +407,7 @@
                     <connections>
                         <outlet property="btnDayName" destination="2y7-Nf-Nox" id="UgU-yE-cVU"/>
                         <outlet property="btnTitle" destination="2y7-Nf-Nox" id="icd-51-kTb"/>
+                        <outlet property="buttonAdd" destination="DbP-4c-aRC" id="EoJ-K1-Z1E"/>
                         <outlet property="tblRegistrations" destination="lwk-RB-zhz" id="5mu-u4-xOQ"/>
                     </connections>
                 </viewController>
@@ -469,6 +542,7 @@
                 <relationship kind="action" name="btnNext:"/>
                 <relationship kind="outlet" name="btnDayName" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="btnTitle" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="buttonAdd" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="tblRegistrations" candidateClass="UITableView"/>
             </relationships>
         </class>
@@ -492,6 +566,7 @@
                 <relationship kind="action" name="buttonSevenPointFive:"/>
                 <relationship kind="action" name="buttonZeroPointFive:"/>
                 <relationship kind="outlet" name="buttonOk" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonTitle" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="hourPickerView" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="labelErrorText" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="projectPickerView" candidateClass="UIPickerView"/>
@@ -513,6 +588,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="pJW-NM-RH9"/>
+        <segue reference="I9f-3p-qF7"/>
     </inferredMetricsTieBreakers>
 </document>

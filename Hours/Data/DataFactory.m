@@ -65,8 +65,12 @@ static AppState *_sharedState = nil;
     {
         // TODO: Add week to weeks dictionary to cache data between weeks
 
-        state.currentWeek = [objects objectAtIndex:0];
-        state.currentWeek.downloadTimestamp = [[NSDate alloc] init];
+        Week *week = [objects objectAtIndex:0];
+        week.downloadTimestamp = [[NSDate alloc] init];
+        week.isApproved = [DataFactory getApprovedStatusForWeek:week];
+        week.isSubmitted = [DataFactory getSubmittedStatusForWeek:week];
+        
+        state.currentWeek = week;
     }
     
     _sharedState = state;
@@ -122,6 +126,37 @@ static AppState *_sharedState = nil;
     [weekMapping mapKeyPath:@"days" toRelationship:@"days" withMapping:dayMapping];
     return weekMapping;
 }
+
++(bool) getApprovedStatusForWeek:(Week *)week
+{
+    for(Day *day in week.days)
+    {
+        for(Registration *r in day.registrations)
+        {
+            if(r.approved)
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
++(bool) getSubmittedStatusForWeek:(Week *)week
+{
+    for(Day *day in week.days)
+    {
+        for(Registration *r in day.registrations)
+        {
+            if(r.submitted)
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 
 + (AppState*)sharedState
 {

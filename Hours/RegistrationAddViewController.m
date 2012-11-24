@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonOk;
 @property (weak, nonatomic) IBOutlet UILabel *labelErrorText;
 @property (weak, nonatomic) IBOutlet UIPickerView *projectPickerView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonTitle;
 @property (weak, nonatomic) IBOutlet UIPickerView *hourPickerView;
 - (IBAction)buttonOkClicked:(id)sender;
 - (IBAction)buttonSevenPointFive:(id)sender;
@@ -73,15 +74,20 @@
     [self setProjectPickerView:nil];
     [self setHourPickerView:nil];
     [self setLabelErrorText:nil];
+    [self setTitle:nil];
+    [self setButtonTitle:nil];
     [super viewDidUnload];
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
+    self.buttonTitle.title = [self.state currentDayTitle];
+
     if(self.registration)
     {
         [self setHourPickerToRegistrationHoursForValue:self.registration.hours];      
     }
+
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {

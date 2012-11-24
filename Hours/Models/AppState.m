@@ -11,12 +11,18 @@
 
 @interface AppState()
 @property(nonatomic, strong) NSMutableArray *registrationsToSave;
+
+// Formatters
+@property (nonatomic, readonly, strong) NSDateFormatter *dateFormatter;
+@property (nonatomic, readonly, strong) NSDateFormatter *dayFormatter;
+
 @end
 
 @implementation AppState
 
 NSString * const URL = @"http://fakeswhrs.azurewebsites.net/";
 const int ONE_DAY_IN_SECONDS = 60*60*24;
+NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
 
 @synthesize currentDay = _currentDay;
 @synthesize currentDate = _currentDate;
@@ -24,6 +30,9 @@ const int ONE_DAY_IN_SECONDS = 60*60*24;
 @synthesize previousDate = _previousDate;
 @synthesize nextDate = _nextDate;
 @synthesize registrationsToSave = _registrationsToSave;
+@synthesize dateFormatter = _dateFormatter;
+@synthesize dayFormatter = _dayFormatter;
+@synthesize currentDayTitle = _currentDayTitle;
 
 static DataFactory *_dataFactory;
 
@@ -142,6 +151,44 @@ static DataFactory *_dataFactory;
     NSMutableArray *mutableCopy = _registrationsToSave.mutableCopy;
     [mutableCopy addObject:registration];
     _registrationsToSave = mutableCopy.copy;
+}
+
+-(NSString *)currentDayTitle
+{
+    return [self getTitleForDate:self.currentDate];
+}
+
+- (NSString *)getTitleForDate:(NSDate *) date
+{
+    NSString *temp = [self.dateFormatter stringFromDate:date];
+    NSString *temp2 = [self.dayFormatter stringFromDate:date];
+    NSString *title = [[NSString alloc] initWithFormat:@"%@ %@", temp2, temp, nil];
+    return title;
+}
+
+-(NSDateFormatter *) dateFormatter
+{
+    if(!_dateFormatter)
+    {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateStyle:NSDateFormatterShortStyle];
+        [formatter setTimeStyle:NSDateFormatterNoStyle];
+        _dateFormatter = formatter;
+    }
+    
+    return _dateFormatter;
+}
+
+-(NSDateFormatter *) dayFormatter
+{
+    if(!_dayFormatter)
+    {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:WEEKDAY_DATE_FORMAT];
+        _dayFormatter = formatter;
+    }
+    
+    return _dayFormatter;
 }
 
 +(AppState *) deserializeOrLoadForReceiver:(id<AppStateReceiver>) receiver;
