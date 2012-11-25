@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppState.h"
 
-@interface WeekViewController : UIViewController
-
+@interface WeekViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property(nonatomic, strong) AppState *state;
 @end

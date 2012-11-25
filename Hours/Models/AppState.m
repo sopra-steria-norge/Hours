@@ -115,6 +115,11 @@ static DataFactory *_dataFactory;
     return self;
 }
 
+- (bool)isLocked
+{
+    return self.currentWeek.isSubmitted || self.currentWeek.isSubmitted ;
+}
+
 - (Project *) getProjectByNumber:(NSString *) projectNumber andActivityCode:(NSString *)activityCode
 {
     for(Project *p in self.currentWeek.projects)
@@ -158,7 +163,7 @@ static DataFactory *_dataFactory;
     return [self getTitleForDate:self.currentDate];
 }
 
-- (NSString *)getTitleForDate:(NSDate *) date
+- (NSString *)getTitleForDate:(NSDate *) date // TODO: Utility methods, somewhere else to place it?
 {
     NSString *temp = [self.dateFormatter stringFromDate:date];
     NSString *temp2 = [self.dayFormatter stringFromDate:date];

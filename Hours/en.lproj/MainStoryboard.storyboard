@@ -125,11 +125,8 @@
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56z-Wr-UWA">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="129" id="sXr-Rh-4qf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Update">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <state key="normal" title="update">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -182,17 +179,18 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94117647409439087" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="pgA-za-RtO" firstAttribute="top" secondItem="yq9-zx-RGd" secondAttribute="bottom" type="default" id="4kw-EA-NMY"/>
+                            <constraint firstItem="pgA-za-RtO" firstAttribute="top" secondItem="yq9-zx-RGd" secondAttribute="bottom" type="default" id="4R5-ic-7OK"/>
                             <constraint firstItem="yq9-zx-RGd" firstAttribute="trailing" secondItem="vvt-jU-RLE" secondAttribute="trailing" type="default" id="8vl-kp-ays"/>
                             <constraint firstItem="WqD-78-fwE" firstAttribute="top" secondItem="pgA-za-RtO" secondAttribute="top" type="default" id="9Ws-l2-yZ0"/>
                             <constraint firstItem="Oax-80-371" firstAttribute="trailing" secondItem="vvt-jU-RLE" secondAttribute="trailing" type="default" id="BOw-hX-EoB"/>
                             <constraint firstItem="Oax-80-371" firstAttribute="bottom" secondItem="vvt-jU-RLE" secondAttribute="bottom" type="default" id="E82-ve-reh"/>
                             <constraint firstAttribute="trailing" secondItem="kpM-n2-Daj" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="FVt-yG-08J"/>
-                            <constraint firstItem="56z-Wr-UWA" firstAttribute="centerX" secondItem="Oax-80-371" secondAttribute="centerX" type="default" id="JJ2-M3-il4"/>
                             <constraint firstItem="yq9-zx-RGd" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" type="default" id="NOL-su-vpS"/>
+                            <constraint firstItem="56z-Wr-UWA" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="NsJ-y7-M9h"/>
+                            <constraint firstAttribute="trailing" secondItem="56z-Wr-UWA" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="TiV-0a-mLH"/>
                             <constraint firstItem="kpM-n2-Daj" firstAttribute="top" secondItem="WqD-78-fwE" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="UIm-Ei-YjT"/>
                             <constraint firstItem="kpM-n2-Daj" firstAttribute="top" secondItem="pgA-za-RtO" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="aDg-gZ-qXA"/>
-                            <constraint firstAttribute="bottom" secondItem="56z-Wr-UWA" secondAttribute="bottom" constant="60" id="cVc-Vb-GX0"/>
+                            <constraint firstAttribute="bottom" secondItem="56z-Wr-UWA" secondAttribute="bottom" constant="57" id="f6r-QO-3CQ"/>
                             <constraint firstItem="yq9-zx-RGd" firstAttribute="top" secondItem="vvt-jU-RLE" secondAttribute="top" type="default" id="gkP-S8-aC0"/>
                             <constraint firstItem="WqD-78-fwE" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" type="default" id="jNO-gu-4fT"/>
                             <constraint firstItem="kpM-n2-Daj" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="oGE-wE-zbY"/>
@@ -234,7 +232,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XwU-zE-zA8">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                 <state key="normal" title="OK">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -247,14 +245,15 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.92941182851791382" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="XwU-zE-zA8" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="2rT-TO-pFm"/>
+                            <constraint firstItem="CVE-nU-8HO" firstAttribute="centerX" secondItem="XwU-zE-zA8" secondAttribute="centerX" type="default" id="91p-b4-dUx"/>
                             <constraint firstItem="bkW-Vr-oDJ" firstAttribute="trailing" secondItem="x5y-zK-6zN" secondAttribute="trailing" type="default" id="Fyd-rm-Beo"/>
+                            <constraint firstItem="XwU-zE-zA8" firstAttribute="leading" secondItem="x5y-zK-6zN" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="NHR-zU-2a6"/>
+                            <constraint firstAttribute="trailing" secondItem="XwU-zE-zA8" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Shc-ce-lPk"/>
                             <constraint firstItem="bkW-Vr-oDJ" firstAttribute="leading" secondItem="x5y-zK-6zN" secondAttribute="leading" type="default" id="TTc-x2-ETm"/>
-                            <constraint firstItem="XwU-zE-zA8" firstAttribute="centerX" secondItem="CVE-nU-8HO" secondAttribute="centerX" type="default" id="UWd-M7-mCL"/>
+                            <constraint firstAttribute="bottom" secondItem="XwU-zE-zA8" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="d96-7e-RRH"/>
                             <constraint firstItem="bkW-Vr-oDJ" firstAttribute="top" secondItem="x5y-zK-6zN" secondAttribute="top" type="default" id="fkM-WR-ly3"/>
-                            <constraint firstItem="CVE-nU-8HO" firstAttribute="centerX" secondItem="bkW-Vr-oDJ" secondAttribute="centerX" type="default" id="ofO-lS-67w"/>
                             <constraint firstItem="CVE-nU-8HO" firstAttribute="centerY" secondItem="x5y-zK-6zN" secondAttribute="centerY" type="default" id="xPy-hM-vZU"/>
                         </constraints>
                     </view>
@@ -429,7 +428,7 @@
                                 <items>
                                     <barButtonItem systemItem="rewind" id="xbV-JV-O2l">
                                         <connections>
-                                            <action selector="btnBack:" destination="2" id="E3l-IH-sv8"/>
+                                            <action selector="buttonPrevious:" destination="3" id="yYN-65-3mb"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="dvh-Za-T7i"/>
@@ -438,41 +437,71 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="wTs-1R-wHT"/>
                                     <barButtonItem systemItem="fastForward" id="cdc-zw-1mX">
                                         <connections>
-                                            <action selector="btnNext:" destination="2" id="JUM-Vd-TKV"/>
+                                            <action selector="buttonNext:" destination="3" id="h7M-4Y-BdB"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
                                 <color key="tintColor" red="1" green="0.49803921579999999" blue="0.1411764771" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDs-Cr-iBy">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                                <state key="normal" title="submit">
-                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="JqW-fD-mnv">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.93725496530532837" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WeekViewCell" textLabel="gIc-eL-uoV" detailTextLabel="n0U-q1-eVM" style="IBUITableViewCellStyleSubtitle" id="tz3-LA-HT0">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIc-eL-uoV">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n0U-q1-eVM">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="3" id="O8N-uk-Cyi"/>
+                                    <outlet property="delegate" destination="3" id="eEj-y7-kto"/>
+                                </connections>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jps-Bb-mg0">
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="gDL-TR-QTe"/>
+                                    <barButtonItem systemItem="action" id="U4g-Fh-loq"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="HyR-o3-fR9"/>
+                                </items>
+                                <color key="tintColor" red="1" green="0.49803921579999999" blue="0.1411764771" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="0.94509810209274292" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
+                            <constraint firstItem="Jps-Bb-mg0" firstAttribute="top" secondItem="JqW-fD-mnv" secondAttribute="bottom" type="default" id="3Np-9x-OO0"/>
                             <constraint firstItem="Gch-jI-HCe" firstAttribute="top" secondItem="17" secondAttribute="top" type="default" id="8CX-XY-Fp8"/>
-                            <constraint firstAttribute="bottom" secondItem="qDs-Cr-iBy" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="9jb-LP-5EC"/>
-                            <constraint firstItem="qDs-Cr-iBy" firstAttribute="top" secondItem="JqW-fD-mnv" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ESO-Vd-BW2"/>
                             <constraint firstItem="JqW-fD-mnv" firstAttribute="top" secondItem="Gch-jI-HCe" secondAttribute="bottom" type="default" id="FdR-Lu-mZQ"/>
                             <constraint firstItem="JqW-fD-mnv" firstAttribute="trailing" secondItem="17" secondAttribute="trailing" type="default" id="JNX-fw-jUG"/>
+                            <constraint firstItem="Jps-Bb-mg0" firstAttribute="leading" secondItem="17" secondAttribute="leading" type="default" id="KwT-Me-uCr"/>
                             <constraint firstItem="JqW-fD-mnv" firstAttribute="leading" secondItem="17" secondAttribute="leading" type="default" id="KyR-NL-t8K"/>
+                            <constraint firstItem="Jps-Bb-mg0" firstAttribute="bottom" secondItem="17" secondAttribute="bottom" type="default" id="USD-Qb-bnt"/>
                             <constraint firstItem="Gch-jI-HCe" firstAttribute="leading" secondItem="17" secondAttribute="leading" type="default" id="ezY-d5-QWy"/>
                             <constraint firstItem="Gch-jI-HCe" firstAttribute="trailing" secondItem="17" secondAttribute="trailing" type="default" id="nxq-Dv-3Be"/>
-                            <constraint firstAttribute="trailing" secondItem="qDs-Cr-iBy" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="oyj-FK-UZW"/>
-                            <constraint firstItem="qDs-Cr-iBy" firstAttribute="leading" secondItem="17" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="qMb-aa-nrh"/>
+                            <constraint firstItem="Jps-Bb-mg0" firstAttribute="trailing" secondItem="17" secondAttribute="trailing" type="default" id="ucr-nc-2wE"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Week" image="first" id="6"/>
+                    <connections>
+                        <outlet property="buttonSubmit" destination="U4g-Fh-loq" id="pON-jZ-qnQ"/>
+                        <outlet property="buttonTitle" destination="FZJ-Iw-T10" id="xgo-dZ-FhS"/>
+                        <outlet property="tableDays" destination="JqW-fD-mnv" id="Asy-fB-XM3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12" sceneMemberID="firstResponder"/>
             </objects>
@@ -560,61 +589,6 @@
     <resources>
         <image name="first" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="DayViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DayViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnBack:"/>
-                <relationship kind="action" name="btnNext:"/>
-                <relationship kind="outlet" name="btnDayName" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="btnTitle" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="buttonAdd" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonHeaderIcon" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="tblRegistrations" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="LoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="logIn:"/>
-                <relationship kind="outlet" name="errorText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="userName" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="RegistrationAddViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationAddViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="buttonDelete:"/>
-                <relationship kind="action" name="buttonOkClicked:"/>
-                <relationship kind="action" name="buttonSevenPointFive:"/>
-                <relationship kind="action" name="buttonZeroPointFive:"/>
-                <relationship kind="outlet" name="buttonOk" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonTitle" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="hourPickerView" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="labelErrorText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="projectPickerView" candidateClass="UIPickerView"/>
-            </relationships>
-        </class>
-        <class className="RegistrationInfoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationInfoViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="buttonOk:"/>
-            </relationships>
-        </class>
-        <class className="SetupViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SetupViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="logOut:"/>
-            </relationships>
-        </class>
-        <class className="WeekViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WeekViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

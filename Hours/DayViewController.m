@@ -23,7 +23,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnDayName;
 @property (weak, nonatomic) IBOutlet UIButton *buttonAdd;
 
-
 // Data fetching
 @property (strong, nonatomic) DataFactory *dataFactory;
 @end
@@ -56,9 +55,9 @@
     {
         title = @"...";
     }
-    self.buttonAdd.enabled = !self.state.currentWeek.isSubmitted && !self.state.currentWeek.isApproved;
+    self.buttonAdd.enabled = ![self.state isLocked];
     
-    if([self isLocked])
+    if([self.state isLocked])
     {
         self.buttonHeaderIcon.image = [UIImage imageNamed:@"lock.png"];
     }
@@ -138,13 +137,13 @@
     UITableViewCell *cell;
     if(self.state)
     {
-        if([self isLocked])
+        if([self.state isLocked])
         {
-            cell = [self getReadOnlyCell:tableView indexPath:indexPath cell:cell];
+            cell = [self getReadOnlyCell:tableView indexPath:indexPath];
         }
         else
         {
-            cell = [self getEditableCell:tableView indexPath:indexPath cell:cell];            
+            cell = [self getEditableCell:tableView indexPath:indexPath];            
         }
     }
     else
@@ -157,13 +156,11 @@
     return cell;
 }
 
-- (bool)isLocked
+- (UITableViewCell *)getEditableCell:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath
 {
-    return self.state.currentWeek.isSubmitted || self.state.currentWeek.isSubmitted ;
-}
-
-- (UITableViewCell *)getEditableCell:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath cell:(UITableViewCell *)cell {
     Day *currentDay = self.state.currentDay;
+    UITableViewCell *cell;
+    
     if(indexPath.row >= currentDay.registrations.count)
             {
                 cell = [self getCell:tableView forIndexPath:indexPath withCellIdentifier:@"CopyRegistrationsCell"];
@@ -182,9 +179,9 @@
     return cell;
 }
 
-- (UITableViewCell *)getReadOnlyCell:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath cell:(UITableViewCell *)cell {
+- (UITableViewCell *)getReadOnlyCell:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
     Day *currentDay = self.state.currentDay;
-    cell = [self getCell:tableView forIndexPath:indexPath withCellIdentifier:@"ViewDayCellStyle"];
+    UITableViewCell *cell = [self getCell:tableView forIndexPath:indexPath withCellIdentifier:@"ViewDayCellStyle"];
     Registration *r = [currentDay.registrations objectAtIndex:indexPath.row];
 
     Project *p = [self.state getProjectByNumber:r.projectNumber andActivityCode:r.activityCode];

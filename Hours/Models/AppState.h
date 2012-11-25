@@ -24,6 +24,7 @@
 @property(nonatomic, readonly, weak) NSDate *previousDate;
 @property(nonatomic, readonly, weak) NSString *currentDayTitle;
 
+- (bool) isLocked;
 
 - (id) initWithDate:(NSDate *) date;
 - (Day *) getDayForDate:(NSDate *) date;
