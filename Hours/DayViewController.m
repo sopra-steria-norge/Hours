@@ -5,11 +5,11 @@
 //  Created by Tommy Wendelborg on 11/4/12.
 //  Copyright (c) 2012 steria. All rights reserved.
 //
-#import <UIKit/UIKit.h>
 #import "DayViewController.h"
 #import "DataFactory.h"
 #import "AppState.h"
 #import "RegistrationAddViewController.h"
+#import "RegistrationInfoViewController.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 
 @interface DayViewController () <AppStateReceiver, MBProgressHUDDelegate> {
@@ -21,8 +21,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnTitle;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonHeaderIcon;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnDayName;
-- (IBAction)btnNext:(id)sender;
-- (IBAction)btnBack:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *buttonAdd;
 
 
@@ -60,7 +58,7 @@
     }
     self.buttonAdd.enabled = !self.state.currentWeek.isSubmitted && !self.state.currentWeek.isApproved;
     
-    if(self.state.currentWeek.isApproved || self.state.currentWeek.isSubmitted)
+    if([self isLocked])
     {
         self.buttonHeaderIcon.image = [UIImage imageNamed:@"lock.png"];
     }
@@ -140,13 +138,13 @@
     UITableViewCell *cell;
     if(self.state)
     {
-        if(!self.state.currentWeek.isSubmitted)
+        if([self isLocked])
         {
-            cell = [self getEditableCell:tableView indexPath:indexPath cell:cell];
+            cell = [self getReadOnlyCell:tableView indexPath:indexPath cell:cell];
         }
         else
         {
-            cell = [self getReadOnlyCell:tableView indexPath:indexPath cell:cell];
+            cell = [self getEditableCell:tableView indexPath:indexPath cell:cell];            
         }
     }
     else
@@ -157,6 +155,11 @@
     }
     
     return cell;
+}
+
+- (bool)isLocked
+{
+    return self.state.currentWeek.isSubmitted || self.state.currentWeek.isSubmitted ;
 }
 
 - (UITableViewCell *)getEditableCell:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath cell:(UITableViewCell *)cell {
@@ -215,6 +218,14 @@
     {
         RegistrationAddViewController *rvc = [segue destinationViewController];
         [rvc setState:self.state andRegistration:nil];
+    }
+    else
+    {
+        NSIndexPath *selectedRowIndex = [self.tblRegistrations indexPathForSelectedRow];
+        RegistrationInfoViewController *rvc = [segue destinationViewController];
+        Registration *r = [[self.state.currentDay registrations] objectAtIndex:selectedRowIndex.row];
+        
+        [rvc setState:self.state andRegistration:r];
     }
 }
 

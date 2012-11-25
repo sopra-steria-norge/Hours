@@ -9,10 +9,16 @@
 #import "RegistrationInfoViewController.h"
 
 @interface RegistrationInfoViewController ()
+@property (nonatomic, strong) AppState *state;
+@property (nonatomic, strong) Registration *registration;
+
 - (IBAction)buttonOk:(id)sender;
 @end
 
 @implementation RegistrationInfoViewController
+
+@synthesize state = _state;
+@synthesize registration = _registration;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +39,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) setState:(AppState *)state andRegistration:(Registration *) registration
+{
+    self.state = state;
+    self.registration = registration;
 }
 
 - (IBAction)buttonOk:(id)sender

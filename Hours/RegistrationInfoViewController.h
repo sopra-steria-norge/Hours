@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppState.h"
 
 @interface RegistrationInfoViewController : UIViewController
-
+@property (nonatomic, readonly, strong) AppState *state;
+@property (nonatomic, readonly, strong) Registration *registration;
+-(void) setState:(AppState *)state andRegistration:(Registration *) registration;
 @end

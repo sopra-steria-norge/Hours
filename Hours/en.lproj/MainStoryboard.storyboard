@@ -275,11 +275,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="lwk-RB-zhz">
                                 <color key="backgroundColor" red="0.94509810209274292" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ModifyDayCellStyle" textLabel="eYg-NS-blI" detailTextLabel="O9y-1l-hon" style="IBUITableViewCellStyleValue1" id="kZI-OR-kqQ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ModifyDayCellStyle" textLabel="eYg-NS-blI" detailTextLabel="O9y-1l-hon" style="IBUITableViewCellStyleValue1" id="kZI-OR-kqQ">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYg-NS-blI">
@@ -296,7 +296,8 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <segue destination="MUn-MX-doj" kind="modal" identifier="ModifyRegistrationSegue" id="I9f-3p-qF7"/>
+                                            <segue destination="Pj8-qn-Mw0" kind="modal" trigger="accessoryAction" id="jGQ-Ar-hGW"/>
+                                            <segue destination="MUn-MX-doj" kind="modal" identifier="EditRegistrationSegue" id="crr-nO-BmT"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="CopyRegistrationsCell" textLabel="Nmb-oS-3kC" detailTextLabel="Pru-wf-9K6" style="IBUITableViewCellStyleValue1" id="auA-5q-TmE">
@@ -345,7 +346,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <segue destination="Pj8-qn-Mw0" kind="modal" id="hp5-Gd-80c"/>
+                                            <segue destination="Pj8-qn-Mw0" kind="modal" id="WmY-uH-snW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -423,7 +424,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="618" y="-369"/>
+            <point key="canvasLocation" x="618" y="-420"/>
         </scene>
         <!--Week View Controller - Week-->
         <scene sceneID="13">
@@ -550,6 +551,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="I9f-3p-qF7"/>
+        <segue reference="crr-nO-BmT"/>
+        <segue reference="jGQ-Ar-hGW"/>
     </inferredMetricsTieBreakers>
 </document>
