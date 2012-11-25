@@ -375,17 +375,9 @@
                                 </items>
                                 <color key="tintColor" red="1" green="0.49803921580314636" blue="0.14117647707462311" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bhQ-eC-Cj6">
-                                <items/>
-                                <color key="tintColor" red="1" green="0.49803921580314636" blue="0.14117647707462311" alpha="1" colorSpace="calibratedRGB"/>
-                            </toolbar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbP-4c-aRC">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="Aer-aW-nJw"/>
-                                    <constraint firstAttribute="height" constant="49" id="fjR-ei-q2m"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="47"/>
-                                <state key="normal" title="+">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbP-4c-aRC">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <state key="normal" title="add">
                                     <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -400,16 +392,14 @@
                         <color key="backgroundColor" red="0.94509810209274292" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="lwk-RB-zhz" firstAttribute="top" secondItem="dkO-we-Hjh" secondAttribute="bottom" type="default" id="49V-RK-ULR"/>
+                            <constraint firstAttribute="trailing" secondItem="DbP-4c-aRC" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="FEm-lO-Qk5"/>
                             <constraint firstItem="dkO-we-Hjh" firstAttribute="leading" secondItem="16" secondAttribute="leading" type="default" id="G1X-i6-5xX"/>
-                            <constraint firstItem="bhQ-eC-Cj6" firstAttribute="leading" secondItem="16" secondAttribute="leading" type="default" id="WUI-6U-TVF"/>
+                            <constraint firstAttribute="bottom" secondItem="DbP-4c-aRC" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="JKg-QI-RJm"/>
+                            <constraint firstItem="DbP-4c-aRC" firstAttribute="top" secondItem="lwk-RB-zhz" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="LIh-2V-zEI"/>
                             <constraint firstItem="dkO-we-Hjh" firstAttribute="top" secondItem="16" secondAttribute="top" type="default" id="bF1-lB-CQC"/>
-                            <constraint firstItem="DbP-4c-aRC" firstAttribute="bottom" secondItem="16" secondAttribute="bottom" type="default" id="bG1-W6-pLs"/>
+                            <constraint firstItem="DbP-4c-aRC" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="egH-Ey-vaq"/>
                             <constraint firstItem="lwk-RB-zhz" firstAttribute="leading" secondItem="16" secondAttribute="leading" type="default" id="j2v-Qx-Z8n"/>
-                            <constraint firstItem="bhQ-eC-Cj6" firstAttribute="bottom" secondItem="16" secondAttribute="bottom" type="default" id="j3J-Yk-F65"/>
-                            <constraint firstItem="bhQ-eC-Cj6" firstAttribute="trailing" secondItem="16" secondAttribute="trailing" type="default" id="jAu-nW-uT5"/>
-                            <constraint firstItem="DbP-4c-aRC" firstAttribute="centerX" secondItem="bhQ-eC-Cj6" secondAttribute="centerX" type="default" id="p7E-cN-Ziv"/>
                             <constraint firstItem="lwk-RB-zhz" firstAttribute="trailing" secondItem="16" secondAttribute="trailing" type="default" id="u8D-il-idt"/>
-                            <constraint firstItem="bhQ-eC-Cj6" firstAttribute="top" secondItem="lwk-RB-zhz" secondAttribute="bottom" type="default" id="wr5-PX-xZ5"/>
                             <constraint firstItem="dkO-we-Hjh" firstAttribute="trailing" secondItem="16" secondAttribute="trailing" type="default" id="xaz-PK-jLf"/>
                         </constraints>
                     </view>
@@ -434,27 +424,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Week" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="22">
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" editable="NO" text="Loaded by the second view controller — an instance of SecondViewController — specified in the app delegate." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="23">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="88" id="cQR-IW-sY8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gch-jI-HCe">
+                                <color key="backgroundColor" red="0.9450981021" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                <items>
+                                    <barButtonItem systemItem="rewind" id="xbV-JV-O2l">
+                                        <connections>
+                                            <action selector="btnBack:" destination="2" id="E3l-IH-sv8"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="dvh-Za-T7i"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="P6a-uf-1ui"/>
+                                    <barButtonItem title="title" style="plain" id="FZJ-Iw-T10"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wTs-1R-wHT"/>
+                                    <barButtonItem systemItem="fastForward" id="cdc-zw-1mX">
+                                        <connections>
+                                            <action selector="btnNext:" destination="2" id="JUM-Vd-TKV"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" red="1" green="0.49803921579999999" blue="0.1411764771" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDs-Cr-iBy">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <state key="normal" title="submit">
+                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="JqW-fD-mnv">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.94509810209274292" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstItem="22" firstAttribute="leading" secondItem="17" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="0q6-IA-e8m"/>
-                            <constraint firstAttribute="trailing" secondItem="23" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="fR4-wH-Ih7"/>
-                            <constraint firstItem="23" firstAttribute="leading" secondItem="17" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="fzb-YA-SeR"/>
-                            <constraint firstAttribute="centerY" secondItem="23" secondAttribute="centerY" type="user" id="llH-eD-iPS"/>
-                            <constraint firstAttribute="trailing" secondItem="22" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="pc3-9Y-W42"/>
-                            <constraint firstItem="23" firstAttribute="top" secondItem="22" secondAttribute="bottom" constant="40" type="user" id="yUx-Ee-KEk"/>
+                            <constraint firstItem="Gch-jI-HCe" firstAttribute="top" secondItem="17" secondAttribute="top" type="default" id="8CX-XY-Fp8"/>
+                            <constraint firstAttribute="bottom" secondItem="qDs-Cr-iBy" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="9jb-LP-5EC"/>
+                            <constraint firstItem="qDs-Cr-iBy" firstAttribute="top" secondItem="JqW-fD-mnv" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ESO-Vd-BW2"/>
+                            <constraint firstItem="JqW-fD-mnv" firstAttribute="top" secondItem="Gch-jI-HCe" secondAttribute="bottom" type="default" id="FdR-Lu-mZQ"/>
+                            <constraint firstItem="JqW-fD-mnv" firstAttribute="trailing" secondItem="17" secondAttribute="trailing" type="default" id="JNX-fw-jUG"/>
+                            <constraint firstItem="JqW-fD-mnv" firstAttribute="leading" secondItem="17" secondAttribute="leading" type="default" id="KyR-NL-t8K"/>
+                            <constraint firstItem="Gch-jI-HCe" firstAttribute="leading" secondItem="17" secondAttribute="leading" type="default" id="ezY-d5-QWy"/>
+                            <constraint firstItem="Gch-jI-HCe" firstAttribute="trailing" secondItem="17" secondAttribute="trailing" type="default" id="nxq-Dv-3Be"/>
+                            <constraint firstAttribute="trailing" secondItem="qDs-Cr-iBy" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="oyj-FK-UZW"/>
+                            <constraint firstItem="qDs-Cr-iBy" firstAttribute="leading" secondItem="17" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="qMb-aa-nrh"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Week" image="first" id="6"/>
@@ -545,6 +560,61 @@
     <resources>
         <image name="first" width="16" height="16"/>
     </resources>
+    <classes>
+        <class className="DayViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DayViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnBack:"/>
+                <relationship kind="action" name="btnNext:"/>
+                <relationship kind="outlet" name="btnDayName" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnTitle" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="buttonAdd" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonHeaderIcon" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="tblRegistrations" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="logIn:"/>
+                <relationship kind="outlet" name="errorText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="userName" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RegistrationAddViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationAddViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonDelete:"/>
+                <relationship kind="action" name="buttonOkClicked:"/>
+                <relationship kind="action" name="buttonSevenPointFive:"/>
+                <relationship kind="action" name="buttonZeroPointFive:"/>
+                <relationship kind="outlet" name="buttonOk" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonTitle" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="hourPickerView" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="labelErrorText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="projectPickerView" candidateClass="UIPickerView"/>
+            </relationships>
+        </class>
+        <class className="RegistrationInfoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationInfoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonOk:"/>
+            </relationships>
+        </class>
+        <class className="SetupViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SetupViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="logOut:"/>
+            </relationships>
+        </class>
+        <class className="WeekViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WeekViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
