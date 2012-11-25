@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4C298F56165D207E00EEF4E4 /* RegistrationAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C298F55165D207E00EEF4E4 /* RegistrationAddViewController.m */; };
+		4C2A327616624C7600906373 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2A327516624C7600906373 /* lock.png */; };
+		4C2A327A16624CB600906373 /* approved.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2A327916624CB600906373 /* approved.png */; };
+		4C2A327D1662511200906373 /* RegistrationInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A327C1662511200906373 /* RegistrationInfoViewController.m */; };
 		4CAB12301646FF6B00265B8D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB122F1646FF6B00265B8D /* UIKit.framework */; };
 		4CAB12321646FF6B00265B8D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB12311646FF6B00265B8D /* Foundation.framework */; };
 		4CAB12341646FF6B00265B8D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB12331646FF6B00265B8D /* CoreGraphics.framework */; };
@@ -117,6 +120,10 @@
 /* Begin PBXFileReference section */
 		4C298F54165D207E00EEF4E4 /* RegistrationAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationAddViewController.h; sourceTree = "<group>"; };
 		4C298F55165D207E00EEF4E4 /* RegistrationAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationAddViewController.m; sourceTree = "<group>"; };
+		4C2A327516624C7600906373 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lock.png; path = Resources/lock.png; sourceTree = "<group>"; };
+		4C2A327916624CB600906373 /* approved.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = approved.png; path = Resources/approved.png; sourceTree = "<group>"; };
+		4C2A327B1662511200906373 /* RegistrationInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationInfoViewController.h; sourceTree = "<group>"; };
+		4C2A327C1662511200906373 /* RegistrationInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationInfoViewController.m; sourceTree = "<group>"; };
 		4CAB122B1646FF6B00265B8D /* Hours.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hours.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CAB122F1646FF6B00265B8D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4CAB12311646FF6B00265B8D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -205,6 +212,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C2A327216624C1C00906373 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4C2A327916624CB600906373 /* approved.png */,
+				4C2A327516624C7600906373 /* lock.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		4CAB12201646FF6B00265B8D = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +263,7 @@
 		4CAB12351646FF6B00265B8D /* Hours */ = {
 			isa = PBXGroup;
 			children = (
+				4C2A327216624C1C00906373 /* Resources */,
 				4CAB12EB16481A1500265B8D /* Data */,
 				4CAB12CA1647051400265B8D /* Models */,
 				4CAB123E1646FF6B00265B8D /* AppDelegate.h */,
@@ -258,6 +275,8 @@
 				4CAB124B1646FF6B00265B8D /* DayViewController.m */,
 				4C298F54165D207E00EEF4E4 /* RegistrationAddViewController.h */,
 				4C298F55165D207E00EEF4E4 /* RegistrationAddViewController.m */,
+				4C2A327B1662511200906373 /* RegistrationInfoViewController.h */,
+				4C2A327C1662511200906373 /* RegistrationInfoViewController.m */,
 				4CAB12511646FF6B00265B8D /* WeekViewController.h */,
 				4CAB12521646FF6B00265B8D /* WeekViewController.m */,
 				4CAB1302164DAAA800265B8D /* SetupViewController.h */,
@@ -487,6 +506,8 @@
 				4CAB12501646FF6B00265B8D /* first@2x.png in Resources */,
 				4CAB12551646FF6B00265B8D /* second.png in Resources */,
 				4CAB12571646FF6B00265B8D /* second@2x.png in Resources */,
+				4C2A327616624C7600906373 /* lock.png in Resources */,
+				4C2A327A16624CB600906373 /* approved.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +555,7 @@
 				4CAB12FD164D8A4900265B8D /* LoginViewController.m in Sources */,
 				4CAB1304164DAAA900265B8D /* SetupViewController.m in Sources */,
 				4C298F56165D207E00EEF4E4 /* RegistrationAddViewController.m in Sources */,
+				4C2A327D1662511200906373 /* RegistrationInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

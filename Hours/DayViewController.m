@@ -5,7 +5,7 @@
 //  Created by Tommy Wendelborg on 11/4/12.
 //  Copyright (c) 2012 steria. All rights reserved.
 //
-
+#import <UIKit/UIKit.h>
 #import "DayViewController.h"
 #import "DataFactory.h"
 #import "AppState.h"
@@ -19,10 +19,12 @@
 // UI Controllers
 @property (weak, nonatomic) IBOutlet UITableView *tblRegistrations;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnTitle;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonHeaderIcon;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnDayName;
 - (IBAction)btnNext:(id)sender;
 - (IBAction)btnBack:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *buttonAdd;
+
 
 // Data fetching
 @property (strong, nonatomic) DataFactory *dataFactory;
@@ -56,13 +58,22 @@
     {
         title = @"...";
     }
+    self.buttonAdd.enabled = !self.state.currentWeek.isSubmitted && !self.state.currentWeek.isApproved;
+    
+    if(self.state.currentWeek.isApproved || self.state.currentWeek.isSubmitted)
+    {
+        self.buttonHeaderIcon.image = [UIImage imageNamed:@"lock.png"];
+    }
+    
     self.btnTitle.title = title;
-    self.buttonAdd.enabled = !self.state.currentWeek.isSubmitted;
+    
     [self.tblRegistrations reloadData];
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    self.buttonAdd.tintColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
+    
     AppState *state = [AppState deserializeOrLoadForReceiver:self];
     if(state)
     {
@@ -253,6 +264,7 @@
     [self setBtnDayName:nil];
     [self setBtnTitle:nil];
     [self setButtonAdd:nil];
+    [self setButtonHeaderIcon:nil];
     [super viewDidUnload];
 }
 

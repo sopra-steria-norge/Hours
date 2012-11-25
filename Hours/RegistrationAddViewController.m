@@ -81,13 +81,16 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
+    NSString *addButtonText = @"Add";
     self.buttonTitle.title = [self.state currentDayTitle];
-
+    
     if(self.registration)
     {
-        [self setHourPickerToRegistrationHoursForValue:self.registration.hours];      
+        [self setHourPickerToRegistrationHoursForValue:self.registration.hours];
+        addButtonText = @"Update";
     }
-
+    
+    [self.buttonOk setTitle:addButtonText forState:UIControlStateNormal];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
