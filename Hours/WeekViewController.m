@@ -123,6 +123,8 @@
 {
     Day *d = [self.state.currentWeek.days objectAtIndex:indexPath.row];
     self.state.currentDate = d.date;
+    
+    self.tabBarController.selectedIndex = 0; // TODO: Make type based in stead of index based
 }
 
 - (void)setupSwipe
