@@ -71,7 +71,12 @@
 {
     self.buttonAdd.tintColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
     
-    AppState *state = [AppState deserializeOrLoadForReceiver:self];
+    [self updateState];
+}
+
+-(void)updateState
+{
+    AppState *state = [AppState deserializeOrLoadForReceiver:self]; // TODO: Move deserialization out of view controllers 
     if(state)
     {
         self.state = state;
@@ -127,7 +132,6 @@
                 count += 1;
             }
         }
-        
     }
     return count;
 }
@@ -260,11 +264,21 @@
 - (IBAction)btnNext:(id)sender
 {
     self.state = [self.state navigateNextDay];
+
+    if(!self.state.currentWeek)
+    {
+        [self updateState];
+    }
 }
 
 - (IBAction)btnBack:(id)sender
 {
     self.state = [self.state navigatePreviousDay];
+    
+    if(!self.state.currentWeek)
+    {
+        [self updateState];
+    }
 }
 
 - (void)viewDidUnload {

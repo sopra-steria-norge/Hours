@@ -150,11 +150,13 @@
 
 - (IBAction)buttonPrevious:(id)sender
 {
-    [self.state navigateNextWeek];
+    [self.state navigatePreviousWeek];
+    self.state = [AppState deserializeOrLoadForReceiver:self]; // TODO: Move deserialization out of view controllers
 }
 
 - (IBAction)buttonNext:(id)sender
 {
-    [self.state navigatePreviousWeek];
+    [self.state navigateNextWeek];
+    self.state = [AppState deserializeOrLoadForReceiver:self]; // TODO: Move deserialization out of view controllers 
 }
 @end

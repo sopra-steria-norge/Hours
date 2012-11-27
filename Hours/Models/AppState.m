@@ -95,23 +95,48 @@ static DataFactory *_dataFactory;
 - (AppState *) navigateNextDay
 {
     self.currentDate = [self previousDate];
+    if(!self.currentDay)
+    {
+        return self.navigateNextWeek;
+    }
     return self;
 }
 - (AppState *) navigatePreviousDay
 {
     self.currentDate = [self nextDate];
+    if(!self.currentDay)
+    {
+        return self.navigatePreviousWeek;
+    }
     return self;
 }
 
 - (AppState *) navigateNextWeek
 {
-    // TODO: Navigate
+    Day *lastDay = nil;
+    if(self.currentWeek.days.count > 0)
+    {
+        lastDay = [self.currentWeek.days lastObject];
+    }
+    NSDate *nextDate = [lastDay.date dateByAddingTimeInterval:ONE_DAY_IN_SECONDS];
+    
+    self.currentWeek = nil; // TODO: Load from cache if exists
+    self.currentDate = nextDate;
     return self;
 }
 
 - (AppState *) navigatePreviousWeek
 {
-    // TODO: Navigate
+    Day *firstDay = nil;
+    
+    if(self.currentWeek.days.count > 0)
+    {
+        firstDay = [self.currentWeek.days objectAtIndex:0];
+    }
+    NSDate *previousDate = [firstDay.date dateByAddingTimeInterval:ONE_DAY_IN_SECONDS * -1];
+    
+    self.currentWeek = nil; // TODO: Load from cache if exists
+    self.currentDate = previousDate;
     return self;
 }
 
@@ -199,10 +224,11 @@ static DataFactory *_dataFactory;
 +(AppState *) deserializeOrLoadForReceiver:(id<AppStateReceiver>) receiver;
 {
     AppState *state = [DataFactory sharedState];
-    if(!state)
+    if(!state || !state.currentWeek)
     {
+        NSDate *date = state.currentDate ? state.currentDate : [[NSDate alloc] init];
         NSURL *url = [NSURL URLWithString:URL];
-        [[AppState dataFactory] startGetDataFromUrl:url forDate:[[NSDate alloc] init] andDelegateReceiver:receiver];
+        [[AppState dataFactory] startGetDataFromUrl:url forDate:date andDelegateReceiver:receiver];
     }
 
     return state;
