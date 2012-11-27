@@ -64,6 +64,7 @@
     {
         [self ShowSpinner];
     }
+    [self setupSwipe];
 }
 
 - (void)viewDidLoad
@@ -124,6 +125,22 @@
     self.state.currentDate = d.date;
 }
 
+- (void)setupSwipe
+{
+    UISwipeGestureRecognizer *oneFingerSwipeLeft = [[UISwipeGestureRecognizer alloc]
+                                                    initWithTarget:self
+                                                    action:@selector(buttonNext:)];
+    [oneFingerSwipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [self.tableDays addGestureRecognizer:oneFingerSwipeLeft];
+    
+    UISwipeGestureRecognizer *oneFingerSwipeRight = [[UISwipeGestureRecognizer alloc]
+                                                     initWithTarget:self
+                                                     action:@selector(buttonPrevious:)];
+    [oneFingerSwipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+    [self.tableDays addGestureRecognizer:oneFingerSwipeRight];
+}
+
+
 - (void)ShowSpinner // TODO: Centralize
 {
     HUD = [[MBProgressHUD alloc] initWithView:self.tabBarController.view];
@@ -138,7 +155,6 @@
     [HUD show:NO];
     [HUD removeFromSuperview];
 }
-
 
 - (void)viewDidUnload {
     [self setTableDays:nil];
