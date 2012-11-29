@@ -15,6 +15,8 @@
 
 @implementation DataFactory
 
+NSString * const URL = @"http://fakeswhrs.azurewebsites.net/"; // TODO: Load from .plist
+
 @synthesize receiver = _receiver;
 @synthesize mapping = _mapping;
 
@@ -36,7 +38,7 @@ static AppState *_sharedState = nil;
     return self;
 }
 
--(void) startGetDataFromUrl: (NSURL *) url forDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver
+-(void) startGetDataForDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver
 {
     self.receiver = receiver;
 
@@ -44,6 +46,7 @@ static AppState *_sharedState = nil;
     [RKClient setSharedClient:nil];
     [RKObjectManager setSharedManager:nil];
 
+    NSURL *url = [NSURL URLWithString:URL];
     RKObjectManager * manager = [RKObjectManager managerWithBaseURL:url];
     [manager loadObjectsAtResourcePath:@"/week/hours" usingBlock:^(RKObjectLoader* loader)
      {

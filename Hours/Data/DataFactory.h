@@ -12,7 +12,7 @@
 
 @interface DataFactory : NSObject
 @property(nonatomic, weak) id<AppStateReceiver> receiver;
--(void) startGetDataFromUrl: (NSURL *) url forDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver;
+-(void) startGetDataForDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver;
 -(void) refreshDataForReceiver:(id<AppStateReceiver>) receiver;
 
 + (AppState *)sharedState;

@@ -20,7 +20,6 @@
 
 @implementation AppState
 
-NSString * const URL = @"http://fakeswhrs.azurewebsites.net/";
 const int ONE_DAY_IN_SECONDS = 60*60*24;
 NSString * const WEEKDAY_DATE_FORMAT = @"EEEE";
 
@@ -227,8 +226,7 @@ static DataFactory *_dataFactory;
     if(!state || !state.currentWeek)
     {
         NSDate *date = state.currentDate ? state.currentDate : [[NSDate alloc] init];
-        NSURL *url = [NSURL URLWithString:URL];
-        [[AppState dataFactory] startGetDataFromUrl:url forDate:date andDelegateReceiver:receiver];
+        [[AppState dataFactory] startGetDataForDate:date andDelegateReceiver:receiver];
     }
 
     return state;
