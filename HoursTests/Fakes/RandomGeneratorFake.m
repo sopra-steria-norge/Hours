@@ -8,7 +8,20 @@
 #import "RandomGeneratorFake.h"
 
 
+@interface RandomGeneratorFake()
+@property(nonatomic) int numberToReturn;
+@end
 @implementation RandomGeneratorFake
+
+-(id)initWithFixedBaseStringAlphatIndex:(int) result
+{
+    self = [super init];
+    if (self)
+    {
+        self.numberToReturn = result;
+    }
+    return self;
+}
 
 @synthesize numberToReturn = _numberToReturn;
 

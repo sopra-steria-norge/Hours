@@ -10,6 +10,6 @@
 
 
 @interface RandomGeneratorFake : NSObject <RandomGenerator>
-@property(nonatomic) int numberToReturn;
+-(id)initWithFixedBaseStringAlphatIndex:(int) result;
 -(int)getRandomNumber;
 @end

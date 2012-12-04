@@ -16,11 +16,6 @@
 
 NSString * const base64Alphabet = @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
--(NSString *) saltAndHash:(NSString *)password
-{
-    NSString *saltedAndHashed = password.copy;
-    return saltedAndHashed;
-}
 -(NSString *) randomBase64String
 {
     int stringLength = 8;
@@ -32,6 +27,12 @@ NSString * const base64Alphabet = @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqr
         [randomString appendString:[NSString stringWithCharacters:&character length:1]];
     }
     return randomString.copy;
+}
+
+-(NSString *) saltAndHash:(NSString *)password
+{
+    NSString *salt = [self randomBase64String];
+    return salt;
 }
 
 -(id<RandomGenerator>) randomGenerator
