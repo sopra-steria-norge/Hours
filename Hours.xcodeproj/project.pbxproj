@@ -51,6 +51,7 @@
 		4CAB12FD164D8A4900265B8D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12FC164D8A4900265B8D /* LoginViewController.m */; };
 		4CAB1304164DAAA900265B8D /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB1303164DAAA800265B8D /* SetupViewController.m */; };
 		4CAB136916583D3E00265B8D /* libMBProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB136616583D1600265B8D /* libMBProgressHUD.a */; };
+		E769A05ED9674592AA9ABAC1 /* RandomGeneratorFake.m in Sources */ = {isa = PBXBuildFile; fileRef = E769ACFEA8EC809995FA2B04 /* RandomGeneratorFake.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +184,8 @@
 		4CAB1302164DAAA800265B8D /* SetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupViewController.h; sourceTree = "<group>"; };
 		4CAB1303164DAAA800265B8D /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupViewController.m; sourceTree = "<group>"; };
 		4CAB135E16583D1600265B8D /* MBProgressHUD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MBProgressHUD.xcodeproj; path = MBProgressHUD/MBProgressHUD.xcodeproj; sourceTree = "<group>"; };
+		E769A9F18708C51D6FBC7D4C /* RandomGeneratorFake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomGeneratorFake.h; sourceTree = "<group>"; };
+		E769ACFEA8EC809995FA2B04 /* RandomGeneratorFake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomGeneratorFake.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +321,7 @@
 				4CAB12651646FF6B00265B8D /* Supporting Files */,
 				4C2A32811667BCFC00906373 /* LoginCredentialFactoryTest.h */,
 				4C2A32821667BCFC00906373 /* LoginCredentialFactoryTest.m */,
+				E769AB966268A69B0CCBD1A6 /* Fakes */,
 			);
 			path = HoursTests;
 			sourceTree = "<group>";
@@ -377,6 +381,15 @@
 				4CAB136616583D1600265B8D /* libMBProgressHUD.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E769AB966268A69B0CCBD1A6 /* Fakes */ = {
+			isa = PBXGroup;
+			children = (
+				E769A9F18708C51D6FBC7D4C /* RandomGeneratorFake.h */,
+				E769ACFEA8EC809995FA2B04 /* RandomGeneratorFake.m */,
+			);
+			path = Fakes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -576,6 +589,7 @@
 			files = (
 				4CAB126C1646FF6B00265B8D /* HoursTests.m in Sources */,
 				4C2A32831667BCFC00906373 /* LoginCredentialFactoryTest.m in Sources */,
+				E769A05ED9674592AA9ABAC1 /* RandomGeneratorFake.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
