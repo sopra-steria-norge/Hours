@@ -13,7 +13,7 @@
 @end
 @implementation RandomGeneratorFake
 
--(id)initWithFixedBaseStringAlphatIndex:(int) result
+-(id)initWithFixedBaseStringAlphaAtIndex:(int) result
 {
     self = [super init];
     if (self)

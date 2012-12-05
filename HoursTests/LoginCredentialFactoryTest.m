@@ -17,6 +17,7 @@
 
 NSString const * expectedSalt = @"BBBBBBBB";
 NSString const * password = @"pass_word";
+NSString const * expectedBase64WithSalt = @"BBBBBBBB_YTkxYzVlN2JkZTkxYzZjMzg3ZjIyMmQ0ZTY1MDFkYjcwYzA1ZDUzZA=="; // SHA1 of "BBBBBBBB_pass_word" ("a91c5e7bde91c6c387f222d4e6501db70c05d53d"), base64-encoded
 
 @synthesize loginCredentialFactory = _loginCredentialFactory;
 @synthesize randomGeneratorFake = _randomGeneratorFake;
@@ -26,7 +27,7 @@ NSString const * password = @"pass_word";
     [super setUp];
     
     self.loginCredentialFactory = [[LoginCredentialFactory alloc] init];
-    self.randomGeneratorFake = [[RandomGeneratorFake alloc] initWithFixedBaseStringAlphatIndex:1];
+    self.randomGeneratorFake = [[RandomGeneratorFake alloc] initWithFixedBaseStringAlphaAtIndex:1];
     self.loginCredentialFactory.randomGenerator = self.randomGeneratorFake;
 }
 
@@ -46,10 +47,17 @@ NSString const * password = @"pass_word";
 
 - (void)test_saltAndHash_mustReturnSaltAsFirst8characters;
 {
-    NSString *salted = [self executeSaltAndHash];
-    NSString *first8characters = [salted substringToIndex:8];
+    NSString *hashedAndSalted = [self executeSaltAndHash];
+    NSString *first8characters = [hashedAndSalted substringToIndex:8];
     
     STAssertTrue([expectedSalt isEqualToString:first8characters], @"Wrong result in salted password, first 8 characters: %@", first8characters);
+}
+
+-(void)test_saltAndHash_mustReturnHashedPassword
+{
+    NSString *hashedAndSalted = [self executeSaltAndHash];
+    STAssertTrue([expectedBase64WithSalt isEqualToString:hashedAndSalted], @"Wrong result in encoded hashed password, result: %@", hashedAndSalted);
+    
 }
 
 - (NSString *)executeSaltAndHash
