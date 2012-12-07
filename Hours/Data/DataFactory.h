@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 #import"AppState.h"
 #import "Week.h"
+#import "LoginState.h"
 
 @interface DataFactory : NSObject
-@property(nonatomic, weak) id<AppStateReceiver> receiver;
+@property(nonatomic, readonly, weak) id<AppStateReceiver> appStateReceiver;
+@property(nonatomic, readonly, weak) id<LoginStateReceiver> loginStateReceiver;
+-(void) startCheckAuthenticationForUser:(NSString *) user withPasswordToken:(NSString *)hashedAndSaltedPassword andDelegateReceiver:(id<LoginStateReceiver>) receiver;
 -(void) startGetDataForDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver;
 -(void) refreshDataForReceiver:(id<AppStateReceiver>) receiver;
 

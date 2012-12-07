@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "LoginState.h"
 
 @interface LoginViewController ()
 @property(nonatomic) bool isLoggedIn;

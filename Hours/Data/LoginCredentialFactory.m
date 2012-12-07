@@ -9,6 +9,7 @@
 
 #import "LoginCredentialFactory.h"
 #import "EncodingUtility.h"
+#import <RestKit/RestKit.h>
 
 @interface LoginCredentialFactory()<RandomGenerator>
 @end

@@ -11,16 +11,23 @@
 
 @interface DataFactory() <RKObjectLoaderDelegate>
 @property (nonatomic, strong) RKObjectMapping *mapping;
+@property(nonatomic, weak) id<AppStateReceiver> appStateReceiver;
+@property(nonatomic, weak) id<LoginStateReceiver> loginStateReceiver;
+
 @end
 
 @implementation DataFactory
 
 NSString * const URL = @"http://fakeswhrs.azurewebsites.net/"; // TODO: Load from .plist
+NSString * const authenticationPath = @"/CheckAuthentication";
+NSString * const hoursPath = @"/week/hours";
 
-@synthesize receiver = _receiver;
+@synthesize appStateReceiver = _appStateReceiver;
+@synthesize loginStateReceiver = _loginStateReceiver;
 @synthesize mapping = _mapping;
 
 static AppState *_sharedState = nil;
+static LoginState *_loginState = nil;
 
 -(void) refreshDataForReceiver:(id<AppStateReceiver>) receiver
 {
@@ -38,17 +45,53 @@ static AppState *_sharedState = nil;
     return self;
 }
 
+-(void) startCheckAuthenticationForUser:(NSString *) user withPasswordToken:(NSString *)hashedAndSaltedPassword andDelegateReceiver:(id<LoginStateReceiver>) receiver
+{
+    self.loginStateReceiver = receiver;
+
+    [self resetRestKitClient];
+
+    NSURL *url = [self getBaseURL];
+    RKClient *client = [RKClient clientWithBaseURL:url];
+    
+    NSString *authenticationHeaderValue = [NSString stringWithFormat:@"{\"username\":\"%@\", \"password\":\"%@\"}", user, hashedAndSaltedPassword];
+    [[client HTTPHeaders] setValue:authenticationHeaderValue forKey:@"X-Authentication-Token"];
+    
+    [client get:authenticationPath delegate:self];
+}
+
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
+    if ([request isGET])
+    {
+        if ([response isOK])
+        {
+            LoginState *state = [[LoginState alloc]init];
+            _loginState = state;
+
+            if(self.loginStateReceiver)
+            {
+                [self.loginStateReceiver didReceiveLoginState:state];
+            }
+        }
+        else
+        {
+            if(self.loginStateReceiver)
+            {
+                [self.loginStateReceiver didFailLoggingInWithError:[response failureError]];
+            }
+        }
+    }
+}
+
 -(void) startGetDataForDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver
 {
-    self.receiver = receiver;
+    self.appStateReceiver = receiver;
 
-    // Clear singleton instances
-    [RKClient setSharedClient:nil];
-    [RKObjectManager setSharedManager:nil];
+    [self resetRestKitClient];
 
-    NSURL *url = [NSURL URLWithString:URL];
-    RKObjectManager * manager = [RKObjectManager managerWithBaseURL:url];
-    [manager loadObjectsAtResourcePath:@"/week/hours" usingBlock:^(RKObjectLoader* loader)
+    NSURL *url = [self getBaseURL];
+    RKObjectManager *manager = [RKObjectManager managerWithBaseURL:url];
+    [manager loadObjectsAtResourcePath:hoursPath usingBlock:^(RKObjectLoader* loader)
      {
          loader.ObjectMapping = self.mapping;
          loader.delegate = self;
@@ -78,9 +121,9 @@ static AppState *_sharedState = nil;
     
     _sharedState = state;
     
-    if(self.receiver)
+    if(self.appStateReceiver)
     {
-        [self.receiver didReceiveAppState:state];
+        [self.appStateReceiver didReceiveAppState:state];
     }
     
     objectLoader.delegate = nil; // Without this RestKit will attempt some rather nasty callbacks that are not available
@@ -89,9 +132,9 @@ static AppState *_sharedState = nil;
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
 {
     NSLog(@"ObjectLoader failed with error: %@", error);
-    if(self.receiver)
+    if(self.appStateReceiver)
     {
-        [self.receiver didFailLoadingAppStateWithError:error];
+        [self.appStateReceiver didFailLoadingAppStateWithError:error];
     }
 }
 
@@ -128,6 +171,16 @@ static AppState *_sharedState = nil;
     [weekMapping mapKeyPath:@"projects" toRelationship:@"projects" withMapping:projectMapping];
     [weekMapping mapKeyPath:@"days" toRelationship:@"days" withMapping:dayMapping];
     return weekMapping;
+}
+
+- (NSURL *)getBaseURL {
+    NSURL *url = [NSURL URLWithString:URL];
+    return url;
+}
+
+- (void)resetRestKitClient {
+    [RKClient setSharedClient:nil];
+    [RKObjectManager setSharedManager:nil];
 }
 
 +(bool) getApprovedStatusForWeek:(Week *)week
