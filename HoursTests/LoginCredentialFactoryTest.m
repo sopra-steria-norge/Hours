@@ -39,9 +39,9 @@ NSString const * expectedBase64WithSalt = @"BBBBBBBB_YTkxYzVlN2JkZTkxYzZjMzg3ZjI
     [super tearDown];
 }
 
-- (void)test_randomBase64String_mustReturnEightBs_givenFakeRandomIndex1;
+- (void)test_randomStringWithBase64Characters_mustReturnEightBs_givenFakeRandomIndex1;
 {
-    NSString *randomString = [self.loginCredentialFactory randomBase64String];
+    NSString *randomString = [self.loginCredentialFactory randomStringWithBase64Characters];
     STAssertTrue([expectedSalt isEqualToString:randomString], @"Expected %@, got %@", expectedSalt, randomString);
 }
 

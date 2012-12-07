@@ -15,5 +15,5 @@
 @interface LoginCredentialFactory : NSObject
 @property (nonatomic, strong) id<RandomGenerator> randomGenerator;
 -(NSString *) saltAndHash:(NSString *)password;
--(NSString *) randomBase64String;
+-(NSString *) randomStringWithBase64Characters;
 @end
