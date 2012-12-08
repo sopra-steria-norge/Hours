@@ -8,17 +8,21 @@
 
 #import "LoginViewController.h"
 #import "LoginState.h"
+#import "MBHudHelper.h"
 
-@interface LoginViewController () <LoginStateReceiver>
+@interface LoginViewController () <LoginStateReceiver, MBProgressHUDDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 @property (weak, nonatomic) IBOutlet UITextField *password;
+@property (strong, nonatomic) MBProgressHUD *hud;
 - (IBAction)logIn:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *errorText;
 @end
 
 @implementation LoginViewController
+
 @synthesize userName = _userName;
 @synthesize password = _password;
+@synthesize hud = _hud;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,14 +51,18 @@
 
 - (void)didReceiveLoginState:(LoginState *) loginState
 {
-    // TODO: Stop progress thingy
+    [MBHudHelper HideSpinnerForHud:self.hud];
+    self.hud = nil;
+    
     [self hideLoginScreen];
 }
 
 - (void)didFailLoggingInWithError:(NSError *)error
 {
+    [MBHudHelper HideSpinnerForHud:self.hud];
+
+    self.hud = nil;
     // TODO: Show error message
-    // TODO: Stop progress thingy
 }
 
 
@@ -72,6 +80,9 @@
 }
 - (IBAction)logIn:(id)sender
 {
+    [self.userName resignFirstResponder];
+    [self.password resignFirstResponder];
+    
     LoginState *loginState = [LoginState loginWithUserName:self.userName.text andPassword:self.password.text forReceiver:self];
     self.password.text = @""; // clean after login
     if(loginState)
@@ -80,7 +91,7 @@
     }
     else
     {
-        // TODO: Start progress thingy
+        self.hud = [MBHudHelper ShowSpinnerForDelegate:self withView:self.view];
     }
 
 }
