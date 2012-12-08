@@ -244,6 +244,7 @@ static LoginState *_sharedLoginState = nil;
 + (void)clearState
 {
     _sharedAppState = nil;
+    _sharedLoginState = nil;
 }
 
 @end

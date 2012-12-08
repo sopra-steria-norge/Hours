@@ -10,7 +10,6 @@
 #import "LoginState.h"
 
 @interface LoginViewController () <LoginStateReceiver>
-@property(nonatomic, strong) LoginState *loginState;
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 - (IBAction)logIn:(id)sender;
@@ -20,7 +19,6 @@
 @implementation LoginViewController
 @synthesize userName = _userName;
 @synthesize password = _password;
-@synthesize loginState = _loginState;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,7 +48,6 @@
 - (void)didReceiveLoginState:(LoginState *) loginState
 {
     // TODO: Stop progress thingy
-    self.loginState = loginState;
     [self hideLoginScreen];
 }
 
@@ -75,9 +72,9 @@
 }
 - (IBAction)logIn:(id)sender
 {
-    self.loginState = [LoginState loginWithUserName:self.userName.text andPassword:self.password.text forReceiver:self];
+    LoginState *loginState = [LoginState loginWithUserName:self.userName.text andPassword:self.password.text forReceiver:self];
     self.password.text = @""; // clean after login
-    if(self.loginState)
+    if(loginState)
     {
         [self hideLoginScreen];
     }
