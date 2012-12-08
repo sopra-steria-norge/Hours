@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginState.h"
 
 @interface LoginViewController : UIViewController
+@property (nonatomic, readonly, strong) LoginState *loginState;
 @end

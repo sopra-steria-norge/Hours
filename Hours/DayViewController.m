@@ -76,7 +76,7 @@
 
 -(void)updateState
 {
-    AppState *state = [AppState deserializeOrLoadForReceiver:self]; // TODO: Move deserialization out of view controllers 
+    AppState *state = [AppState getOrLoadForReceiver:self]; // TODO: Move deserialization out of view controllers
     if(state)
     {
         self.state = state;

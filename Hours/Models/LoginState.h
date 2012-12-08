@@ -18,5 +18,5 @@
 @property (nonatomic, readonly, strong) NSString * userName;
 @property (nonatomic, readonly, strong) NSString * passwordHash;
 
-+ (void) LoginWithUserName:(NSString *)userName andPassword:(NSString *)password forReceiver:(id<LoginStateReceiver>) receiver;
++ (LoginState *)loginWithUserName:(NSString *)userName andPassword:(NSString *)password forReceiver:(id<LoginStateReceiver>) receiver;
 @end

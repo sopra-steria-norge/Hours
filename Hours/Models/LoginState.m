@@ -7,17 +7,44 @@
 //
 
 #import "LoginState.h"
+#import "DataFactory.h"
+#import "LoginCredentialFactory.h"
+
+@interface LoginState ()
+@property (nonatomic, strong) NSString * userName;
+@property (nonatomic, strong) NSString * passwordHash;
+@end
 
 @implementation LoginState
+
+static DataFactory *_dataFactory;
 
 @synthesize userName = _userName;
 @synthesize passwordHash = _passwordHash;
 
-+ (void) LoginWithUserName:(NSString *)userName andPassword:(NSString *)password forReceiver:(id<LoginStateReceiver>) receiver
++ (LoginState *)loginWithUserName:(NSString *)userName andPassword:(NSString *)password forReceiver:(id<LoginStateReceiver>) receiver
 {
-    // TODO
+    LoginState *loginState = [DataFactory sharedLoginState];
+    if(!loginState || loginState.userName == nil || ![loginState.userName isEqualToString:userName])
+    {
+        loginState = [[LoginState alloc] init];
+        loginState.userName = userName;        
+        LoginCredentialFactory *credentialFactor = [[LoginCredentialFactory alloc] init];        
+        loginState.passwordHash = [credentialFactor saltAndHash:password];
+
+        [[LoginState dataFactory] startCheckAuthenticationForLoginState:loginState andDelegateReceiver:receiver];
+        return nil;
+    }
+    return loginState;
 }
 
-
++ (DataFactory *)dataFactory
+{
+    if(!_dataFactory)
+    {
+        _dataFactory = [[DataFactory alloc] init];
+    }
+    return _dataFactory;
+}
 
 @end

@@ -41,6 +41,6 @@
 - (void) addExistingRegistrationToSaveQueue:(Registration *)existingRegistration;
 - (void) addNewRegistrationToSaveQueueWithProjectNumber:(NSString *)projectNumber activityCode:(NSString *)activityCode hours:(double) hours andDescription:(NSString *)description;
 
-+ (AppState *) deserializeOrLoadForReceiver:(id<AppStateReceiver>) receiver;
++ (AppState *)getOrLoadForReceiver:(id<AppStateReceiver>) receiver;
 + (void) clear;
 @end

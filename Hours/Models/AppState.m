@@ -220,9 +220,9 @@ static DataFactory *_dataFactory;
     return _dayFormatter;
 }
 
-+(AppState *) deserializeOrLoadForReceiver:(id<AppStateReceiver>) receiver;
++(AppState *)getOrLoadForReceiver:(id<AppStateReceiver>) receiver;
 {
-    AppState *state = [DataFactory sharedState];
+    AppState *state = [DataFactory sharedAppState];
     if(!state || !state.currentWeek)
     {
         NSDate *date = state.currentDate ? state.currentDate : [[NSDate alloc] init];

@@ -14,10 +14,11 @@
 @interface DataFactory : NSObject
 @property(nonatomic, readonly, weak) id<AppStateReceiver> appStateReceiver;
 @property(nonatomic, readonly, weak) id<LoginStateReceiver> loginStateReceiver;
--(void) startCheckAuthenticationForUser:(NSString *) user withPasswordToken:(NSString *)hashedAndSaltedPassword andDelegateReceiver:(id<LoginStateReceiver>) receiver;
+-(void)startCheckAuthenticationForLoginState:(LoginState *)loginState andDelegateReceiver:(id<LoginStateReceiver>) receiver;
 -(void) startGetDataForDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver;
 -(void) refreshDataForReceiver:(id<AppStateReceiver>) receiver;
 
-+ (AppState *)sharedState;
++ (AppState *)sharedAppState;
++ (LoginState *) sharedLoginState;
 + (void)clearState;
 @end

@@ -20,14 +20,18 @@
 
 NSString * const URL = @"http://fakeswhrs.azurewebsites.net/"; // TODO: Load from .plist
 NSString * const authenticationPath = @"/CheckAuthentication";
+NSString * const authenticationTokenFormat = @"{\"username\":\"%@\", \"password\":\"%@\"}";
+NSString * const authenticationHeaderKey = @"X-Authentication-Token";
+
 NSString * const hoursPath = @"/week/hours";
+
 
 @synthesize appStateReceiver = _appStateReceiver;
 @synthesize loginStateReceiver = _loginStateReceiver;
 @synthesize mapping = _mapping;
 
-static AppState *_sharedState = nil;
-static LoginState *_loginState = nil;
+static AppState *_sharedAppState = nil;
+static LoginState *_sharedLoginState = nil;
 
 -(void) refreshDataForReceiver:(id<AppStateReceiver>) receiver
 {
@@ -45,7 +49,7 @@ static LoginState *_loginState = nil;
     return self;
 }
 
--(void) startCheckAuthenticationForUser:(NSString *) user withPasswordToken:(NSString *)hashedAndSaltedPassword andDelegateReceiver:(id<LoginStateReceiver>) receiver
+-(void)startCheckAuthenticationForLoginState:(LoginState *)loginState andDelegateReceiver:(id<LoginStateReceiver>) receiver
 {
     self.loginStateReceiver = receiver;
 
@@ -54,29 +58,34 @@ static LoginState *_loginState = nil;
     NSURL *url = [self getBaseURL];
     RKClient *client = [RKClient clientWithBaseURL:url];
     
-    NSString *authenticationHeaderValue = [NSString stringWithFormat:@"{\"username\":\"%@\", \"password\":\"%@\"}", user, hashedAndSaltedPassword];
-    [[client HTTPHeaders] setValue:authenticationHeaderValue forKey:@"X-Authentication-Token"];
+    [self setAuthenticationHeaderForClient:client user:loginState.userName saltedPassword:loginState.passwordHash];
     
-    [client get:authenticationPath delegate:self];
+    RKRequest *request = [client get:authenticationPath delegate:self];
+    request.userData = loginState;
+}
+
+- (void)setAuthenticationHeaderForClient:(RKClient *)client user:(NSString *)user saltedPassword:(NSString *)saltedPassword {
+    NSString *authenticationHeaderValue = [NSString stringWithFormat:authenticationTokenFormat, user, saltedPassword];
+    [[client HTTPHeaders] setValue:authenticationHeaderValue forKey:authenticationHeaderKey];
 }
 
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    if ([request isGET])
+    if ([request isGET] && [request.userData isKindOfClass:[LoginState class]])
     {
         if ([response isOK])
         {
-            LoginState *state = [[LoginState alloc]init];
-            _loginState = state;
-
+            _sharedLoginState = (LoginState *)request.userData;
             if(self.loginStateReceiver)
             {
-                [self.loginStateReceiver didReceiveLoginState:state];
+                [self.loginStateReceiver didReceiveLoginState:_sharedLoginState];
             }
         }
         else
         {
             if(self.loginStateReceiver)
             {
+                _sharedLoginState = nil;
+                
                 [self.loginStateReceiver didFailLoggingInWithError:[response failureError]];
             }
         }
@@ -89,6 +98,14 @@ static LoginState *_loginState = nil;
 
     [self resetRestKitClient];
 
+    NSDictionary *additionalHeaders = nil;
+    
+    if(_sharedLoginState)
+    {
+        NSString *authenticationHeaderValue = [NSString stringWithFormat:authenticationTokenFormat, _sharedLoginState.userName, _sharedLoginState.passwordHash];
+        additionalHeaders = [NSMutableDictionary dictionaryWithObject:authenticationHeaderValue forKey:authenticationHeaderKey];
+    }
+       
     NSURL *url = [self getBaseURL];
     RKObjectManager *manager = [RKObjectManager managerWithBaseURL:url];
     [manager loadObjectsAtResourcePath:hoursPath usingBlock:^(RKObjectLoader* loader)
@@ -96,6 +113,7 @@ static LoginState *_loginState = nil;
          loader.ObjectMapping = self.mapping;
          loader.delegate = self;
          loader.params = [[NSDictionary alloc] initWithObjectsAndKeys:@"date@", date, nil];
+         loader.additionalHTTPHeaders = additionalHeaders;
      } ];
 }
 
@@ -119,7 +137,7 @@ static LoginState *_loginState = nil;
         state.currentWeek = week;
     }
     
-    _sharedState = state;
+    _sharedAppState = state;
     
     if(self.appStateReceiver)
     {
@@ -213,15 +231,19 @@ static LoginState *_loginState = nil;
     return false;
 }
 
-
-+ (AppState*)sharedState
++ (AppState*)sharedAppState
 {
-    return _sharedState;
+    return _sharedAppState;
+}
+
++ (LoginState*)sharedLoginState
+{
+    return _sharedLoginState;
 }
 
 + (void)clearState
 {
-    _sharedState = nil;
+    _sharedAppState = nil;
 }
 
 @end

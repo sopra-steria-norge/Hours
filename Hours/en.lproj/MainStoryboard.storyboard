@@ -28,7 +28,6 @@
                                 </state>
                                 <connections>
                                     <action selector="logIn:" destination="Ahs-cG-68u" eventType="touchUpInside" id="HLF-a5-bAI"/>
-                                    <segue destination="4" kind="modal" identifier="LoggedInSegue" id="uRU-eb-DqS"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="User name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0la-Ge-Nsk">
@@ -88,11 +87,12 @@
                         <outlet property="errorText" destination="jsZ-nz-GXx" id="wR1-Cd-XAF"/>
                         <outlet property="password" destination="UtB-Wl-gJS" id="iQW-AG-xyA"/>
                         <outlet property="userName" destination="46j-ka-BI3" id="BMy-bL-koh"/>
+                        <segue destination="4" kind="modal" identifier="LoggedInSegue" id="0J2-2v-EPk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHN-Lr-a8o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-434" y="339"/>
+            <point key="canvasLocation" x="-426" y="339"/>
         </scene>
         <!--Registration Add View Controller-->
         <scene sceneID="cU5-e4-4QV">

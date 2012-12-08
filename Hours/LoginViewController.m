@@ -9,8 +9,8 @@
 #import "LoginViewController.h"
 #import "LoginState.h"
 
-@interface LoginViewController ()
-@property(nonatomic) bool isLoggedIn;
+@interface LoginViewController () <LoginStateReceiver>
+@property(nonatomic, strong) LoginState *loginState;
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 - (IBAction)logIn:(id)sender;
@@ -20,7 +20,7 @@
 @implementation LoginViewController
 @synthesize userName = _userName;
 @synthesize password = _password;
-@synthesize isLoggedIn = _isLoggedIn;
+@synthesize loginState = _loginState;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,6 +47,20 @@
     }
 }
 
+- (void)didReceiveLoginState:(LoginState *) loginState
+{
+    // TODO: Stop progress thingy
+    self.loginState = loginState;
+    [self hideLoginScreen];
+}
+
+- (void)didFailLoggingInWithError:(NSError *)error
+{
+    // TODO: Show error message
+    // TODO: Stop progress thingy
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -61,13 +75,27 @@
 }
 - (IBAction)logIn:(id)sender
 {
-    // TODO: Perform web login
-    self.password.text = @"";
-    self.isLoggedIn = YES;
+    self.loginState = [LoginState loginWithUserName:self.userName.text andPassword:self.password.text forReceiver:self];
+    self.password.text = @""; // clean after login
+    if(self.loginState)
+    {
+        [self hideLoginScreen];
+    }
+    else
+    {
+        // TODO: Start progress thingy
+    }
+
+}
+
+-(void) hideLoginScreen
+{
+    [self performSegueWithIdentifier:@"LoggedInSegue" sender:self];
 }
 
 -(bool) checkStoredLogin
 {
-    return NO;
+    // TODO: 
+    return self.loginState != nil;
 }
 @end
