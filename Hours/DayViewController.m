@@ -8,13 +8,11 @@
 #import "DayViewController.h"
 #import "DataFactory.h"
 #import "AppState.h"
+#import "MBHudHelper.h"
 #import "RegistrationAddViewController.h"
 #import "RegistrationInfoViewController.h"
-#import <MBProgressHUD/MBProgressHUD.h>
 
-@interface DayViewController () <AppStateReceiver, MBProgressHUDDelegate> {
-    MBProgressHUD *HUD;
-}
+@interface DayViewController () <AppStateReceiver, MBProgressHUDDelegate>
 
 // UI Controllers
 @property (weak, nonatomic) IBOutlet UITableView *tblRegistrations;
@@ -22,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonHeaderIcon;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnDayName;
 @property (weak, nonatomic) IBOutlet UIButton *buttonAdd;
+@property (strong, nonatomic) MBProgressHUD *hud;
 
 // Data fetching
 @property (strong, nonatomic) DataFactory *dataFactory;
@@ -31,6 +30,7 @@
 
 @synthesize state = _state;
 @synthesize dataFactory = _dataFactory;
+@synthesize hud = _hud;
 
 - (void)viewDidLoad
 {
@@ -88,24 +88,26 @@
     }
     else
     {
-        [self ShowSpinner];
+        self.hud = [MBHudHelper ShowSpinnerForDelegate:self withView:self.tabBarController.view];
     }
 }
 
 - (void)didReceiveAppState:(AppState*) state
 {
-    state.currentDate = [[state.currentWeek.days objectAtIndex:0] date]; // TODO: NB! THIS IS FOR TESTING'S SAKE, MUST BE REMOVED WHEN REAL DATA COMES IN
+    NSLog(@"WARNING! for testing sake the current date is set to the first date of the loaded week");
+    state.currentDate = [[state.currentWeek.days objectAtIndex:0] date];
     
     self.state = state;
     
     NSLog(@"Did receive data from the loader");
-    [HUD show:NO];
-    [HUD removeFromSuperview];
+    [MBHudHelper HideSpinnerForHud:self.hud];
+    self.hud = nil;
 }
 
 - (void) didFailLoadingAppStateWithError:(NSError *)error
 {
-    [self HideSpinner];
+    [MBHudHelper HideSpinnerForHud:self.hud];
+    self.hud = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -195,7 +197,6 @@
     return cell;
 }
 
-
 - (UITableViewCell *)getCell:(UITableView *)tableView forIndexPath:(NSIndexPath *)indexPath withCellIdentifier:(NSString *)cellIdentifier {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     if(!cell)
@@ -245,26 +246,10 @@
     [self.tblRegistrations addGestureRecognizer:oneFingerSwipeRight];
 }
 
-
-- (void)ShowSpinner // TODO: Centralize
-{
-    HUD = [[MBProgressHUD alloc] initWithView:self.tabBarController.view];
-    [self.tabBarController.view addSubview:HUD];
-    HUD.delegate = self;
-    HUD.labelText = @"Loading";
-    [HUD show:YES];
-}
-
-- (void)HideSpinner // TODO: Centralize
-{
-    [HUD show:NO];
-    [HUD removeFromSuperview];
-}
-
 - (IBAction)btnNext:(id)sender
 {
     self.state = [self.state navigateNextDay];
-
+    
     if(!self.state.currentWeek)
     {
         [self updateState];
@@ -287,6 +272,7 @@
     [self setBtnTitle:nil];
     [self setButtonAdd:nil];
     [self setButtonHeaderIcon:nil];
+    [self setHud:nil];
     [super viewDidUnload];
 }
 

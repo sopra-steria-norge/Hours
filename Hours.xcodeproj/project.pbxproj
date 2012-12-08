@@ -13,8 +13,9 @@
 		4C2A327D1662511200906373 /* RegistrationInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A327C1662511200906373 /* RegistrationInfoViewController.m */; };
 		4C2A32801666B6C700906373 /* LoginCredentialFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A327F1666B6C700906373 /* LoginCredentialFactory.m */; };
 		4C2A32831667BCFC00906373 /* LoginCredentialFactoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A32821667BCFC00906373 /* LoginCredentialFactoryTest.m */; };
-		4C3DD86B1671C7550038EF9C /* EncodingUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3DD86A1671C7550038EF9C /* EncodingUtility.m */; };
 		4C3DD86E16729AAE0038EF9C /* LoginState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3DD86D16729AAD0038EF9C /* LoginState.m */; };
+		4C3DD8721672C99D0038EF9C /* EncodingUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3DD8711672C99D0038EF9C /* EncodingUtility.m */; };
+		4C3DD8751672C9BE0038EF9C /* MBHudHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3DD8741672C9BE0038EF9C /* MBHudHelper.m */; };
 		4CAB12301646FF6B00265B8D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB122F1646FF6B00265B8D /* UIKit.framework */; };
 		4CAB12321646FF6B00265B8D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB12311646FF6B00265B8D /* Foundation.framework */; };
 		4CAB12341646FF6B00265B8D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB12331646FF6B00265B8D /* CoreGraphics.framework */; };
@@ -133,10 +134,12 @@
 		4C2A327F1666B6C700906373 /* LoginCredentialFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginCredentialFactory.m; sourceTree = "<group>"; };
 		4C2A32811667BCFC00906373 /* LoginCredentialFactoryTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginCredentialFactoryTest.h; sourceTree = "<group>"; };
 		4C2A32821667BCFC00906373 /* LoginCredentialFactoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginCredentialFactoryTest.m; sourceTree = "<group>"; };
-		4C3DD8691671C7550038EF9C /* EncodingUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncodingUtility.h; sourceTree = "<group>"; };
-		4C3DD86A1671C7550038EF9C /* EncodingUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncodingUtility.m; sourceTree = "<group>"; };
 		4C3DD86C16729AAD0038EF9C /* LoginState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginState.h; sourceTree = "<group>"; };
 		4C3DD86D16729AAD0038EF9C /* LoginState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginState.m; sourceTree = "<group>"; };
+		4C3DD8701672C99D0038EF9C /* EncodingUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EncodingUtility.h; path = Utils/EncodingUtility.h; sourceTree = "<group>"; };
+		4C3DD8711672C99D0038EF9C /* EncodingUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EncodingUtility.m; path = Utils/EncodingUtility.m; sourceTree = "<group>"; };
+		4C3DD8731672C9BE0038EF9C /* MBHudHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBHudHelper.h; path = Utils/MBHudHelper.h; sourceTree = "<group>"; };
+		4C3DD8741672C9BE0038EF9C /* MBHudHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBHudHelper.m; path = Utils/MBHudHelper.m; sourceTree = "<group>"; };
 		4CAB122B1646FF6B00265B8D /* Hours.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hours.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CAB122F1646FF6B00265B8D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4CAB12311646FF6B00265B8D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -236,6 +239,17 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		4C3DD86F1672C9440038EF9C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4C3DD8701672C99D0038EF9C /* EncodingUtility.h */,
+				4C3DD8711672C99D0038EF9C /* EncodingUtility.m */,
+				4C3DD8731672C9BE0038EF9C /* MBHudHelper.h */,
+				4C3DD8741672C9BE0038EF9C /* MBHudHelper.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		4CAB12201646FF6B00265B8D = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +292,7 @@
 		4CAB12351646FF6B00265B8D /* Hours */ = {
 			isa = PBXGroup;
 			children = (
+				4C3DD86F1672C9440038EF9C /* Utils */,
 				4C2A327216624C1C00906373 /* Resources */,
 				4CAB12EB16481A1500265B8D /* Data */,
 				4CAB12CA1647051400265B8D /* Models */,
@@ -375,8 +390,6 @@
 		4CAB12EB16481A1500265B8D /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				4C3DD8691671C7550038EF9C /* EncodingUtility.h */,
-				4C3DD86A1671C7550038EF9C /* EncodingUtility.m */,
 				4CAB12EC16481A1500265B8D /* DataFactory.h */,
 				4CAB12ED16481A1500265B8D /* DataFactory.m */,
 				4C2A327E1666B6C700906373 /* LoginCredentialFactory.h */,
@@ -590,8 +603,9 @@
 				4C298F56165D207E00EEF4E4 /* RegistrationAddViewController.m in Sources */,
 				4C2A327D1662511200906373 /* RegistrationInfoViewController.m in Sources */,
 				4C2A32801666B6C700906373 /* LoginCredentialFactory.m in Sources */,
-				4C3DD86B1671C7550038EF9C /* EncodingUtility.m in Sources */,
 				4C3DD86E16729AAE0038EF9C /* LoginState.m in Sources */,
+				4C3DD8721672C99D0038EF9C /* EncodingUtility.m in Sources */,
+				4C3DD8751672C9BE0038EF9C /* MBHudHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,14 +9,14 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "WeekViewController.h"
 #import "DataFactory.h"
+#import "MBHudHelper.h"
 
-@interface WeekViewController () <AppStateReceiver, MBProgressHUDDelegate> {
-    MBProgressHUD *HUD;
-}
+@interface WeekViewController () <AppStateReceiver, MBProgressHUDDelegate> 
 
 @property (weak, nonatomic) IBOutlet UITableView *tableDays;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonTitle;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonSubmit;
+@property (strong, nonatomic) MBProgressHUD *hud;
 
 - (IBAction)buttonPrevious:(id)sender;
 - (IBAction)buttonNext:(id)sender;
@@ -27,6 +27,7 @@
 
 @implementation WeekViewController
 @synthesize state = _state;
+@synthesize hud = _hud;
 
 -(void)setState:(AppState *)state
 {
@@ -62,7 +63,7 @@
     }
     else
     {
-        [self ShowSpinner];
+        [MBHudHelper ShowSpinnerForDelegate:self withView:self.tabBarController.view];
     }
     [self setupSwipe];
 }
@@ -84,13 +85,14 @@
     self.state = state;
     
     NSLog(@"Did receive data from the loader");
-    [HUD show:NO];
-    [HUD removeFromSuperview];
+    [MBHudHelper HideSpinnerForHud:self.hud];
+    self.hud = nil;
 }
 
 - (void) didFailLoadingAppStateWithError:(NSError *)error
 {
-    [self HideSpinner];
+    [MBHudHelper HideSpinnerForHud:self.hud];
+        self.hud = nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -142,39 +144,24 @@
     [self.tableDays addGestureRecognizer:oneFingerSwipeRight];
 }
 
-
-- (void)ShowSpinner // TODO: Centralize
-{
-    HUD = [[MBProgressHUD alloc] initWithView:self.tabBarController.view];
-    [self.tabBarController.view addSubview:HUD];
-    HUD.delegate = self;
-    HUD.labelText = @"Loading";
-    [HUD show:YES];
-}
-
-- (void)HideSpinner // TODO: Centralize
-{
-    [HUD show:NO];
-    [HUD removeFromSuperview];
-}
-
 - (void)viewDidUnload {
     [self setTableDays:nil];
     [self setButtonTitle:nil];
     [self setButtonSubmit:nil];
     [self setButtonSubmit:nil];
+    [self setHud:nil];
     [super viewDidUnload];
 }
 
 - (IBAction)buttonPrevious:(id)sender
 {
     [self.state navigatePreviousWeek];
-    self.state = [AppState getOrLoadForReceiver:self]; // TODO: Move deserialization out of view controllers
+    self.state = [AppState getOrLoadForReceiver:self];
 }
 
 - (IBAction)buttonNext:(id)sender
 {
     [self.state navigateNextWeek];
-    self.state = [AppState getOrLoadForReceiver:self]; // TODO: Move deserialization out of view controllers
+    self.state = [AppState getOrLoadForReceiver:self];
 }
 @end
