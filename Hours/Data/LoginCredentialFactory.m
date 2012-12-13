@@ -35,8 +35,8 @@
 {
     NSString *salt = [self randomStringWithBase64Characters];
     NSString *beforeHash = [NSString stringWithFormat:@"%@_%@", salt, password];
-    NSString *sha1 = [EncodingUtility sha1:beforeHash];
-    NSString *base64 = [EncodingUtility base64EncodeString:sha1];
+    NSData *sha1 = [EncodingUtility sha1:beforeHash];
+    NSString *base64 = [EncodingUtility base64EncodeData:sha1];
     NSString *result = [NSString stringWithFormat:@"%@_%@", salt, base64];
     return result;
 }

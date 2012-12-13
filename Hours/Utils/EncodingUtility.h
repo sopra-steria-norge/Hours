@@ -10,8 +10,8 @@
 
 @interface EncodingUtility : NSObject
 
-+ (NSString*) sha1:(NSString*)input;
++ (NSData*) sha1:(NSString*)input;
 + (NSString *) base64EncodingTable;
-+ (NSString *) base64EncodeString: (NSString *) strData;
++ (NSString *) base64EncodeData: (NSData *) data;
 
 @end

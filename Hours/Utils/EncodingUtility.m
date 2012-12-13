@@ -5,7 +5,6 @@
 //  Created by Tommy Wendelborg on 12/7/12.
 //  Copyright (c) 2012 steria. All rights reserved.
 //
-// SHA1 hash algorithm from: http://www.makebetterthings.com/iphone/how-to-get-md5-and-sha1-in-objective-c-ios-sdk/
 // Base64 encoder from:      http://ios-dev-blog.com/base64-encodingdecoding/
 
 #import "EncodingUtility.h"
@@ -20,25 +19,17 @@ static const char _base64EncodingTable[64] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgh
     return [[NSString alloc] initWithBytes:_base64EncodingTable length:64 encoding:NSUTF8StringEncoding];
 }
 
-+(NSString*) sha1:(NSString*)input
++(NSData*) sha1:(NSString*)input
 {
-    const char *cstr = [input cStringUsingEncoding:NSUTF8StringEncoding];
-    NSData *data = [NSData dataWithBytes:cstr length:input.length];
-    
     uint8_t digest[CC_SHA1_DIGEST_LENGTH];
+    const char *cstr = [input cStringUsingEncoding:NSUTF8StringEncoding];
+    NSData *data = [NSData dataWithBytes:cstr length:input.length];    
     
     CC_SHA1(data.bytes, data.length, digest);
     
-    NSMutableString* output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
+    NSData *pwHashData = [[NSData alloc] initWithBytes:digest length: sizeof digest ];
     
-    for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++)
-        [output appendFormat:@"%02x", digest[i]];
-    
-    return output;
-}
-
-+ (NSString *) base64EncodeString: (NSString *) strData {
-	return [self base64EncodeData: [strData dataUsingEncoding: NSUTF8StringEncoding] ];
+    return pwHashData;
 }
 
 + (NSString *) base64EncodeData: (NSData *) objData {

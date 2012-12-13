@@ -17,7 +17,7 @@
 
 NSString const * expectedSalt = @"BBBBBBBB";
 NSString const * password = @"pass_word";
-NSString const * expectedBase64WithSalt = @"BBBBBBBB_YTkxYzVlN2JkZTkxYzZjMzg3ZjIyMmQ0ZTY1MDFkYjcwYzA1ZDUzZA=="; // SHA1 of "BBBBBBBB_pass_word" ("a91c5e7bde91c6c387f222d4e6501db70c05d53d"), base64-encoded
+NSString const * expectedBase64WithSalt = @"BBBBBBBB_qRxee96RxsOH8iLU5lAdtwwF1T0="; // SHA1 of "BBBBBBBB_pass_word", base64-encoded
 
 @synthesize loginCredentialFactory = _loginCredentialFactory;
 @synthesize randomGeneratorFake = _randomGeneratorFake;
