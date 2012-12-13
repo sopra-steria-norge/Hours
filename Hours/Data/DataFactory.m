@@ -24,7 +24,7 @@ NSString * const authenticationTokenFormat = @"{\"username\":\"%@\", \"password\
 NSString * const authenticationHeaderKey = @"X-Authentication-Token";
 
 NSString * const hoursPath = @"/week/hours";
-
+const double timeoutInterval = 30.0;
 
 @synthesize appStateReceiver = _appStateReceiver;
 @synthesize loginStateReceiver = _loginStateReceiver;
@@ -57,7 +57,7 @@ static LoginState *_sharedLoginState = nil;
 
     NSURL *url = [self getBaseURL];
     RKClient *client = [RKClient clientWithBaseURL:url];
-    
+    client.timeoutInterval = timeoutInterval;
     [self setAuthenticationHeaderForClient:client user:loginState.userName saltedPassword:loginState.passwordHash];
     
     RKRequest *request = [client get:authenticationPath delegate:self];
@@ -108,6 +108,7 @@ static LoginState *_sharedLoginState = nil;
        
     NSURL *url = [self getBaseURL];
     RKObjectManager *manager = [RKObjectManager managerWithBaseURL:url];
+    manager.client.timeoutInterval = timeoutInterval;
     [manager loadObjectsAtResourcePath:hoursPath usingBlock:^(RKObjectLoader* loader)
      {
          loader.ObjectMapping = self.mapping;

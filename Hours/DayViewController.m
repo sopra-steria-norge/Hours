@@ -11,6 +11,7 @@
 #import "MBHudHelper.h"
 #import "RegistrationAddViewController.h"
 #import "RegistrationInfoViewController.h"
+#import "Alert.h"
 
 @interface DayViewController () <AppStateReceiver, MBProgressHUDDelegate>
 
@@ -21,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnDayName;
 @property (weak, nonatomic) IBOutlet UIButton *buttonAdd;
 @property (strong, nonatomic) MBProgressHUD *hud;
+@property (strong, nonatomic) UIAlertView *updateFailedAlert;
+@property (strong, nonatomic) UIAlertView *loadFailedAlert;
 
 // Data fetching
 @property (strong, nonatomic) DataFactory *dataFactory;
@@ -31,6 +34,8 @@
 @synthesize state = _state;
 @synthesize dataFactory = _dataFactory;
 @synthesize hud = _hud;
+@synthesize updateFailedAlert = _updateFailedAlert;
+@synthesize loadFailedAlert = _loadFailedAlert;
 
 - (void)viewDidLoad
 {
@@ -40,6 +45,8 @@
     [self setupSwipe];
     
     self.dataFactory = [[DataFactory alloc] init];
+    self.loadFailedAlert = [Alert createOkCancelAlertWithTitle:@"Loading failed" andMessage:@"Retry" forDelegate:self];
+    self.updateFailedAlert = [Alert createOkCancelAlertWithTitle:@"Updating failed" andMessage:@"Retry?" forDelegate:self];
 }
 
 -(void)setState:(AppState *)state
@@ -53,7 +60,7 @@
     }
     else
     {
-        title = @"...";
+        title = @"";
     }
     self.buttonAdd.enabled = ![self.state isLocked];
     
@@ -76,14 +83,14 @@
 
 -(void)updateState
 {
-    AppState *state = [AppState getOrLoadForReceiver:self]; // TODO: Move deserialization out of view controllers
+    AppState *state = [AppState getOrLoadForReceiver:self];
     if(state)
     {
         self.state = state;
         
         if(self.state.registrationsToSave.count > 0)
         {
-            // TODO: Send to server, refetch period afterwards!
+            [[Alert createAlertWithTitle:@"// TODO: " andMessage:@"Supposed to send some data here..."] show];
         }
     }
     else
@@ -102,12 +109,25 @@
     NSLog(@"Did receive data from the loader");
     [MBHudHelper HideSpinnerForHud:self.hud];
     self.hud = nil;
+    }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(alertView == self.loadFailedAlert)
+    {
+        [[Alert createAlertWithTitle:@"// TODO: " andMessage:@"Handle failed load attempts, retry on OK, logout on CANCEL"] show];
+    }
+    else if(alertView == self.updateFailedAlert)
+    {
+        [[Alert createAlertWithTitle:@"// TODO: " andMessage:@"Handle failed update attempts, retry on OK, logout on CANCEL"] show];
+    }
 }
 
 - (void) didFailLoadingAppStateWithError:(NSError *)error
 {
     [MBHudHelper HideSpinnerForHud:self.hud];
     self.hud = nil;
+    [self.loadFailedAlert show];
 }
 
 - (void)didReceiveMemoryWarning
@@ -123,19 +143,39 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int count = 0;
     if(self.state)
     {
-        count = self.state.currentDay.registrations.count;
-        if(!self.state.currentWeek.isSubmitted)
+        if([self isCopyPreviousDayEnabled])
         {
-            if(count == 0) // This triggers "copy yesterday"
-            {
-                count += 1;
-            }
+            return 1;
+        }
+        else
+        {
+            return self.state.currentDay.registrations.count;
         }
     }
-    return count;
+    return 0;
+}
+
+- (bool)isCopyPreviousDayEnabled
+{
+    if(self.state)
+    {
+        int count = self.state.currentDay.registrations.count;
+        if(!self.state.currentWeek.isSubmitted && count == 0)
+        {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath
+{
+	if([self isCopyPreviousDayEnabled])
+    {
+        [[Alert createAlertWithTitle:@"// TODO: " andMessage:@"Actually copy something..."] show];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -273,6 +313,8 @@
     [self setButtonAdd:nil];
     [self setButtonHeaderIcon:nil];
     [self setHud:nil];
+    [self setUpdateFailedAlert:nil];
+    [self setLoadFailedAlert:nil];
     [super viewDidUnload];
 }
 

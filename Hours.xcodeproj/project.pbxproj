@@ -16,6 +16,7 @@
 		4C3DD86E16729AAE0038EF9C /* LoginState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3DD86D16729AAD0038EF9C /* LoginState.m */; };
 		4C3DD8721672C99D0038EF9C /* EncodingUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3DD8711672C99D0038EF9C /* EncodingUtility.m */; };
 		4C3DD8751672C9BE0038EF9C /* MBHudHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3DD8741672C9BE0038EF9C /* MBHudHelper.m */; };
+		4C6F8711167A7B5E0059A4F2 /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F8710167A7B5E0059A4F2 /* Alert.m */; };
 		4CAB12301646FF6B00265B8D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB122F1646FF6B00265B8D /* UIKit.framework */; };
 		4CAB12321646FF6B00265B8D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB12311646FF6B00265B8D /* Foundation.framework */; };
 		4CAB12341646FF6B00265B8D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB12331646FF6B00265B8D /* CoreGraphics.framework */; };
@@ -140,6 +141,8 @@
 		4C3DD8711672C99D0038EF9C /* EncodingUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EncodingUtility.m; path = Utils/EncodingUtility.m; sourceTree = "<group>"; };
 		4C3DD8731672C9BE0038EF9C /* MBHudHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBHudHelper.h; path = Utils/MBHudHelper.h; sourceTree = "<group>"; };
 		4C3DD8741672C9BE0038EF9C /* MBHudHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBHudHelper.m; path = Utils/MBHudHelper.m; sourceTree = "<group>"; };
+		4C6F870F167A7B5E0059A4F2 /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Alert.h; path = Utils/Alert.h; sourceTree = "<group>"; };
+		4C6F8710167A7B5E0059A4F2 /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Alert.m; path = Utils/Alert.m; sourceTree = "<group>"; };
 		4CAB122B1646FF6B00265B8D /* Hours.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hours.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CAB122F1646FF6B00265B8D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4CAB12311646FF6B00265B8D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -246,6 +249,8 @@
 				4C3DD8711672C99D0038EF9C /* EncodingUtility.m */,
 				4C3DD8731672C9BE0038EF9C /* MBHudHelper.h */,
 				4C3DD8741672C9BE0038EF9C /* MBHudHelper.m */,
+				4C6F870F167A7B5E0059A4F2 /* Alert.h */,
+				4C6F8710167A7B5E0059A4F2 /* Alert.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -606,6 +611,7 @@
 				4C3DD86E16729AAE0038EF9C /* LoginState.m in Sources */,
 				4C3DD8721672C99D0038EF9C /* EncodingUtility.m in Sources */,
 				4C3DD8751672C9BE0038EF9C /* MBHudHelper.m in Sources */,
+				4C6F8711167A7B5E0059A4F2 /* Alert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
