@@ -10,6 +10,7 @@
 #import "WeekViewController.h"
 #import "DataFactory.h"
 #import "MBHudHelper.h"
+#import "Alert.h"
 
 @interface WeekViewController () <AppStateReceiver, MBProgressHUDDelegate> 
 
@@ -17,9 +18,11 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonTitle;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonSubmit;
 @property (strong, nonatomic) MBProgressHUD *hud;
+@property (strong, nonatomic) UIAlertView *submitAlert;
 
-- (IBAction)buttonPrevious:(id)sender;
-- (IBAction)buttonNext:(id)sender;
+- (IBAction)buttonPreviousClicked:(id)sender;
+- (IBAction)buttonNextClicked:(id)sender;
+- (IBAction)buttonSubmitClicked:(id)sender;
 
 // Data fetching
 @property (strong, nonatomic) DataFactory *dataFactory;
@@ -28,6 +31,7 @@
 @implementation WeekViewController
 @synthesize state = _state;
 @synthesize hud = _hud;
+@synthesize submitAlert = _submitAlert;
 
 -(void)setState:(AppState *)state
 {
@@ -72,6 +76,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.submitAlert = [Alert createOkCancelAlertWithTitle:@"Submit hours" andMessage:@"Are you sure you want to submit this period?" forDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -133,13 +138,13 @@
 {
     UISwipeGestureRecognizer *oneFingerSwipeLeft = [[UISwipeGestureRecognizer alloc]
                                                     initWithTarget:self
-                                                    action:@selector(buttonNext:)];
+                                                    action:@selector(buttonNextClicked:)];
     [oneFingerSwipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
     [self.tableDays addGestureRecognizer:oneFingerSwipeLeft];
     
     UISwipeGestureRecognizer *oneFingerSwipeRight = [[UISwipeGestureRecognizer alloc]
                                                      initWithTarget:self
-                                                     action:@selector(buttonPrevious:)];
+                                                     action:@selector(buttonPreviousClicked:)];
     [oneFingerSwipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
     [self.tableDays addGestureRecognizer:oneFingerSwipeRight];
 }
@@ -150,18 +155,32 @@
     [self setButtonSubmit:nil];
     [self setButtonSubmit:nil];
     [self setHud:nil];
+    [self setSubmitAlert:nil];
     [super viewDidUnload];
 }
 
-- (IBAction)buttonPrevious:(id)sender
+- (IBAction)buttonPreviousClicked:(id)sender
 {
     [self.state navigatePreviousWeek];
     self.state = [AppState getOrLoadForReceiver:self];
 }
 
-- (IBAction)buttonNext:(id)sender
+- (IBAction)buttonNextClicked:(id)sender
 {
     [self.state navigateNextWeek];
     self.state = [AppState getOrLoadForReceiver:self];
+}
+
+- (IBAction)buttonSubmitClicked:(id)sender
+{
+    [self.submitAlert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(alertView == self.submitAlert && buttonIndex == 0)
+    {
+        [[Alert createAlertWithTitle:@"// TODO: " andMessage:@"Submit the week"] show];
+    }
 }
 @end

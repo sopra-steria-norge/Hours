@@ -428,7 +428,7 @@
                                 <items>
                                     <barButtonItem systemItem="rewind" id="xbV-JV-O2l">
                                         <connections>
-                                            <action selector="buttonPrevious:" destination="3" id="yYN-65-3mb"/>
+                                            <action selector="buttonPreviousClicked:" destination="3" id="umt-m6-seC"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="dvh-Za-T7i"/>
@@ -437,7 +437,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="wTs-1R-wHT"/>
                                     <barButtonItem systemItem="fastForward" id="cdc-zw-1mX">
                                         <connections>
-                                            <action selector="buttonNext:" destination="3" id="h7M-4Y-BdB"/>
+                                            <action selector="buttonNextClicked:" destination="3" id="2KW-4Z-bAn"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -476,7 +476,11 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jps-Bb-mg0">
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="gDL-TR-QTe"/>
-                                    <barButtonItem systemItem="action" id="U4g-Fh-loq"/>
+                                    <barButtonItem title="Submit" id="U4g-Fh-loq">
+                                        <connections>
+                                            <action selector="buttonSubmitClicked:" destination="3" id="Tzi-f0-R0v"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="HyR-o3-fR9"/>
                                 </items>
                                 <color key="tintColor" red="1" green="0.49803921579999999" blue="0.1411764771" alpha="1" colorSpace="calibratedRGB"/>
@@ -643,6 +647,7 @@
             <relationships>
                 <relationship kind="action" name="buttonNext:"/>
                 <relationship kind="action" name="buttonPrevious:"/>
+                <relationship kind="action" name="buttonSubmitClicked:"/>
                 <relationship kind="outlet" name="buttonSubmit" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="buttonTitle" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="tableDays" candidateClass="UITableView"/>

@@ -62,14 +62,14 @@
     {
         title = @"";
     }
+    self.btnTitle.title = title;
+    
     self.buttonAdd.enabled = ![self.state isLocked];
     
     if([self.state isLocked])
     {
         self.buttonHeaderIcon.image = [UIImage imageNamed:@"lock.png"];
-    }
-    
-    self.btnTitle.title = title;
+    }  
     
     [self.tblRegistrations reloadData];
 }
@@ -102,7 +102,7 @@
 - (void)didReceiveAppState:(AppState*) state
 {
     NSLog(@"WARNING! for testing sake the current date is set to the first date of the loaded week");
-    state.currentDate = [[state.currentWeek.days objectAtIndex:0] date];
+    state.currentDate = [[state.currentWeek.days objectAtIndex:0] date]; // TODO: This is for testing
     
     self.state = state;
     
