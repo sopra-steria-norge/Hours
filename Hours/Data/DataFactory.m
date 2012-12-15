@@ -33,11 +33,6 @@ const double timeoutInterval = 30.0;
 static AppState *_sharedAppState = nil;
 static LoginState *_sharedLoginState = nil;
 
--(void) refreshDataForReceiver:(id<AppStateReceiver>) receiver
-{
-    // TODO: Implement
-}
-
 - (id) init
 {
     self = [super init];

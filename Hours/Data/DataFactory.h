@@ -16,7 +16,6 @@
 @property(nonatomic, readonly, weak) id<LoginStateReceiver> loginStateReceiver;
 -(void)startCheckAuthenticationForLoginState:(LoginState *)loginState andDelegateReceiver:(id<LoginStateReceiver>) receiver;
 -(void) startGetDataForDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver;
--(void) refreshDataForReceiver:(id<AppStateReceiver>) receiver;
 
 + (AppState *)sharedAppState;
 + (LoginState *) sharedLoginState;

@@ -27,7 +27,7 @@ NSString const * expectedBase64WithSalt = @"BBBBBBBB_qRxee96RxsOH8iLU5lAdtwwF1T0
     [super setUp];
     
     self.loginCredentialFactory = [[LoginCredentialFactory alloc] init];
-    self.randomGeneratorFake = [[RandomGeneratorFake alloc] initWithFixedBaseStringAlphaAtIndex:1];
+    self.randomGeneratorFake = [[RandomGeneratorFake alloc] initWithFixedBaseStringAlphaAtIndex:1]; // Always returns B
     self.loginCredentialFactory.randomGenerator = self.randomGeneratorFake;
 }
 
@@ -37,12 +37,6 @@ NSString const * expectedBase64WithSalt = @"BBBBBBBB_qRxee96RxsOH8iLU5lAdtwwF1T0
     self.loginCredentialFactory = nil;
     self.randomGeneratorFake = nil;
     [super tearDown];
-}
-
-- (void)test_randomStringWithBase64Characters_mustReturnEightBs_givenFakeRandomIndex1;
-{
-    NSString *randomString = [self.loginCredentialFactory randomStringWithBase64Characters];
-    STAssertTrue([expectedSalt isEqualToString:randomString], @"Expected %@, got %@", expectedSalt, randomString);
 }
 
 - (void)test_saltAndHash_mustReturnSaltAsFirst8characters;
@@ -57,7 +51,15 @@ NSString const * expectedBase64WithSalt = @"BBBBBBBB_qRxee96RxsOH8iLU5lAdtwwF1T0
 {
     NSString *hashedAndSalted = [self executeSaltAndHash];
     STAssertTrue([expectedBase64WithSalt isEqualToString:hashedAndSalted], @"Wrong result in encoded hashed password, result: %@", hashedAndSalted);
+}
+
+-(void)test_saltAndHash_twoHashedPasswordWithRandomSaltMustNotBeTheSame
+{
+    self.loginCredentialFactory.randomGenerator = nil; // Make sure the factory uses its own random generator
+    NSString *hashedAndSalted1 = [self executeSaltAndHash];
+    NSString *hashedAndSalted2 = [self executeSaltAndHash];
     
+    STAssertFalse([hashedAndSalted1 isEqualToString:hashedAndSalted2], @"Generated hashes are equal: %@", hashedAndSalted1);
 }
 
 - (NSString *)executeSaltAndHash
