@@ -93,7 +93,7 @@ static DataFactory *_dataFactory;
 
 - (AppState *) navigateNextDay
 {
-    self.currentDate = [self previousDate];
+    self.currentDate = [self nextDate];
     if(!self.currentDay)
     {
         return self.navigateNextWeek;
@@ -102,7 +102,7 @@ static DataFactory *_dataFactory;
 }
 - (AppState *) navigatePreviousDay
 {
-    self.currentDate = [self nextDate];
+    self.currentDate = [self previousDate];
     if(!self.currentDay)
     {
         return self.navigatePreviousWeek;
@@ -154,6 +154,36 @@ static DataFactory *_dataFactory;
         }
     }
     return nil;
+}
+
+- (NSMutableArray *) getUnusedProjectForCurrentDay
+{
+    NSMutableArray *projects = [[NSMutableArray alloc] init];
+    for(Project *p in self.currentWeek.projects)
+    {
+        Registration *exists = nil;
+        
+        for(Registration *r in self.currentDay.registrations)
+        {
+            if(p.projectNumber == r.projectNumber && p.activityCode == r.activityCode)
+            {
+                exists = r;
+                break;
+            }
+            
+            if(exists)
+            {
+                break;
+            }
+        }
+        
+        if(!exists)
+        {
+            [projects addObject:p];
+        }
+    }
+
+    return projects;
 }
 
 - (NSArray *) registrationsToSave

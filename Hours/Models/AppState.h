@@ -29,6 +29,7 @@
 - (id) initWithDate:(NSDate *) date;
 - (Day *) getDayForDate:(NSDate *) date;
 - (Project *) getProjectByNumber:(NSString *) projectNumber andActivityCode:(NSString *)activityCode;
+- (NSMutableArray *) getUnusedProjectForCurrentDay;
 - (AppState *) navigateNextDay;
 - (AppState *) navigatePreviousDay;
 - (AppState *) navigateNextWeek;

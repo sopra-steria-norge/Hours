@@ -136,9 +136,9 @@
     }
     else
     {
-        projects = state.currentWeek.projects;
+        projects = [state getUnusedProjectForCurrentDay];
     }
-    _projectValues = projects.copy; // TODO: Remove projects that are already registered that day?
+    _projectValues = projects.copy;
 }
 
 - (NSMutableArray *)findProjectForRegistration:(Registration *)registration
