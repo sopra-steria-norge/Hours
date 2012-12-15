@@ -83,12 +83,12 @@ static DataFactory *_dataFactory;
 
 - (NSDate *)previousDate
 {
-    return [self.currentDate dateByAddingTimeInterval:ONE_DAY_IN_SECONDS];
+    return [self.currentDate dateByAddingTimeInterval:ONE_DAY_IN_SECONDS * -1];
 }
 
 - (NSDate *)nextDate
 {
-    return [self.currentDate dateByAddingTimeInterval:ONE_DAY_IN_SECONDS * -1];
+    return [self.currentDate dateByAddingTimeInterval:ONE_DAY_IN_SECONDS];
 }
 
 - (AppState *) navigateNextDay

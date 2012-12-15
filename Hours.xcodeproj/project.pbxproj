@@ -13,6 +13,7 @@
 		4C2A327D1662511200906373 /* RegistrationInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A327C1662511200906373 /* RegistrationInfoViewController.m */; };
 		4C2A32801666B6C700906373 /* LoginCredentialFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A327F1666B6C700906373 /* LoginCredentialFactory.m */; };
 		4C2A32831667BCFC00906373 /* LoginCredentialFactoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A32821667BCFC00906373 /* LoginCredentialFactoryTest.m */; };
+		4C3BBF92167CADD90035EB67 /* AppStateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BBF91167CADD90035EB67 /* AppStateTests.m */; };
 		4C3DD86E16729AAE0038EF9C /* LoginState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3DD86D16729AAD0038EF9C /* LoginState.m */; };
 		4C3DD8721672C99D0038EF9C /* EncodingUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3DD8711672C99D0038EF9C /* EncodingUtility.m */; };
 		4C3DD8751672C9BE0038EF9C /* MBHudHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3DD8741672C9BE0038EF9C /* MBHudHelper.m */; };
@@ -135,6 +136,8 @@
 		4C2A327F1666B6C700906373 /* LoginCredentialFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginCredentialFactory.m; sourceTree = "<group>"; };
 		4C2A32811667BCFC00906373 /* LoginCredentialFactoryTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginCredentialFactoryTest.h; sourceTree = "<group>"; };
 		4C2A32821667BCFC00906373 /* LoginCredentialFactoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginCredentialFactoryTest.m; sourceTree = "<group>"; };
+		4C3BBF90167CADD90035EB67 /* AppStateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppStateTests.h; sourceTree = "<group>"; };
+		4C3BBF91167CADD90035EB67 /* AppStateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStateTests.m; sourceTree = "<group>"; };
 		4C3DD86C16729AAD0038EF9C /* LoginState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginState.h; sourceTree = "<group>"; };
 		4C3DD86D16729AAD0038EF9C /* LoginState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginState.m; sourceTree = "<group>"; };
 		4C3DD8701672C99D0038EF9C /* EncodingUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EncodingUtility.h; path = Utils/EncodingUtility.h; sourceTree = "<group>"; };
@@ -342,11 +345,13 @@
 		4CAB12641646FF6B00265B8D /* HoursTests */ = {
 			isa = PBXGroup;
 			children = (
+				4C3BBF90167CADD90035EB67 /* AppStateTests.h */,
+				4C3BBF91167CADD90035EB67 /* AppStateTests.m */,
 				4CAB126A1646FF6B00265B8D /* HoursTests.h */,
 				4CAB126B1646FF6B00265B8D /* HoursTests.m */,
-				4CAB12651646FF6B00265B8D /* Supporting Files */,
 				4C2A32811667BCFC00906373 /* LoginCredentialFactoryTest.h */,
 				4C2A32821667BCFC00906373 /* LoginCredentialFactoryTest.m */,
+				4CAB12651646FF6B00265B8D /* Supporting Files */,
 				E769AB966268A69B0CCBD1A6 /* Fakes */,
 			);
 			path = HoursTests;
@@ -622,6 +627,7 @@
 				4CAB126C1646FF6B00265B8D /* HoursTests.m in Sources */,
 				4C2A32831667BCFC00906373 /* LoginCredentialFactoryTest.m in Sources */,
 				E769A05ED9674592AA9ABAC1 /* RandomGeneratorFake.m in Sources */,
+				4C3BBF92167CADD90035EB67 /* AppStateTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

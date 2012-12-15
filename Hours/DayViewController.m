@@ -145,7 +145,7 @@
 {
     if(self.state)
     {
-        if([self isCopyPreviousDayEnabled])
+        if([self noRegistrationsForCurrentDayAndCopyPreviousDayEnabled])
         {
             return 1;
         }
@@ -157,14 +157,18 @@
     return 0;
 }
 
-- (bool)isCopyPreviousDayEnabled
+- (bool)noRegistrationsForCurrentDayAndCopyPreviousDayEnabled
 {
     if(self.state)
     {
         int count = self.state.currentDay.registrations.count;
         if(!self.state.currentWeek.isSubmitted && count == 0)
         {
-            return YES;
+            Day *previousDay = [self.state getDayForDate:self.state.previousDate];
+            if(previousDay.registrations.count > 0)
+            {
+                return YES;
+            }        
         }
     }
     return NO;
@@ -172,7 +176,7 @@
 
 - (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 {
-	if([self isCopyPreviousDayEnabled])
+	if([self noRegistrationsForCurrentDayAndCopyPreviousDayEnabled])
     {
         [[Alert createAlertWithTitle:@"// TODO: " andMessage:@"Actually copy something..."] show];
     }
