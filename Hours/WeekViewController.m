@@ -12,7 +12,7 @@
 #import "MBHudHelper.h"
 #import "Alert.h"
 
-@interface WeekViewController () <AppStateReceiver, MBProgressHUDDelegate> 
+@interface WeekViewController () <AppStateReceiver, AppStateSubmitter, MBProgressHUDDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableDays;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonTitle;
@@ -59,11 +59,6 @@
     if(state)
     {
         self.state = state;
-        
-        if(self.state.registrationsToSave.count > 0)
-        {
-            // TODO: Send to server, refetch period afterwards!
-        }
     }
     else
     {

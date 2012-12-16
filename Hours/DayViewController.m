@@ -13,7 +13,7 @@
 #import "RegistrationInfoViewController.h"
 #import "Alert.h"
 
-@interface DayViewController () <AppStateReceiver, MBProgressHUDDelegate>
+@interface DayViewController () <AppStateReceiver, AppStateSaver, MBProgressHUDDelegate>
 
 // UI Controllers
 @property (weak, nonatomic) IBOutlet UITableView *tblRegistrations;
@@ -88,14 +88,17 @@
     {
         self.state = state;
         
-        if(self.state.registrationsToSave.count > 0)
+        if([self.state hasModifiedRegistrationsAndStartsSavingForDelegate:self] && !self.hud)
         {
-            [[Alert createAlertWithTitle:@"// TODO: " andMessage:@"Supposed to send some data here..."] show];
+            self.hud = [MBHudHelper ShowSpinnerForDelegate:self withView:self.tabBarController.view];
         }
     }
     else
     {
-        self.hud = [MBHudHelper ShowSpinnerForDelegate:self withView:self.tabBarController.view];
+        if(!self.hud)
+        {
+            self.hud = [MBHudHelper ShowSpinnerForDelegate:self withView:self.tabBarController.view];
+        }
     }
 }
 
@@ -128,6 +131,19 @@
     [MBHudHelper HideSpinnerForHud:self.hud];
     self.hud = nil;
     [self.loadFailedAlert show];
+}
+
+- (void)didSaveRegistration:(Registration *)registration
+{
+    [self.state removeRegistrationFromSaveQueue:registration];
+    [self updateState];
+}
+
+- (void)didFailSavingRegistrationWithError:(NSError *)error
+{
+    [MBHudHelper HideSpinnerForHud:self.hud];
+    self.hud = nil;
+    [self.updateFailedAlert show];
 }
 
 - (void)didReceiveMemoryWarning

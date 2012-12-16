@@ -11,9 +11,9 @@
 
 @interface DataFactory() <RKObjectLoaderDelegate>
 @property (nonatomic, strong) RKObjectMapping *mapping;
-@property(nonatomic, weak) id<AppStateReceiver> appStateReceiver;
-@property(nonatomic, weak) id<LoginStateReceiver> loginStateReceiver;
-
+@property (nonatomic, weak) id<AppStateReceiver> appStateReceiver;
+@property (nonatomic, weak) id<LoginStateReceiver> loginStateReceiver;
+@property (nonatomic, weak) id<AppStateSaver> appStateSaver;
 @end
 
 @implementation DataFactory
@@ -26,8 +26,11 @@ NSString * const authenticationHeaderKey = @"X-Authentication-Token";
 NSString * const hoursPath = @"/week/hours";
 const double timeoutInterval = 30.0;
 
+NSString * const postRegistrationPath = @"/week/hours/registration";
+
 @synthesize appStateReceiver = _appStateReceiver;
 @synthesize loginStateReceiver = _loginStateReceiver;
+@synthesize appStateSaver = _appStateSaver;
 @synthesize mapping = _mapping;
 
 static AppState *_sharedAppState = nil;
@@ -64,7 +67,29 @@ static LoginState *_sharedLoginState = nil;
     [[client HTTPHeaders] setValue:authenticationHeaderValue forKey:authenticationHeaderKey];
 }
 
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
+-(void)startSavingRegistration:(Registration *)registration forDelegate:(id<AppStateSaver>) saver
+{
+    self.appStateSaver = saver;
+    
+    [self resetRestKitClient];
+    
+    NSURL *url = [self getBaseURL];
+    RKClient *client = [RKClient clientWithBaseURL:url];
+    client.timeoutInterval = timeoutInterval;
+    
+    RKRequest *request = [client post:authenticationPath params:nil delegate:self];
+    request.userData = registration;
+    
+    // TODO: Actually post the update
+    NSLog(@"Something should have been added as a payload here, it isn't. // TODO!");
+
+    
+    
+}
+
+
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response
+{
     if ([request isGET] && [request.userData isKindOfClass:[LoginState class]])
     {
         if ([response isOK])
@@ -80,8 +105,26 @@ static LoginState *_sharedLoginState = nil;
             if(self.loginStateReceiver)
             {
                 _sharedLoginState = nil;
-                
                 [self.loginStateReceiver didFailLoggingInWithError:[response failureError]];
+            }
+        }
+    }
+    else if ([request isPOST] && [request.userData isKindOfClass:[Registration class]])
+    {
+        if([response isOK])
+        {
+            if(self.appStateSaver)
+            {
+                Registration *r = (Registration *)request.userData;
+                    
+                [self.appStateSaver didSaveRegistration:r];
+            }
+        }
+        else
+        {
+            if(self.appStateSaver)
+            {
+                [self.appStateSaver didFailSavingRegistrationWithError:[response failureError]];
             }
         }
     }

@@ -15,6 +15,15 @@
 - (void)didFailLoadingAppStateWithError:(NSError *)error;
 @end
 
+@protocol AppStateSaver <NSObject>
+- (void)didSaveRegistration:(Registration *)registration;
+- (void)didFailSavingRegistrationWithError:(NSError *)error;
+@end
+
+@protocol AppStateSubmitter <NSObject>
+// TODO: Implement success and fail
+@end
+
 @interface AppState : NSObject
 
 @property(nonatomic, strong) Week *currentWeek;
@@ -37,10 +46,11 @@
 
 - (NSString *)getTitleForDate:(NSDate *) date;
 
-
 @property(nonatomic, readonly, strong) NSArray *registrationsToSave;
+- (bool)hasModifiedRegistrationsAndStartsSavingForDelegate:(id<AppStateSaver>) saverDelegate;
 - (void) addExistingRegistrationToSaveQueue:(Registration *)existingRegistration;
 - (void) addNewRegistrationToSaveQueueWithProjectNumber:(NSString *)projectNumber activityCode:(NSString *)activityCode hours:(double) hours andDescription:(NSString *)description;
+- (void) removeRegistrationFromSaveQueue:(Registration *)registration;
 
 + (AppState *)getOrLoadForReceiver:(id<AppStateReceiver>) receiver;
 + (void) clear;

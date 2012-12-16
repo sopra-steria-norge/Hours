@@ -156,6 +156,19 @@ static DataFactory *_dataFactory;
     return nil;
 }
 
+- (bool)hasModifiedRegistrationsAndStartsSavingForDelegate:(id<AppStateSaver>) saverDelegate
+{
+    bool hasRegistrations = self.registrationsToSave.count > 0;
+    
+    if(hasRegistrations)
+    {
+        Registration *r = [self.registrationsToSave objectAtIndex:0];
+        [[AppState dataFactory] startSavingRegistration:r forDelegate:saverDelegate];
+    }
+        
+    return hasRegistrations;
+}
+
 - (NSMutableArray *) getUnusedProjectForCurrentDay
 {
     NSMutableArray *projects = [[NSMutableArray alloc] init];
@@ -210,6 +223,13 @@ static DataFactory *_dataFactory;
     NSMutableArray *mutableCopy = _registrationsToSave.mutableCopy;
     [mutableCopy addObject:registration];
     _registrationsToSave = mutableCopy.copy;
+}
+         
+- (void) removeRegistrationFromSaveQueue:(Registration *)registration
+{
+    NSMutableArray *tempRegistrationsToSave = self.registrationsToSave.mutableCopy;
+    [tempRegistrationsToSave removeObject:registration];
+    self.registrationsToSave = tempRegistrationsToSave;
 }
 
 -(NSString *)currentDayTitle
