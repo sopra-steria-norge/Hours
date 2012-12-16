@@ -109,7 +109,7 @@
     NSLog(@"Did receive data from the loader");
     [MBHudHelper HideSpinnerForHud:self.hud];
     self.hud = nil;
-    }
+}
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -193,7 +193,7 @@
         }
         else
         {
-            cell = [self getEditableCell:tableView indexPath:indexPath];            
+            cell = [self getEditableCell:tableView indexPath:indexPath];
         }
     }
     else
@@ -254,25 +254,40 @@
 {
     if([[segue identifier] isEqualToString:@"ModifyRegistrationSegue"])
     {
-        NSIndexPath *selectedRowIndex = [self.tblRegistrations indexPathForSelectedRow];
-        RegistrationAddViewController *rvc = [segue destinationViewController];
-        Registration *r = [[self.state.currentDay registrations] objectAtIndex:selectedRowIndex.row];
-
-        [rvc setState:self.state andRegistration:r];
+        [self HandleModifyRegistrationSegue:segue];
     }
     else if([[segue identifier] isEqualToString:@"AddRegistrationSegue"])
     {
-        RegistrationAddViewController *rvc = [segue destinationViewController];
-        [rvc setState:self.state andRegistration:nil];
+        [self HandleAddRegistrationSegue:segue];
     }
     else
     {
-        NSIndexPath *selectedRowIndex = [self.tblRegistrations indexPathForSelectedRow];
-        RegistrationInfoViewController *rvc = [segue destinationViewController];
-        Registration *r = [[self.state.currentDay registrations] objectAtIndex:selectedRowIndex.row];
-        
-        [rvc setState:self.state andRegistration:r];
+        [self HandleRegistrationInfoSegue:segue];
     }
+}
+
+- (void)HandleRegistrationInfoSegue:(UIStoryboardSegue *)segue
+{
+    NSIndexPath *selectedRowIndex = [self.tblRegistrations indexPathForSelectedRow];
+    RegistrationInfoViewController *rvc = [segue destinationViewController];
+    Registration *r = [[self.state.currentDay registrations] objectAtIndex:selectedRowIndex.row];
+
+    [rvc setState:self.state andRegistration:r];
+}
+
+- (void)HandleAddRegistrationSegue:(UIStoryboardSegue *)segue
+{
+    RegistrationAddViewController *rvc = [segue destinationViewController];
+    [rvc setState:self.state andRegistration:nil];
+}
+
+- (void)HandleModifyRegistrationSegue:(UIStoryboardSegue *)segue
+{
+    NSIndexPath *selectedRowIndex = [self.tblRegistrations indexPathForSelectedRow];
+    RegistrationAddViewController *rvc = [segue destinationViewController];
+    Registration *r = [[self.state.currentDay registrations] objectAtIndex:selectedRowIndex.row];
+
+    [rvc setState:self.state andRegistration:r];
 }
 
 - (void)setupSwipe
