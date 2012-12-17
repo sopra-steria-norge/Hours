@@ -8,6 +8,7 @@
 
 #import "DataFactory.h"
 #import <RestKit/RestKit.h>
+#import <RestKit/RKRequestSerialization.h>
 
 @interface DataFactory() <RKObjectLoaderDelegate>
 @property (nonatomic, strong) RKObjectMapping *mapping;
@@ -22,6 +23,7 @@ NSString * const URL = @"http://fakeswhrs.azurewebsites.net/"; // TODO: Load fro
 NSString * const authenticationPath = @"/CheckAuthentication";
 NSString * const authenticationTokenFormat = @"{\"username\":\"%@\", \"password\":\"%@\"}";
 NSString * const authenticationHeaderKey = @"X-Authentication-Token";
+NSString * const dateFormat = @"yyyy-MM-dd";
 
 NSString * const hoursPath = @"/week/hours";
 const double timeoutInterval = 30.0;
@@ -43,7 +45,11 @@ static LoginState *_sharedLoginState = nil;
     {
         self.mapping = [self setupMapping];
     }
-    
+#ifdef debug
+    RKLogConfigureByName("RestKit", RKLogLevelInfo);
+    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelInfo);
+    RKLogConfigureByName("RestKit/Network", RKLogLevelInfo);
+#endif
     return self;
 }
 
@@ -67,7 +73,7 @@ static LoginState *_sharedLoginState = nil;
     [[client HTTPHeaders] setValue:authenticationHeaderValue forKey:authenticationHeaderKey];
 }
 
--(void)startSavingRegistration:(Registration *)registration forDelegate:(id<AppStateSaver>) saver
+-(void)startSavingRegistration:(Registration *)registration forDate:(NSDate *) date forDelegate:(id<AppStateSaver>) saver
 {
     self.appStateSaver = saver;
     
@@ -77,16 +83,34 @@ static LoginState *_sharedLoginState = nil;
     RKClient *client = [RKClient clientWithBaseURL:url];
     client.timeoutInterval = timeoutInterval;
     
-    RKRequest *request = [client post:authenticationPath params:nil delegate:self];
+    NSDictionary *params = [self createParamsFromRegistration:registration forDate:date];
+    
+    id<RKParser> parser = [[RKParserRegistry sharedRegistry] parserForMIMEType:RKMIMETypeJSON];
+    NSError *error = nil;
+    NSString *jsonParams = [parser stringFromObject:params error:&error];
+    
+    RKRequest *request = [client post:postRegistrationPath params:[RKRequestSerialization serializationWithData:[jsonParams dataUsingEncoding:NSUTF8StringEncoding] MIMEType:RKMIMETypeJSON] delegate:self];
     request.userData = registration;
-    
-    // TODO: Actually post the update
-    NSLog(@"Something should have been added as a payload here, it isn't. // TODO!");
-
-    
-    
 }
 
+-(NSDictionary *)createParamsFromRegistration:(Registration *)registration forDate:(NSDate *)date
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = dateFormat;
+    
+    NSString *dateString = [formatter stringFromDate:date];
+    NSString *hours = [NSString stringWithFormat:@"%.1f", registration.hours];
+    
+    NSDictionary *params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                            dateString, @"date",
+                            hours, @"hours",
+                            registration.description, @"description",
+                            registration.activityCode, @"activityCode",
+                            registration.projectNumber, @"projectNumber",
+                            nil];
+    
+    return params;
+}
 
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response
 {

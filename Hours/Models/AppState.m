@@ -163,7 +163,7 @@ static DataFactory *_dataFactory;
     if(hasRegistrations)
     {
         Registration *r = [self.registrationsToSave objectAtIndex:0];
-        [[AppState dataFactory] startSavingRegistration:r forDelegate:saverDelegate];
+        [[AppState dataFactory] startSavingRegistration:r forDate:self.currentDate forDelegate:saverDelegate];
     }
         
     return hasRegistrations;
@@ -250,8 +250,8 @@ static DataFactory *_dataFactory;
     if(!_dateFormatter)
     {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateStyle:NSDateFormatterShortStyle];
-        [formatter setTimeStyle:NSDateFormatterNoStyle];
+        formatter.dateStyle = NSDateFormatterShortStyle;
+        formatter.timeStyle = NSDateFormatterNoStyle;
         _dateFormatter = formatter;
     }
     
@@ -263,7 +263,7 @@ static DataFactory *_dataFactory;
     if(!_dayFormatter)
     {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:WEEKDAY_DATE_FORMAT];
+        formatter.dateFormat = WEEKDAY_DATE_FORMAT;
         _dayFormatter = formatter;
     }
     

@@ -17,7 +17,7 @@
 @property(nonatomic, readonly, weak) id<AppStateSaver> appStateSaver;
 -(void)startCheckAuthenticationForLoginState:(LoginState *)loginState andDelegateReceiver:(id<LoginStateReceiver>) receiver;
 -(void)startGetDataForDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver;
--(void)startSavingRegistration:(Registration *)registration forDelegate:(id<AppStateSaver>) saver;
+-(void)startSavingRegistration:(Registration *)registration forDate:(NSDate *) date forDelegate:(id<AppStateSaver>) saver;
 + (AppState *)sharedAppState;
 + (LoginState *) sharedLoginState;
 + (void)clearState;
