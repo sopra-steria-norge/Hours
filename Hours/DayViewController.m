@@ -136,6 +136,11 @@
 - (void)didSaveRegistration:(Registration *)registration
 {
     [self.state removeRegistrationFromSaveQueue:registration];
+
+    NSLog(@"Did receive data from the loader");
+    [MBHudHelper HideSpinnerForHud:self.hud];
+    self.hud = nil;
+
     [self updateState];
 }
 

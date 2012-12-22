@@ -25,10 +25,15 @@ NSString * const authenticationTokenFormat = @"{\"username\":\"%@\", \"password\
 NSString * const authenticationHeaderKey = @"X-Authentication-Token";
 NSString * const dateFormat = @"yyyy-MM-dd";
 
-NSString * const hoursPath = @"/week/hours";
+NSString * const hoursPath = @"/hours/week";
 const double timeoutInterval = 30.0;
 
-NSString * const postRegistrationPath = @"/week/hours/registration";
+NSString * const postRegistrationPath = @"/hours/registration";
+NSString * const updateRegistrationPath = @"/hours/updateRegistration";
+NSString * const deleteRegistrationPath = @"/hours/deleteRegistration";
+NSString * const submitPeriodPath = @"/hours/submitPeriod";
+NSString * const reopenPeriodPath = @"/hours/reopenPeriod";
+
 
 @synthesize appStateReceiver = _appStateReceiver;
 @synthesize loginStateReceiver = _loginStateReceiver;
