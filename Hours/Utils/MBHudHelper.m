@@ -10,14 +10,19 @@
 
 @implementation MBHudHelper
 
-+ (MBProgressHUD *)ShowSpinnerForDelegate:(id<MBProgressHUDDelegate>)delegate withView:(UIView *)view
++ (MBProgressHUD *)ShowSpinnerForDelegate:(id<MBProgressHUDDelegate>)delegate withView:(UIView *)view andMessage:(NSString*) message
 {
     MBProgressHUD *hud = [[MBProgressHUD alloc] init];
     [view addSubview:hud];
     hud.delegate = delegate;
-    hud.labelText = NSLocalizedString(@"LOADING", nil);
+    hud.labelText = message;
     [hud show:YES];
     return hud;
+}
+
++ (MBProgressHUD *)ShowSpinnerForDelegate:(id<MBProgressHUDDelegate>)delegate withView:(UIView *)view
+{
+    return [MBHudHelper ShowSpinnerForDelegate:delegate withView:view andMessage:NSLocalizedString(@"LOADING", nil)];
 }
 
 + (void)HideSpinnerForHud:(MBProgressHUD *)hud

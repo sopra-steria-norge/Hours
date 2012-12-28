@@ -32,5 +32,8 @@
 "HOURSWITHFORMAT" = "%.1f hours";
 
 // WeekViewController
+"SUBMITTING" = "Submitting period";
 "SUBMITHEADER" = "Submit hours";
 "SUBMITMESSAGE" = "Are you sure you want to submit this period?";
+"SUBMITERRORHEADER" = "Failed submitting";
+"SUBMITERRORMESSAGE" = "Do you want to retry?";

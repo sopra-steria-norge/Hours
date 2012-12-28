@@ -139,6 +139,11 @@ static DataFactory *_dataFactory;
     return self;
 }
 
+- (void) submitCurrentWeekForDelegate:(id<AppStateSubmitter>) delegate
+{
+    [[AppState dataFactory] submitWeek:self.currentWeek forDelegate:delegate];
+}
+
 - (bool)isLocked
 {
     return self.currentWeek.isSubmitted || self.currentWeek.isSubmitted ;

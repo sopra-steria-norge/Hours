@@ -18,6 +18,7 @@
 -(void)startCheckAuthenticationForLoginState:(LoginState *)loginState andDelegateReceiver:(id<LoginStateReceiver>) receiver;
 -(void)startGetDataForDate:(NSDate *)date andDelegateReceiver:(id<AppStateReceiver>) receiver;
 -(void)startSavingRegistration:(Registration *)registration forDate:(NSDate *) date forDelegate:(id<AppStateSaver>) saver;
+-(void)submitWeek:(Week *) week forDelegate:(id<AppStateSubmitter>) delegate;
 + (AppState *)sharedAppState;
 + (LoginState *) sharedLoginState;
 + (void)clearState;

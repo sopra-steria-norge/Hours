@@ -78,6 +78,8 @@
     }
     else
     {
+        self.textViewDescription.text = nil;
+        self.labelActivityCode.text = nil;
     }
 }
 
@@ -209,6 +211,7 @@
 
     [self dismissModalViewControllerAnimated: YES];
 }
+
 - (IBAction)buttonSevenPointFive:(id)sender
 {
     [self setHourPickerToRegistrationHoursForValue: 7.5];

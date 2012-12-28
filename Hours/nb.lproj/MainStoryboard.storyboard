@@ -114,30 +114,17 @@
                                 </items>
                                 <color key="tintColor" red="1" green="0.49803921580314636" blue="0.14117647707462311" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WqD-78-fwE">
+                            <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="800" verticalCompressionResistancePriority="800" translatesAutoresizingMaskIntoConstraints="NO" id="WqD-78-fwE">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="234" id="9XX-Pf-WAl"/>
-                                    <constraint firstAttribute="height" constant="216" id="OGe-0s-Z4b"/>
+                                    <constraint firstAttribute="height" constant="216" id="pFk-FF-Qhh"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="MUn-MX-doj" id="27s-Db-W4x"/>
                                     <outlet property="delegate" destination="MUn-MX-doj" id="4pd-7u-7LT"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56z-Wr-UWA">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                                <state key="normal" title="oppdater">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonOkClicked:" destination="MUn-MX-doj" eventType="touchUpInside" id="8qv-yM-jW2"/>
-                                </connections>
-                            </button>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgA-za-RtO">
+                            <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="800" verticalCompressionResistancePriority="800" translatesAutoresizingMaskIntoConstraints="NO" id="pgA-za-RtO">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="96" id="9lg-b4-zuZ"/>
                                 </constraints>
@@ -168,10 +155,10 @@
                                 </items>
                                 <color key="tintColor" red="1" green="0.49803921580314636" blue="0.14117647707462311" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsL-ul-qob">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="700" verticalCompressionResistancePriority="700" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsL-ul-qob">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="149" id="SCo-1w-9z9"/>
-                                    <constraint firstAttribute="width" constant="293" id="y90-iX-JY3"/>
+                                    <constraint firstAttribute="height" constant="90" id="0dN-3C-Ton"/>
+                                    <constraint firstAttribute="width" constant="293" id="Ihp-VS-fVs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -184,33 +171,46 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVH-v4-88f">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <state key="normal" title="oppdater">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonOkClicked:" destination="MUn-MX-doj" eventType="touchUpInside" id="o3V-tK-XKx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94117647409439087" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="pgA-za-RtO" firstAttribute="top" secondItem="WqD-78-fwE" secondAttribute="top" type="default" id="1lD-jB-QUz"/>
+                            <constraint firstItem="SVH-v4-88f" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="1kg-tZ-r0Z"/>
                             <constraint firstItem="mq5-uw-VY7" firstAttribute="top" secondItem="WqD-78-fwE" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="21a-64-3Qf"/>
+                            <constraint firstAttribute="trailing" secondItem="SVH-v4-88f" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="2eP-3a-5KG"/>
                             <constraint firstItem="yq9-zx-RGd" firstAttribute="trailing" secondItem="vvt-jU-RLE" secondAttribute="trailing" type="default" id="8vl-kp-ays"/>
                             <constraint firstItem="Oax-80-371" firstAttribute="trailing" secondItem="vvt-jU-RLE" secondAttribute="trailing" type="default" id="BOw-hX-EoB"/>
                             <constraint firstItem="Oax-80-371" firstAttribute="bottom" secondItem="vvt-jU-RLE" secondAttribute="bottom" type="default" id="E82-ve-reh"/>
-                            <constraint firstItem="mq5-uw-VY7" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Hxp-Yf-oa6"/>
-                            <constraint firstItem="pgA-za-RtO" firstAttribute="top" secondItem="yq9-zx-RGd" secondAttribute="bottom" type="default" id="Kih-nv-ofY"/>
+                            <constraint firstItem="SVH-v4-88f" firstAttribute="bottom" secondItem="Oax-80-371" secondAttribute="top" constant="-10" type="user" id="Meq-gZ-un1"/>
                             <constraint firstItem="yq9-zx-RGd" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" type="default" id="NOL-su-vpS"/>
-                            <constraint firstItem="56z-Wr-UWA" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="NsJ-y7-M9h"/>
+                            <constraint firstItem="pgA-za-RtO" firstAttribute="top" secondItem="yq9-zx-RGd" secondAttribute="bottom" type="default" id="PqU-ET-Mkl"/>
                             <constraint firstItem="mq5-uw-VY7" firstAttribute="top" secondItem="pgA-za-RtO" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="SdZ-wX-87v"/>
-                            <constraint firstAttribute="trailing" secondItem="56z-Wr-UWA" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="TiV-0a-mLH"/>
-                            <constraint firstItem="56z-Wr-UWA" firstAttribute="top" secondItem="QsL-ul-qob" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="W6G-WQ-MyE"/>
+                            <constraint firstAttribute="trailing" secondItem="mq5-uw-VY7" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="XSl-jP-gsQ"/>
+                            <constraint firstItem="mq5-uw-VY7" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ZEy-E3-mUg"/>
+                            <constraint firstItem="QsL-ul-qob" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" constant="13" id="ZHT-15-lNa"/>
                             <constraint firstItem="QsL-ul-qob" firstAttribute="top" secondItem="mq5-uw-VY7" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="dFg-I8-ELH"/>
                             <constraint firstItem="yq9-zx-RGd" firstAttribute="top" secondItem="vvt-jU-RLE" secondAttribute="top" type="default" id="gkP-S8-aC0"/>
-                            <constraint firstItem="QsL-ul-qob" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" constant="13" id="h5o-lf-Cjv"/>
                             <constraint firstItem="WqD-78-fwE" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" type="default" id="jNO-gu-4fT"/>
+                            <constraint firstItem="WqD-78-fwE" firstAttribute="top" secondItem="yq9-zx-RGd" secondAttribute="bottom" type="default" id="n4z-P9-X1x"/>
                             <constraint firstItem="pgA-za-RtO" firstAttribute="trailing" secondItem="vvt-jU-RLE" secondAttribute="trailing" type="default" id="u0A-iV-u5Q"/>
                             <constraint firstItem="Oax-80-371" firstAttribute="leading" secondItem="vvt-jU-RLE" secondAttribute="leading" type="default" id="uss-jD-BaM"/>
-                            <constraint firstAttribute="trailing" secondItem="mq5-uw-VY7" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="yNf-KN-tjG"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <connections>
-                        <outlet property="buttonOk" destination="56z-Wr-UWA" id="Qne-0T-dTc"/>
+                        <outlet property="buttonOk" destination="SVH-v4-88f" id="a35-64-wcy"/>
                         <outlet property="buttonTitle" destination="R79-rE-TJN" id="Vs9-jV-94V"/>
                         <outlet property="hourPickerView" destination="pgA-za-RtO" id="LQG-Hm-Zdx"/>
                         <outlet property="labelActivityCode" destination="mq5-uw-VY7" id="kH9-io-M4T"/>

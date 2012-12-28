@@ -32,5 +32,8 @@
 "HOURSWITHFORMAT" = "%.1f timer";
 
 // WeekViewController
+"SUBMITTING" = "Melder inn periode";
 "SUBMITHEADER" = "Meld inn timer";
 "SUBMITMESSAGE" = "Er du helt sikker på at du vil melde inn disse timene?";
+"SUBMITERRORHEADER" = "Kunne ikke melde inn timer";
+"SUBMITERRORMESSAGE" = "Prøve igjen?";

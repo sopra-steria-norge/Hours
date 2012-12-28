@@ -15,6 +15,7 @@
 @property (nonatomic, weak) id<AppStateReceiver> appStateReceiver;
 @property (nonatomic, weak) id<LoginStateReceiver> loginStateReceiver;
 @property (nonatomic, weak) id<AppStateSaver> appStateSaver;
+@property (nonatomic, weak) id<AppStateSubmitter> appStateSubmitter;
 @end
 
 @implementation DataFactory
@@ -35,6 +36,7 @@ NSString * const reopenPeriodPath = @"/hours/reopenPeriod";
 @synthesize appStateReceiver = _appStateReceiver;
 @synthesize loginStateReceiver = _loginStateReceiver;
 @synthesize appStateSaver = _appStateSaver;
+@synthesize appStateSubmitter = _appStateSubmitter;
 @synthesize mapping = _mapping;
 
 static AppState *_sharedAppState = nil;
@@ -105,7 +107,7 @@ static LoginState *_sharedLoginState = nil;
         path = postRegistrationPath;
     }
     
-    RKRequest *request = [client post:path params:[RKRequestSerialization serializationWithData:[jsonParams dataUsingEncoding:NSUTF8StringEncoding] MIMEType:RKMIMETypeJSON] delegate:self];    
+    RKRequest *request = [client post:path params:[RKRequestSerialization serializationWithData:[jsonParams dataUsingEncoding:NSUTF8StringEncoding] MIMEType:RKMIMETypeJSON] delegate:self];
     request.userData = registration;
 }
 
@@ -126,6 +128,30 @@ static LoginState *_sharedLoginState = nil;
                             nil];
     
     return params;
+}
+
+-(void)submitWeek:(Week *) week forDelegate:(id<AppStateSubmitter>) delegate
+{
+    self.appStateSubmitter = delegate;
+    [self resetRestKitClient];
+    
+    NSURL *url = [self getBaseURL];
+    RKClient *client = [RKClient clientWithBaseURL:url];
+    client.timeoutInterval = [self getTimeout];
+
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = dateFormat;
+
+    Day *first = [week.days objectAtIndex:0];
+    NSString *firstDate = [formatter stringFromDate:first.date];
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:firstDate, @"date", nil];
+
+    id<RKParser> parser = [[RKParserRegistry sharedRegistry] parserForMIMEType:RKMIMETypeJSON];
+    NSError *error = nil;
+    NSString *jsonParams = [parser stringFromObject:params error:&error];    
+    
+    RKRequest *request = [client post:submitPeriodPath params:[RKRequestSerialization serializationWithData:[jsonParams dataUsingEncoding:NSUTF8StringEncoding] MIMEType:RKMIMETypeJSON] delegate:self];
+    request.userData = week;
 }
 
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response
@@ -158,6 +184,25 @@ static LoginState *_sharedLoginState = nil;
                 Registration *r = (Registration *)request.userData;
                     
                 [self.appStateSaver didSaveRegistration:r];
+            }
+        }
+        else
+        {
+            if(self.appStateSaver)
+            {
+                [self.appStateSaver didFailSavingRegistrationWithError:[response failureError]];
+            }
+        }
+    }
+    else if ([request isPOST] && [request.userData isKindOfClass:[Week class]])
+    {
+        if([response isOK])
+        {
+            if(self.appStateSubmitter)
+            {
+                Week *w = (Week *)request.userData;
+                
+                [self.appStateSubmitter didSubmitWeek:w];
             }
         }
         else

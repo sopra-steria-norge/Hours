@@ -11,6 +11,7 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 
 @interface MBHudHelper : NSObject
++ (MBProgressHUD *)ShowSpinnerForDelegate:(id<MBProgressHUDDelegate>)delegate withView:(UIView *)view andMessage:(NSString*) message;
 + (MBProgressHUD *)ShowSpinnerForDelegate:(id<MBProgressHUDDelegate>)delegate withView:(UIView *)view;
 + (void)HideSpinnerForHud:(MBProgressHUD *)hud;
 @end

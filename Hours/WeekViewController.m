@@ -18,7 +18,9 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonTitle;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonSubmit;
 @property (strong, nonatomic) MBProgressHUD *hud;
+@property (strong, nonatomic) UIAlertView *loadFailedAlert;
 @property (strong, nonatomic) UIAlertView *submitAlert;
+@property (strong, nonatomic) UIAlertView *submitErrorAlert;
 
 - (IBAction)buttonPreviousClicked:(id)sender;
 - (IBAction)buttonNextClicked:(id)sender;
@@ -28,7 +30,9 @@
 @implementation WeekViewController
 @synthesize state = _state;
 @synthesize hud = _hud;
+@synthesize loadFailedAlert = _loadFailedAlert;
 @synthesize submitAlert = _submitAlert;
+@synthesize submitErrorAlert = _submitErrorAlert;
 
 -(void)setState:(AppState *)state
 {
@@ -50,7 +54,26 @@
     [self.tableDays reloadData];
 }
 
+-(void)didSubmitWeek:(Week *)w
+{
+    [self killHud];
+    [AppState clear];
+    [self update];
+}
+
+- (void)didFailSubmittingWeekWithError:(NSError *)error
+{
+    [self killHud];
+    [self.submitErrorAlert show];
+}
+
 - (void)viewWillAppear:(BOOL)animated
+{
+    [self setupSwipe];
+    [self update];
+}
+
+- (void)update
 {
     AppState *state = [AppState getOrLoadForReceiver:self];
     if(state)
@@ -59,18 +82,24 @@
     }
     else
     {
-        [MBHudHelper ShowSpinnerForDelegate:self withView:self.tabBarController.view];
+        self.hud = [MBHudHelper ShowSpinnerForDelegate:self withView:self.tabBarController.view];
     }
-    [self setupSwipe];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.loadFailedAlert = [Alert createOkCancelAlertWithTitle:NSLocalizedString(@"LOADFAILED", nil)
+                                                    andMessage:NSLocalizedString(@"RETRYQUESTION", nil)
+                                                   forDelegate:self];
+
     self.submitAlert = [Alert createOkCancelAlertWithTitle:NSLocalizedString(@"SUBMITHEADER", nil)
                                                 andMessage:NSLocalizedString(@"SUBMITMESSAGE", nil)
                                                forDelegate:self];
+    
+    self.submitErrorAlert = [Alert createOkCancelAlertWithTitle:NSLocalizedString(@"SUBMITERRORHEADER", nil)
+                                                     andMessage:NSLocalizedString(@"SUBMITERRORMESSAGE", nil) forDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,17 +110,23 @@
 
 - (void)didReceiveAppState:(AppState*) state
 {   
+    [self killHud];
+
     self.state = state;
     
     NSLog(@"Did receive data from the loader");
+}
+
+- (void)killHud
+{
     [MBHudHelper HideSpinnerForHud:self.hud];
     self.hud = nil;
 }
 
 - (void) didFailLoadingAppStateWithError:(NSError *)error
 {
-    [MBHudHelper HideSpinnerForHud:self.hud];
-        self.hud = nil;
+    [self killHud];
+    [self.loadFailedAlert show];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -175,7 +210,30 @@
 {
     if(alertView == self.submitAlert && buttonIndex == 0)
     {
-        [[Alert createAlertWithTitle:@"// TODO: " andMessage:@"Submit the week"] show];
+        [self.state submitCurrentWeekForDelegate:self];
+        self.hud = [MBHudHelper ShowSpinnerForDelegate:self withView:self.tabBarController.view andMessage:NSLocalizedString(@"SUBMITTING", nil)];
+    }
+    else if(alertView == self.loadFailedAlert)
+    {
+        if(buttonIndex != 0)
+        {
+            [self logOut];
+        }
+        else
+        {
+            [self update];
+        }
+    }
+    else if(alertView == self.submitErrorAlert)
+    {
+        if(buttonIndex != 0)
+        {
+            [self logOut];
+        }
+        else
+        {
+            [self.submitAlert show];
+        }
     }
 }
 

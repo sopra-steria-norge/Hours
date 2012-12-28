@@ -21,7 +21,8 @@
 @end
 
 @protocol AppStateSubmitter <NSObject>
-// TODO: Implement success and fail
+- (void)didSubmitWeek:(Week *)w;
+- (void)didFailSubmittingWeekWithError:(NSError *)error;
 @end
 
 @interface AppState : NSObject
@@ -43,6 +44,7 @@
 - (AppState *) navigatePreviousDay;
 - (AppState *) navigateNextWeek;
 - (AppState *) navigatePreviousWeek;
+- (void) submitCurrentWeekForDelegate:(id<AppStateSubmitter>) delegate;
 
 - (NSString *)getTitleForDate:(NSDate *) date;
 
