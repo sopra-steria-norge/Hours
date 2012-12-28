@@ -21,6 +21,9 @@
 "UPDATEREGISTRATION" = "Oppdater";
 "ADDREGISTRATION" = "Legg til";
 
+// RegistrationInfoViewController
+"HOURSWITHFORMAT" = "%.1f timer";
+
 // WeekViewController
 "SUBMITHEADER" = "Meld inn timer";
 "SUBMITMESSAGE" = "Er du helt sikker på at du vil melde inn disse timene?";

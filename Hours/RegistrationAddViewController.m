@@ -15,7 +15,8 @@
 @property (nonatomic, strong) NSArray *projectValues;
 @property (nonatomic, readonly, strong) NSArray *hourValues;
 @property (weak, nonatomic) IBOutlet UIButton *buttonOk;
-@property (weak, nonatomic) IBOutlet UILabel *labelErrorText;
+@property (weak, nonatomic) IBOutlet UITextView *textViewDescription;
+@property (weak, nonatomic) IBOutlet UILabel *labelActivityCode;
 @property (weak, nonatomic) IBOutlet UIPickerView *projectPickerView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonTitle;
 @property (weak, nonatomic) IBOutlet UIPickerView *hourPickerView;
@@ -48,8 +49,9 @@
 	// Do any additional setup after loading the view.
     if(!self.projectValues)
     {
-        self.projectValues = [[NSArray alloc] initWithObjects:@"none", nil];   
+        self.projectValues = [[NSArray alloc] initWithObjects:@"none", nil];
     }
+    [self setDescriptionForProjectAtIndex:0];
 }
 
 - (NSArray *)hourValues
@@ -59,6 +61,24 @@
         _hourValues = [RegistrationAddViewController getHourValues];
     }
     return _hourValues;
+}
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
+      inComponent:(NSInteger)component
+{
+    [self setDescriptionForProjectAtIndex:row];
+}
+- (void)setDescriptionForProjectAtIndex:(int) index
+{
+    if(index >= 0 && index < self.projectValues.count)
+    {
+        Project *p = [self.projectValues objectAtIndex:index];
+        self.textViewDescription.text = p.description;
+        self.labelActivityCode.text = p.activityCode;
+    }
+    else
+    {
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,9 +93,10 @@
     [self setButtonOk:nil];
     [self setProjectPickerView:nil];
     [self setHourPickerView:nil];
-    [self setLabelErrorText:nil];
+    [self setTextViewDescription:nil];
     [self setTitle:nil];
     [self setButtonTitle:nil];
+    [self setLabelActivityCode:nil];
     [super viewDidUnload];
 }
 

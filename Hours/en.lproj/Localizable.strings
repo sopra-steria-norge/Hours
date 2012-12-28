@@ -21,6 +21,9 @@
 "UPDATEREGISTRATION" = "Update";
 "ADDREGISTRATION" = "Add";
 
+// RegistrationInfoViewController
+"HOURSWITHFORMAT" = "%.1f hours";
+
 // WeekViewController
 "SUBMITHEADER" = "Submit hours";
 "SUBMITMESSAGE" = "Are you sure you want to submit this period?";

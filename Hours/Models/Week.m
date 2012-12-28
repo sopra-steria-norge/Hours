@@ -7,9 +7,7 @@
 //
 
 #import "Week.h"
-@implementation Week {
-    NSDateFormatter *dateFormatter;
-}
+@implementation Week
 
 @synthesize days = _days;
 @synthesize description = _description;
@@ -22,17 +20,7 @@
 -(id) init
 {
     self = [super init];
-    dateFormatter = [Week createDateFormatter];
-    
     return self;
-}
-
-+ (NSDateFormatter *) createDateFormatter
-{
-    NSDateFormatter *formatter = formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateStyle:NSDateFormatterShortStyle];
-        [formatter setTimeStyle:NSDateFormatterNoStyle];
-    return formatter;
 }
 
 @end

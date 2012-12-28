@@ -184,7 +184,7 @@
     if(self.state)
     {
         int count = self.state.currentDay.registrations.count;
-        if(!self.state.currentWeek.isSubmitted && count == 0)
+        if(!self.state.currentWeek.isSubmitted && count == 0 && !self.state.isLocked)
         {
             Day *previousDay = [self.state getDayForDate:self.state.previousDate];
             if(previousDay.registrations.count > 0)
