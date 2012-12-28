@@ -186,6 +186,8 @@
     [self setButtonSubmit:nil];
     [self setHud:nil];
     [self setSubmitAlert:nil];
+    [self setSubmitErrorAlert:nil];
+    [self setLoadFailedAlert:nil];
     [super viewDidUnload];
 }
 
