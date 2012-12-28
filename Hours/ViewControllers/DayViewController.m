@@ -200,7 +200,8 @@
 {
 	if([self noRegistrationsForCurrentDayAndCopyPreviousDayEnabled])
     {
-        [[Alert createAlertWithTitle:@"// TODO: " andMessage:@"Actually copy something..."] show];
+        [self.state copyYesterdayForCurrentDay];
+        [self updateState];
     }
 }
 

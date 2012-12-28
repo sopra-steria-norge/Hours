@@ -229,6 +229,19 @@ static DataFactory *_dataFactory;
     [mutableCopy addObject:registration];
     _registrationsToSave = mutableCopy.copy;
 }
+
+- (void) copyYesterdayForCurrentDay
+{
+    NSDate *previousDate = [self previousDate];
+    Day *day = [self getDayForDate:previousDate];
+    NSMutableArray *registrationsForYesterday = day.registrations;
+
+    
+    for(Registration *r in registrationsForYesterday)
+    {
+        [self addNewRegistrationToSaveQueueWithProjectNumber:r.projectNumber activityCode:r.activityCode hours:r.hours andDescription:r.description];
+    }
+}
          
 - (void) removeRegistrationFromSaveQueue:(Registration *)registration
 {

@@ -45,7 +45,7 @@
 - (AppState *) navigateNextWeek;
 - (AppState *) navigatePreviousWeek;
 - (void) submitCurrentWeekForDelegate:(id<AppStateSubmitter>) delegate;
-
+- (void) copyYesterdayForCurrentDay;
 - (NSString *)getTitleForDate:(NSDate *) date;
 
 @property(nonatomic, readonly, strong) NSArray *registrationsToSave;
