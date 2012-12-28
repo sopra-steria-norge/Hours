@@ -6,10 +6,17 @@
   Copyright (c) 2012 steria. All rights reserved.
 */
 
+// HUD
+"LOADING" = "Laster";
+
+// Alerts
+"OKBUTTON" = "OK";
+"CANCELBUTTON" = "Avbryt";
 
 // LoginViewController
 "LOGINFAILEDHEADER" = "Kunne ikke logge inn";
 "LOGINFAILEDMESSAGEWITHFORMAT" = "Feilet med domene: %@";
+
 // DayViewController
 "RETRYQUESTION" = "Prøve igjen?";
 "LOADFAILED" = "Lasting av data feilet";

@@ -6,10 +6,17 @@
   Copyright (c) 2012 steria. All rights reserved.
 */
 
+// HUD
+"LOADING" = "Loading";
+
+// Alerts
+"OKBUTTON" = "OK";
+"CANCELBUTTON" = "Cancel";
 
 // LoginViewController
 "LOGINFAILEDHEADER" = "Could not log in";
 "LOGINFAILEDMESSAGEWITHFORMAT" = "Failed with domain: %@";
+
 // DayViewController
 "RETRYQUESTION" = "Retry?";
 "LOADFAILED" = "Loading failed";

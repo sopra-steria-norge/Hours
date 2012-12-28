@@ -14,7 +14,7 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
                                                     message:message
                                                    delegate:nil
-                                          cancelButtonTitle:@"OK"
+                                          cancelButtonTitle:NSLocalizedString(@"OKBUTTON", nil)
                                           otherButtonTitles:nil];
     return alert;
 }
@@ -24,8 +24,8 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
                                                     message:message
                                                    delegate:delegate
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:@"Cancel", nil];
+                                          cancelButtonTitle:NSLocalizedString(@"OKBUTTON", nil)
+                                          otherButtonTitles:NSLocalizedString(@"CANCELBUTTON", nil), nil];
     return alert;
 }
 

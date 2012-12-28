@@ -15,7 +15,7 @@
     MBProgressHUD *hud = [[MBProgressHUD alloc] init];
     [view addSubview:hud];
     hud.delegate = delegate;
-    hud.labelText = @"Loading";
+    hud.labelText = NSLocalizedString(@"LOADING", nil);
     [hud show:YES];
     return hud;
 }
