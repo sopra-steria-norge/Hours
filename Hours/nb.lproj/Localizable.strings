@@ -15,7 +15,7 @@
 "LOADFAILED" = "Lasting av data feilet";
 "UPDATEFAILED" = "Lagring feilet";
 "NODATA" = "ingen data";
-"COPYYESTERDAY" = "kopier gårsdagen...";
+"COPYYESTERDAY" = "Kopier forrige dag...";
 
 // RegistrationAddViewController
 "UPDATEREGISTRATION" = "Oppdater";
