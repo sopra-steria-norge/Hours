@@ -129,6 +129,7 @@
 		4C04172C168DB11100FC46BB /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = ../Settings.bundle; sourceTree = "<group>"; };
 		4C041736168DC77C00FC46BB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4C041738168DC78500FC46BB /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4C04174F168DF8B500FC46BB /* nb */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = nb; path = nb.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		4C298F54165D207E00EEF4E4 /* RegistrationAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationAddViewController.h; sourceTree = "<group>"; };
 		4C298F55165D207E00EEF4E4 /* RegistrationAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationAddViewController.m; sourceTree = "<group>"; };
 		4C2A327516624C7600906373 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lock.png; path = Resources/lock.png; sourceTree = "<group>"; };
@@ -667,6 +668,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				4CAB12481646FF6B00265B8D /* en */,
+				4C04174F168DF8B500FC46BB /* nb */,
 			);
 			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
