@@ -9,10 +9,14 @@
 /* Begin PBXBuildFile section */
 		4C04172D168DB11100FC46BB /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4C04172C168DB11100FC46BB /* Settings.bundle */; };
 		4C041735168DC77C00FC46BB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C041737168DC77C00FC46BB /* Localizable.strings */; };
-		4C298F56165D207E00EEF4E4 /* RegistrationAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C298F55165D207E00EEF4E4 /* RegistrationAddViewController.m */; };
+		4C04175D168E28A300FC46BB /* DayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C041752168E28A300FC46BB /* DayViewController.m */; };
+		4C04175E168E28A300FC46BB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C041754168E28A300FC46BB /* LoginViewController.m */; };
+		4C04175F168E28A300FC46BB /* RegistrationAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C041756168E28A300FC46BB /* RegistrationAddViewController.m */; };
+		4C041760168E28A300FC46BB /* RegistrationInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C041758168E28A300FC46BB /* RegistrationInfoViewController.m */; };
+		4C041761168E28A300FC46BB /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C04175A168E28A300FC46BB /* SetupViewController.m */; };
+		4C041762168E28A300FC46BB /* WeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C04175C168E28A300FC46BB /* WeekViewController.m */; };
 		4C2A327616624C7600906373 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2A327516624C7600906373 /* lock.png */; };
 		4C2A327A16624CB600906373 /* approved.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2A327916624CB600906373 /* approved.png */; };
-		4C2A327D1662511200906373 /* RegistrationInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A327C1662511200906373 /* RegistrationInfoViewController.m */; };
 		4C2A32801666B6C700906373 /* LoginCredentialFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A327F1666B6C700906373 /* LoginCredentialFactory.m */; };
 		4C2A32831667BCFC00906373 /* LoginCredentialFactoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A32821667BCFC00906373 /* LoginCredentialFactoryTest.m */; };
 		4C3BBF92167CADD90035EB67 /* AppStateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BBF91167CADD90035EB67 /* AppStateTests.m */; };
@@ -29,10 +33,8 @@
 		4CAB12441646FF6B00265B8D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CAB12431646FF6B00265B8D /* Default@2x.png */; };
 		4CAB12461646FF6B00265B8D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CAB12451646FF6B00265B8D /* Default-568h@2x.png */; };
 		4CAB12491646FF6B00265B8D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CAB12471646FF6B00265B8D /* MainStoryboard.storyboard */; };
-		4CAB124C1646FF6B00265B8D /* DayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB124B1646FF6B00265B8D /* DayViewController.m */; };
 		4CAB124E1646FF6B00265B8D /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CAB124D1646FF6B00265B8D /* first.png */; };
 		4CAB12501646FF6B00265B8D /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CAB124F1646FF6B00265B8D /* first@2x.png */; };
-		4CAB12531646FF6B00265B8D /* WeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12521646FF6B00265B8D /* WeekViewController.m */; };
 		4CAB12551646FF6B00265B8D /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CAB12541646FF6B00265B8D /* second.png */; };
 		4CAB12571646FF6B00265B8D /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CAB12561646FF6B00265B8D /* second@2x.png */; };
 		4CAB125F1646FF6B00265B8D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB125E1646FF6B00265B8D /* SenTestingKit.framework */; };
@@ -53,8 +55,6 @@
 		4CAB12DC1647120500265B8D /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB12861647019A00265B8D /* libRestKit.a */; };
 		4CAB12EF16481A1500265B8D /* DataFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12ED16481A1500265B8D /* DataFactory.m */; };
 		4CAB12F6164ACE4100265B8D /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12F5164ACE4100265B8D /* Day.m */; };
-		4CAB12FD164D8A4900265B8D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB12FC164D8A4900265B8D /* LoginViewController.m */; };
-		4CAB1304164DAAA900265B8D /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB1303164DAAA800265B8D /* SetupViewController.m */; };
 		4CAB136916583D3E00265B8D /* libMBProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB136616583D1600265B8D /* libMBProgressHUD.a */; };
 		E769A05ED9674592AA9ABAC1 /* RandomGeneratorFake.m in Sources */ = {isa = PBXBuildFile; fileRef = E769ACFEA8EC809995FA2B04 /* RandomGeneratorFake.m */; };
 /* End PBXBuildFile section */
@@ -130,12 +130,20 @@
 		4C041736168DC77C00FC46BB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4C041738168DC78500FC46BB /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4C04174F168DF8B500FC46BB /* nb */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = nb; path = nb.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		4C298F54165D207E00EEF4E4 /* RegistrationAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationAddViewController.h; sourceTree = "<group>"; };
-		4C298F55165D207E00EEF4E4 /* RegistrationAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationAddViewController.m; sourceTree = "<group>"; };
+		4C041751168E28A300FC46BB /* DayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DayViewController.h; path = Hours/ViewControllers/DayViewController.h; sourceTree = "<group>"; };
+		4C041752168E28A300FC46BB /* DayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DayViewController.m; path = Hours/ViewControllers/DayViewController.m; sourceTree = "<group>"; };
+		4C041753168E28A300FC46BB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Hours/ViewControllers/LoginViewController.h; sourceTree = "<group>"; };
+		4C041754168E28A300FC46BB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Hours/ViewControllers/LoginViewController.m; sourceTree = "<group>"; };
+		4C041755168E28A300FC46BB /* RegistrationAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegistrationAddViewController.h; path = Hours/ViewControllers/RegistrationAddViewController.h; sourceTree = "<group>"; };
+		4C041756168E28A300FC46BB /* RegistrationAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegistrationAddViewController.m; path = Hours/ViewControllers/RegistrationAddViewController.m; sourceTree = "<group>"; };
+		4C041757168E28A300FC46BB /* RegistrationInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegistrationInfoViewController.h; path = Hours/ViewControllers/RegistrationInfoViewController.h; sourceTree = "<group>"; };
+		4C041758168E28A300FC46BB /* RegistrationInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegistrationInfoViewController.m; path = Hours/ViewControllers/RegistrationInfoViewController.m; sourceTree = "<group>"; };
+		4C041759168E28A300FC46BB /* SetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetupViewController.h; path = Hours/ViewControllers/SetupViewController.h; sourceTree = "<group>"; };
+		4C04175A168E28A300FC46BB /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetupViewController.m; path = Hours/ViewControllers/SetupViewController.m; sourceTree = "<group>"; };
+		4C04175B168E28A300FC46BB /* WeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeekViewController.h; path = Hours/ViewControllers/WeekViewController.h; sourceTree = "<group>"; };
+		4C04175C168E28A300FC46BB /* WeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeekViewController.m; path = Hours/ViewControllers/WeekViewController.m; sourceTree = "<group>"; };
 		4C2A327516624C7600906373 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lock.png; path = Resources/lock.png; sourceTree = "<group>"; };
 		4C2A327916624CB600906373 /* approved.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = approved.png; path = Resources/approved.png; sourceTree = "<group>"; };
-		4C2A327B1662511200906373 /* RegistrationInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationInfoViewController.h; sourceTree = "<group>"; };
-		4C2A327C1662511200906373 /* RegistrationInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationInfoViewController.m; sourceTree = "<group>"; };
 		4C2A327E1666B6C700906373 /* LoginCredentialFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginCredentialFactory.h; sourceTree = "<group>"; };
 		4C2A327F1666B6C700906373 /* LoginCredentialFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginCredentialFactory.m; sourceTree = "<group>"; };
 		4C2A32811667BCFC00906373 /* LoginCredentialFactoryTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginCredentialFactoryTest.h; sourceTree = "<group>"; };
@@ -163,12 +171,8 @@
 		4CAB12431646FF6B00265B8D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4CAB12451646FF6B00265B8D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4CAB12481646FF6B00265B8D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		4CAB124A1646FF6B00265B8D /* DayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DayViewController.h; sourceTree = "<group>"; };
-		4CAB124B1646FF6B00265B8D /* DayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DayViewController.m; sourceTree = "<group>"; };
 		4CAB124D1646FF6B00265B8D /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		4CAB124F1646FF6B00265B8D /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		4CAB12511646FF6B00265B8D /* WeekViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeekViewController.h; sourceTree = "<group>"; };
-		4CAB12521646FF6B00265B8D /* WeekViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeekViewController.m; sourceTree = "<group>"; };
 		4CAB12541646FF6B00265B8D /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		4CAB12561646FF6B00265B8D /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		4CAB125D1646FF6B00265B8D /* HoursTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HoursTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,10 +200,6 @@
 		4CAB12ED16481A1500265B8D /* DataFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataFactory.m; sourceTree = "<group>"; };
 		4CAB12F4164ACE4100265B8D /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
 		4CAB12F5164ACE4100265B8D /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
-		4CAB12FB164D8A4900265B8D /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		4CAB12FC164D8A4900265B8D /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		4CAB1302164DAAA800265B8D /* SetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupViewController.h; sourceTree = "<group>"; };
-		4CAB1303164DAAA800265B8D /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupViewController.m; sourceTree = "<group>"; };
 		4CAB135E16583D1600265B8D /* MBProgressHUD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MBProgressHUD.xcodeproj; path = MBProgressHUD/MBProgressHUD.xcodeproj; sourceTree = "<group>"; };
 		E769A9F18708C51D6FBC7D4C /* RandomGeneratorFake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomGeneratorFake.h; sourceTree = "<group>"; };
 		E769ACFEA8EC809995FA2B04 /* RandomGeneratorFake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomGeneratorFake.m; sourceTree = "<group>"; };
@@ -238,9 +238,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C041750168E27FE00FC46BB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4C041751168E28A300FC46BB /* DayViewController.h */,
+				4C041752168E28A300FC46BB /* DayViewController.m */,
+				4C041753168E28A300FC46BB /* LoginViewController.h */,
+				4C041754168E28A300FC46BB /* LoginViewController.m */,
+				4C041755168E28A300FC46BB /* RegistrationAddViewController.h */,
+				4C041756168E28A300FC46BB /* RegistrationAddViewController.m */,
+				4C041757168E28A300FC46BB /* RegistrationInfoViewController.h */,
+				4C041758168E28A300FC46BB /* RegistrationInfoViewController.m */,
+				4C041759168E28A300FC46BB /* SetupViewController.h */,
+				4C04175A168E28A300FC46BB /* SetupViewController.m */,
+				4C04175B168E28A300FC46BB /* WeekViewController.h */,
+				4C04175C168E28A300FC46BB /* WeekViewController.m */,
+			);
+			name = ViewControllers;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		4C2A327216624C1C00906373 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4CAB124D1646FF6B00265B8D /* first.png */,
+				4CAB124F1646FF6B00265B8D /* first@2x.png */,
+				4CAB12541646FF6B00265B8D /* second.png */,
+				4CAB12561646FF6B00265B8D /* second@2x.png */,
 				4C2A327916624CB600906373 /* approved.png */,
 				4C2A327516624C7600906373 /* lock.png */,
 			);
@@ -306,26 +330,11 @@
 				4C2A327216624C1C00906373 /* Resources */,
 				4CAB12EB16481A1500265B8D /* Data */,
 				4CAB12CA1647051400265B8D /* Models */,
+				4C041750168E27FE00FC46BB /* ViewControllers */,
+				4CAB12361646FF6B00265B8D /* Supporting Files */,
 				4CAB123E1646FF6B00265B8D /* AppDelegate.h */,
 				4CAB123F1646FF6B00265B8D /* AppDelegate.m */,
 				4CAB12471646FF6B00265B8D /* MainStoryboard.storyboard */,
-				4CAB12FB164D8A4900265B8D /* LoginViewController.h */,
-				4CAB12FC164D8A4900265B8D /* LoginViewController.m */,
-				4CAB124A1646FF6B00265B8D /* DayViewController.h */,
-				4CAB124B1646FF6B00265B8D /* DayViewController.m */,
-				4C298F54165D207E00EEF4E4 /* RegistrationAddViewController.h */,
-				4C298F55165D207E00EEF4E4 /* RegistrationAddViewController.m */,
-				4C2A327B1662511200906373 /* RegistrationInfoViewController.h */,
-				4C2A327C1662511200906373 /* RegistrationInfoViewController.m */,
-				4CAB12511646FF6B00265B8D /* WeekViewController.h */,
-				4CAB12521646FF6B00265B8D /* WeekViewController.m */,
-				4CAB1302164DAAA800265B8D /* SetupViewController.h */,
-				4CAB1303164DAAA800265B8D /* SetupViewController.m */,
-				4CAB124D1646FF6B00265B8D /* first.png */,
-				4CAB124F1646FF6B00265B8D /* first@2x.png */,
-				4CAB12541646FF6B00265B8D /* second.png */,
-				4CAB12561646FF6B00265B8D /* second@2x.png */,
-				4CAB12361646FF6B00265B8D /* Supporting Files */,
 			);
 			path = Hours;
 			sourceTree = "<group>";
@@ -603,23 +612,23 @@
 			files = (
 				4CAB123C1646FF6B00265B8D /* main.m in Sources */,
 				4CAB12401646FF6B00265B8D /* AppDelegate.m in Sources */,
-				4CAB124C1646FF6B00265B8D /* DayViewController.m in Sources */,
-				4CAB12531646FF6B00265B8D /* WeekViewController.m in Sources */,
 				4CAB12D31647051400265B8D /* AppState.m in Sources */,
 				4CAB12D41647051400265B8D /* Project.m in Sources */,
 				4CAB12D51647051400265B8D /* Registration.m in Sources */,
 				4CAB12D61647051400265B8D /* Week.m in Sources */,
 				4CAB12EF16481A1500265B8D /* DataFactory.m in Sources */,
 				4CAB12F6164ACE4100265B8D /* Day.m in Sources */,
-				4CAB12FD164D8A4900265B8D /* LoginViewController.m in Sources */,
-				4CAB1304164DAAA900265B8D /* SetupViewController.m in Sources */,
-				4C298F56165D207E00EEF4E4 /* RegistrationAddViewController.m in Sources */,
-				4C2A327D1662511200906373 /* RegistrationInfoViewController.m in Sources */,
 				4C2A32801666B6C700906373 /* LoginCredentialFactory.m in Sources */,
 				4C3DD86E16729AAE0038EF9C /* LoginState.m in Sources */,
 				4C3DD8721672C99D0038EF9C /* EncodingUtility.m in Sources */,
 				4C3DD8751672C9BE0038EF9C /* MBHudHelper.m in Sources */,
 				4C6F8711167A7B5E0059A4F2 /* Alert.m in Sources */,
+				4C04175D168E28A300FC46BB /* DayViewController.m in Sources */,
+				4C04175E168E28A300FC46BB /* LoginViewController.m in Sources */,
+				4C04175F168E28A300FC46BB /* RegistrationAddViewController.m in Sources */,
+				4C041760168E28A300FC46BB /* RegistrationInfoViewController.m in Sources */,
+				4C041761168E28A300FC46BB /* SetupViewController.m in Sources */,
+				4C041762168E28A300FC46BB /* WeekViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
