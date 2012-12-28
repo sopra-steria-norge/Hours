@@ -19,15 +19,12 @@
 
 @implementation DataFactory
 
-NSString * const URL = @"http://fakeswhrs.azurewebsites.net/"; // TODO: Load from .plist
 NSString * const authenticationPath = @"/CheckAuthentication";
 NSString * const authenticationTokenFormat = @"{\"username\":\"%@\", \"password\":\"%@\"}";
 NSString * const authenticationHeaderKey = @"X-Authentication-Token";
 NSString * const dateFormat = @"yyyy-MM-dd";
 
 NSString * const hoursPath = @"/hours/week";
-const double timeoutInterval = 30.0;
-
 NSString * const postRegistrationPath = @"/hours/registration";
 NSString * const updateRegistrationPath = @"/hours/updateRegistration";
 NSString * const deleteRegistrationPath = @"/hours/deleteRegistration";
@@ -66,7 +63,7 @@ static LoginState *_sharedLoginState = nil;
 
     NSURL *url = [self getBaseURL];
     RKClient *client = [RKClient clientWithBaseURL:url];
-    client.timeoutInterval = timeoutInterval;
+    client.timeoutInterval = [self getTimeout];
     [self setAuthenticationHeaderForClient:client user:loginState.userName saltedPassword:loginState.passwordHash];
     
     RKRequest *request = [client get:authenticationPath delegate:self];
@@ -86,7 +83,7 @@ static LoginState *_sharedLoginState = nil;
     
     NSURL *url = [self getBaseURL];
     RKClient *client = [RKClient clientWithBaseURL:url];
-    client.timeoutInterval = timeoutInterval;
+    client.timeoutInterval = [self getTimeout];
     
     NSDictionary *params = [self createParamsFromRegistration:registration forDate:date];
     
@@ -94,7 +91,21 @@ static LoginState *_sharedLoginState = nil;
     NSError *error = nil;
     NSString *jsonParams = [parser stringFromObject:params error:&error];
     
-    RKRequest *request = [client post:postRegistrationPath params:[RKRequestSerialization serializationWithData:[jsonParams dataUsingEncoding:NSUTF8StringEncoding] MIMEType:RKMIMETypeJSON] delegate:self];
+    NSString *path;
+    if(registration.markedForDeletion)
+    {
+        path = deleteRegistrationPath;
+    }
+    else if(registration.registrationNumber)
+    {
+        path = updateRegistrationPath;
+    }
+    else
+    {
+        path = postRegistrationPath;
+    }
+    
+    RKRequest *request = [client post:path params:[RKRequestSerialization serializationWithData:[jsonParams dataUsingEncoding:NSUTF8StringEncoding] MIMEType:RKMIMETypeJSON] delegate:self];    
     request.userData = registration;
 }
 
@@ -175,7 +186,7 @@ static LoginState *_sharedLoginState = nil;
        
     NSURL *url = [self getBaseURL];
     RKObjectManager *manager = [RKObjectManager managerWithBaseURL:url];
-    manager.client.timeoutInterval = timeoutInterval;
+    manager.client.timeoutInterval = [self getTimeout];
     [manager loadObjectsAtResourcePath:hoursPath usingBlock:^(RKObjectLoader* loader)
      {
          loader.ObjectMapping = self.mapping;
@@ -260,8 +271,15 @@ static LoginState *_sharedLoginState = nil;
 }
 
 - (NSURL *)getBaseURL {
-    NSURL *url = [NSURL URLWithString:URL];
+    NSString *urlString = [[NSUserDefaults standardUserDefaults] stringForKey:@"URL"];
+    NSURL *url = [NSURL URLWithString:urlString];
     return url;
+}
+
+- (int) getTimeout
+{
+    int timeout = [[NSUserDefaults standardUserDefaults] integerForKey:@"TIMEOUT"];
+    return timeout;
 }
 
 - (void)resetRestKitClient {

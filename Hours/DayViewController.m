@@ -6,7 +6,6 @@
 //  Copyright (c) 2012 steria. All rights reserved.
 //
 #import "DayViewController.h"
-#import "DataFactory.h"
 #import "AppState.h"
 #import "MBHudHelper.h"
 #import "RegistrationAddViewController.h"
@@ -25,14 +24,11 @@
 @property (strong, nonatomic) UIAlertView *updateFailedAlert;
 @property (strong, nonatomic) UIAlertView *loadFailedAlert;
 
-// Data fetching
-@property (strong, nonatomic) DataFactory *dataFactory;
 @end
 
 @implementation DayViewController
 
 @synthesize state = _state;
-@synthesize dataFactory = _dataFactory;
 @synthesize hud = _hud;
 @synthesize updateFailedAlert = _updateFailedAlert;
 @synthesize loadFailedAlert = _loadFailedAlert;
@@ -44,7 +40,6 @@
     
     [self setupSwipe];
     
-    self.dataFactory = [[DataFactory alloc] init];
     self.loadFailedAlert = [Alert createOkCancelAlertWithTitle:@"Loading failed" andMessage:@"Retry" forDelegate:self];
     self.updateFailedAlert = [Alert createOkCancelAlertWithTitle:@"Updating failed" andMessage:@"Retry?" forDelegate:self];
 }
@@ -110,26 +105,27 @@
     self.state = state;
     
     NSLog(@"Did receive data from the loader");
-    [MBHudHelper HideSpinnerForHud:self.hud];
-    self.hud = nil;
+    [self killHud];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if(alertView == self.loadFailedAlert)
+    if(alertView == self.loadFailedAlert || alertView == self.updateFailedAlert)
     {
-        [[Alert createAlertWithTitle:@"// TODO: " andMessage:@"Handle failed load attempts, retry on OK, logout on CANCEL"] show];
-    }
-    else if(alertView == self.updateFailedAlert)
-    {
-        [[Alert createAlertWithTitle:@"// TODO: " andMessage:@"Handle failed update attempts, retry on OK, logout on CANCEL"] show];
+        if(buttonIndex != 0)
+        {
+            [self logOut];
+        }
+        else
+        {
+            [self updateState];
+        }
     }
 }
 
 - (void) didFailLoadingAppStateWithError:(NSError *)error
 {
-    [MBHudHelper HideSpinnerForHud:self.hud];
-    self.hud = nil;
+    [self killHud];
     [self.loadFailedAlert show];
 }
 
@@ -137,17 +133,14 @@
 {
     [self.state removeRegistrationFromSaveQueue:registration];
 
-    NSLog(@"Did receive data from the loader");
-    [MBHudHelper HideSpinnerForHud:self.hud];
-    self.hud = nil;
-
+    NSLog(@"Registration saved ok, removed from save queue, ");
+    [self killHud];
     [self updateState];
 }
 
 - (void)didFailSavingRegistrationWithError:(NSError *)error
 {
-    [MBHudHelper HideSpinnerForHud:self.hud];
-    self.hud = nil;
+    [self killHud];
     [self.updateFailedAlert show];
 }
 
@@ -155,6 +148,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)killHud
+{
+    [MBHudHelper HideSpinnerForHud:self.hud];
+    self.hud = nil;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -344,6 +343,13 @@
     {
         [self updateState];
     }
+}
+
+- (void)logOut
+{
+    [AppState clear];
+    UITabBarController *parent = (UITabBarController *)[self parentViewController];
+    [parent dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewDidUnload {

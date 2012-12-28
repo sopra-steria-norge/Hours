@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C04172D168DB11100FC46BB /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4C04172C168DB11100FC46BB /* Settings.bundle */; };
 		4C298F56165D207E00EEF4E4 /* RegistrationAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C298F55165D207E00EEF4E4 /* RegistrationAddViewController.m */; };
 		4C2A327616624C7600906373 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2A327516624C7600906373 /* lock.png */; };
 		4C2A327A16624CB600906373 /* approved.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2A327916624CB600906373 /* approved.png */; };
@@ -126,6 +127,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C04172C168DB11100FC46BB /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		4C298F54165D207E00EEF4E4 /* RegistrationAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationAddViewController.h; sourceTree = "<group>"; };
 		4C298F55165D207E00EEF4E4 /* RegistrationAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationAddViewController.m; sourceTree = "<group>"; };
 		4C2A327516624C7600906373 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lock.png; path = Resources/lock.png; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 		4CAB12201646FF6B00265B8D = {
 			isa = PBXGroup;
 			children = (
+				4C04172C168DB11100FC46BB /* Settings.bundle */,
 				4CAB135E16583D1600265B8D /* MBProgressHUD.xcodeproj */,
 				4CAB127A1647019900265B8D /* RestKit.xcodeproj */,
 				4CAB12351646FF6B00265B8D /* Hours */,
@@ -564,6 +567,7 @@
 				4CAB12571646FF6B00265B8D /* second@2x.png in Resources */,
 				4C2A327616624C7600906373 /* lock.png in Resources */,
 				4C2A327A16624CB600906373 /* approved.png in Resources */,
+				4C04172D168DB11100FC46BB /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

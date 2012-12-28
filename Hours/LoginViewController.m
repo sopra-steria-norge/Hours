@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "LoginState.h"
 #import "MBHudHelper.h"
+#import "Alert.h"
 
 @interface LoginViewController () <LoginStateReceiver, MBProgressHUDDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *userName;
@@ -59,12 +60,15 @@
 
 - (void)didFailLoggingInWithError:(NSError *)error
 {
-    [MBHudHelper HideSpinnerForHud:self.hud];
-
-    self.hud = nil;
-    // TODO: Show error message
+    [self killHud];
+    [[Alert createAlertWithTitle:@"Could not log in" andMessage:[NSString stringWithFormat:@"Failed with domain: %@", error.domain]] show];
 }
 
+- (void)killHud
+{
+    [MBHudHelper HideSpinnerForHud:self.hud];
+    self.hud = nil;
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -78,6 +82,7 @@
     [self setErrorText:nil];
     [super viewDidUnload];
 }
+
 - (IBAction)logIn:(id)sender
 {
     [self.userName resignFirstResponder];
@@ -93,7 +98,6 @@
     {
         self.hud = [MBHudHelper ShowSpinnerForDelegate:self withView:self.view];
     }
-
 }
 
 -(void) hideLoginScreen
@@ -103,7 +107,6 @@
 
 -(bool) checkStoredLogin
 {
-    // TODO: 
     return self.loginState != nil;
 }
 @end

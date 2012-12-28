@@ -8,9 +8,9 @@
 
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "WeekViewController.h"
-#import "DataFactory.h"
 #import "MBHudHelper.h"
 #import "Alert.h"
+#import "DayViewController.h"
 
 @interface WeekViewController () <AppStateReceiver, AppStateSubmitter, MBProgressHUDDelegate>
 
@@ -23,9 +23,6 @@
 - (IBAction)buttonPreviousClicked:(id)sender;
 - (IBAction)buttonNextClicked:(id)sender;
 - (IBAction)buttonSubmitClicked:(id)sender;
-
-// Data fetching
-@property (strong, nonatomic) DataFactory *dataFactory;
 @end
 
 @implementation WeekViewController
@@ -126,7 +123,8 @@
     Day *d = [self.state.currentWeek.days objectAtIndex:indexPath.row];
     self.state.currentDate = d.date;
     
-    self.tabBarController.selectedIndex = 0; // TODO: Make type based in stead of index based
+    int dayViewControllerIndex = 0;
+    self.tabBarController.selectedIndex = dayViewControllerIndex;
 }
 
 - (void)setupSwipe
@@ -178,4 +176,12 @@
         [[Alert createAlertWithTitle:@"// TODO: " andMessage:@"Submit the week"] show];
     }
 }
+
+- (void)logOut
+{
+    [AppState clear];
+    UITabBarController *parent = (UITabBarController *)[self parentViewController];
+    [parent dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end

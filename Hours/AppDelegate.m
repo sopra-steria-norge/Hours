@@ -13,7 +13,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-
+    [[NSUserDefaults standardUserDefaults] registerDefaults:[AppDelegate defaultsFromPlistNamed:@"Root"]];
     return YES;
 }
 							
@@ -44,4 +44,34 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
++ (NSDictionary *)defaultsFromPlistNamed:(NSString *)plistName
+{
+    NSString *settingsBundle = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"bundle"];
+    NSString *plistFullName = [NSString stringWithFormat:@"%@.plist", plistName];
+    NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:[settingsBundle stringByAppendingPathComponent:plistFullName]];
+    NSArray *preferences = [settings objectForKey:@"PreferenceSpecifiers"];
+    
+    NSMutableDictionary *defaults = [NSMutableDictionary dictionary];
+    
+    for (NSDictionary *prefSpecification in preferences)
+    {
+        NSString *key = [prefSpecification objectForKey:@"Key"];
+        id value = [prefSpecification objectForKey:@"DefaultValue"];
+        
+        if (key && value)
+        {
+            [defaults setObject:value forKey:key];
+        }
+        
+        NSString *type = [prefSpecification objectForKey:@"Type"];
+        
+        if ([type isEqualToString:@"PSChildPaneSpecifier"])
+        {
+            NSString *file = [prefSpecification objectForKey:@"File"];
+            [defaults addEntriesFromDictionary:[self defaultsFromPlistNamed:file]];
+        }
+    }
+    
+    return defaults;
+}
 @end

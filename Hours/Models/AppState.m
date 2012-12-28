@@ -237,7 +237,7 @@ static DataFactory *_dataFactory;
     return [self getTitleForDate:self.currentDate];
 }
 
-- (NSString *)getTitleForDate:(NSDate *) date // TODO: Utility methods, somewhere else to place it?
+- (NSString *)getTitleForDate:(NSDate *) date
 {
     NSString *temp = [self.dateFormatter stringFromDate:date];
     NSString *temp2 = [self.dayFormatter stringFromDate:date];
