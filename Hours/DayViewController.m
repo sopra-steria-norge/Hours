@@ -40,8 +40,10 @@
     
     [self setupSwipe];
     
-    self.loadFailedAlert = [Alert createOkCancelAlertWithTitle:@"Loading failed" andMessage:@"Retry" forDelegate:self];
-    self.updateFailedAlert = [Alert createOkCancelAlertWithTitle:@"Updating failed" andMessage:@"Retry?" forDelegate:self];
+    NSString *retryText = NSLocalizedString(@"RETRYQUESTION", nil);
+    
+    self.loadFailedAlert = [Alert createOkCancelAlertWithTitle:NSLocalizedString(@"LOADFAILED", nil) andMessage:retryText forDelegate:self];
+    self.updateFailedAlert = [Alert createOkCancelAlertWithTitle:NSLocalizedString(@"UPDATEFAILED", nil) andMessage:retryText forDelegate:self];
 }
 
 -(void)setState:(AppState *)state
@@ -219,7 +221,7 @@
     else
     {
         cell = [self getCell:tableView forIndexPath:indexPath withCellIdentifier:@"EditDayCellStyle"];
-        cell.textLabel.text = @"no data";
+        cell.textLabel.text = NSLocalizedString(@"NODATA", nil);
         cell.detailTextLabel.text = @"";
     }
     
@@ -234,8 +236,8 @@
     if(indexPath.row >= currentDay.registrations.count)
             {
                 cell = [self getCell:tableView forIndexPath:indexPath withCellIdentifier:@"CopyRegistrationsCell"];
-                cell.textLabel.text = @"";
-                cell.detailTextLabel.text = @"copy yesterday...";
+                cell.textLabel.text = @"";                
+                cell.detailTextLabel.text = NSLocalizedString(@"COPYYESTERDAY", nil);
             }
             else
             {

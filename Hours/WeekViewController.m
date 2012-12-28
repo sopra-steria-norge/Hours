@@ -68,7 +68,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.submitAlert = [Alert createOkCancelAlertWithTitle:@"Submit hours" andMessage:@"Are you sure you want to submit this period?" forDelegate:self];
+    self.submitAlert = [Alert createOkCancelAlertWithTitle:NSLocalizedString(@"SUBMITHEADER", nil)
+                                                andMessage:NSLocalizedString(@"SUBMITMESSAGE", nil)
+                                               forDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning

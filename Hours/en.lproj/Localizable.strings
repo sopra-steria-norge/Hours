@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  Hours
+
+  Created by Tommy Wendelborg on 12/28/12.
+  Copyright (c) 2012 steria. All rights reserved.
+*/
+
+
+// LoginViewController
+"LOGINFAILEDHEADER" = "Could not log in";
+"LOGINFAILEDMESSAGEWITHFORMAT" = "Failed with domain: %@";
+// DayViewController
+"RETRYQUESTION" = "Retry?";
+"LOADFAILED" = "Loading failed";
+"UPDATEFAILED" = "Updating failed";
+"NODATA" = "no data";
+"COPYYESTERDAY" = "copy yesterday...";
+
+// RegistrationAddViewController
+"UPDATEREGISTRATION" = "Update";
+"ADDREGISTRATION" = "Add";
+
+// WeekViewController
+"SUBMITHEADER" = "Submit hours";
+"SUBMITMESSAGE" = "Are you sure you want to submit this period?";

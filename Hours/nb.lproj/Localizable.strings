@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  Hours
+
+  Created by Tommy Wendelborg on 12/28/12.
+  Copyright (c) 2012 steria. All rights reserved.
+*/
+
+
+// LoginViewController
+"LOGINFAILEDHEADER" = "Kunne ikke logge inn";
+"LOGINFAILEDMESSAGEWITHFORMAT" = "Feilet med domene: %@";
+// DayViewController
+"RETRYQUESTION" = "Prøve igjen?";
+"LOADFAILED" = "Lasting av data feilet";
+"UPDATEFAILED" = "Lagring feilet";
+"NODATA" = "ingen data";
+"COPYYESTERDAY" = "kopier gårsdagen...";
+
+// RegistrationAddViewController
+"UPDATEREGISTRATION" = "Oppdater";
+"ADDREGISTRATION" = "Legg til";
+
+// WeekViewController
+"SUBMITHEADER" = "Meld inn timer";
+"SUBMITMESSAGE" = "Er du helt sikker på at du vil melde inn disse timene?";

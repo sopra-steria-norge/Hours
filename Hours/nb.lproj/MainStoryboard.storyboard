@@ -19,7 +19,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuH-Hn-0KY">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Log in">
+                                <state key="normal" title="Logg in">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -30,12 +30,12 @@
                                     <action selector="logIn:" destination="Ahs-cG-68u" eventType="touchUpInside" id="HLF-a5-bAI"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="User name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0la-Ge-Nsk">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Bruker:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0la-Ge-Nsk">
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                 <color key="textColor" red="0.062745101749897003" green="0.30588236451148987" blue="0.54509806632995605" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Password:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejk-Pi-aC6">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Passord:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejk-Pi-aC6">
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                 <color key="textColor" red="0.062745101749897003" green="0.30588236451148987" blue="0.54509806632995605" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -106,7 +106,7 @@
                                 <items>
                                     <barButtonItem title="..." style="plain" id="R79-rE-TJN"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Gcu-bl-M5V"/>
-                                    <barButtonItem title="Cancel" id="4xl-PB-jNn">
+                                    <barButtonItem title="Avbryt" id="4xl-PB-jNn">
                                         <connections>
                                             <action selector="btnCancel:" destination="MUn-MX-doj" id="q7D-b3-6q7"/>
                                         </connections>
@@ -126,7 +126,7 @@
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56z-Wr-UWA">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                                <state key="normal" title="update">
+                                <state key="normal" title="Oppdater">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -223,7 +223,7 @@
                                 <items/>
                                 <color key="tintColor" red="1" green="0.49803921579999999" blue="0.1411764771" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Registration info..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVE-nU-8HO">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Ikke implementert..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVE-nU-8HO">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="76" id="zWi-mC-EZl"/>
                                 </constraints>
@@ -376,7 +376,7 @@
                             </toolbar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbP-4c-aRC">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                                <state key="normal" title="add">
+                                <state key="normal" title="Legg til">
                                     <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -402,7 +402,7 @@
                             <constraint firstItem="dkO-we-Hjh" firstAttribute="trailing" secondItem="16" secondAttribute="trailing" type="default" id="xaz-PK-jLf"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Day" image="first" id="7"/>
+                    <tabBarItem key="tabBarItem" title="Dag" image="first" id="7"/>
                     <connections>
                         <outlet property="btnDayName" destination="2y7-Nf-Nox" id="UgU-yE-cVU"/>
                         <outlet property="btnTitle" destination="2y7-Nf-Nox" id="icd-51-kTb"/>
@@ -476,7 +476,7 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jps-Bb-mg0">
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="gDL-TR-QTe"/>
-                                    <barButtonItem title="Submit" id="U4g-Fh-loq">
+                                    <barButtonItem title="Meld inn" id="U4g-Fh-loq">
                                         <connections>
                                             <action selector="buttonSubmitClicked:" destination="3" id="Tzi-f0-R0v"/>
                                         </connections>
@@ -500,7 +500,7 @@
                             <constraint firstItem="Jps-Bb-mg0" firstAttribute="trailing" secondItem="17" secondAttribute="trailing" type="default" id="ucr-nc-2wE"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Week" image="first" id="6"/>
+                    <tabBarItem key="tabBarItem" title="Uke" image="first" id="6"/>
                     <connections>
                         <outlet property="buttonSubmit" destination="U4g-Fh-loq" id="pON-jZ-qnQ"/>
                         <outlet property="buttonTitle" destination="FZJ-Iw-T10" id="xgo-dZ-FhS"/>
@@ -511,7 +511,7 @@
             </objects>
             <point key="canvasLocation" x="618" y="321"/>
         </scene>
-        <!--Setup View Controller - Settings-->
+        <!--Setup View Controller - Oppsett-->
         <scene sceneID="jHN-uL-z6n">
             <objects>
                 <viewController id="rbO-pC-Px9" customClass="SetupViewController" sceneMemberID="viewController">
@@ -521,7 +521,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E9m-wk-UnW">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Log out">
+                                <state key="normal" title="Logg ut">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -540,7 +540,7 @@
                             <constraint firstItem="E9m-wk-UnW" firstAttribute="top" secondItem="guI-RP-NXz" secondAttribute="top" constant="20" symbolic="YES" type="default" id="ngf-Tn-U7l"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="first" id="zDb-j9-Di6"/>
+                    <tabBarItem key="tabBarItem" title="Oppsett" image="first" id="zDb-j9-Di6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Co-bd-fjM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

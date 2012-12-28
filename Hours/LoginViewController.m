@@ -61,7 +61,10 @@
 - (void)didFailLoggingInWithError:(NSError *)error
 {
     [self killHud];
-    [[Alert createAlertWithTitle:@"Could not log in" andMessage:[NSString stringWithFormat:@"Failed with domain: %@", error.domain]] show];
+    [[Alert createAlertWithTitle:NSLocalizedString(@"LOGINFAILEDHEADER", nil)
+            andMessage:[NSString stringWithFormat:NSLocalizedString(@"LOGINFAILEDMESSAGEWITHFORMAT", nil),
+            error.domain]]
+     show];
 }
 
 - (void)killHud

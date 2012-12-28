@@ -81,13 +81,13 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    NSString *addButtonText = @"Add";
+    NSString *addButtonText = NSLocalizedString(@"ADDREGISTRATION", nil);
     self.buttonTitle.title = [self.state currentDayTitle];
     
     if(self.registration)
     {
         [self setHourPickerToRegistrationHoursForValue:self.registration.hours];
-        addButtonText = @"Update";
+        addButtonText = NSLocalizedString(@"UPDATEREGISTRATION", nil);
     }
     
     [self.buttonOk setTitle:addButtonText forState:UIControlStateNormal];
